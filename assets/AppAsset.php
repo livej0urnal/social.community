@@ -43,7 +43,8 @@ class AppAsset extends AssetBundle
         '/js/functions.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset'
+//        'yii\web\YiiAsset',
+//        'yii\bootstrap5\BootstrapAsset'
+        'yii\web\JqueryAsset',
     ];
 }
