@@ -1182,8 +1182,6 @@ Header END -->
 </div>
 <!-- Modal create events END -->
 
-<!-- =======================
-JS libraries, plugins and custom scripts -->
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -1,28 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Social - Network, Community and Event Theme</title>
+<?php
 
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use app\widgets\Alert;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AuthAppAsset;
+
+AuthAppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>" data-theme="dark">
+<head>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->registerCsrfMetaTags() ?>
     <!-- Meta Tags -->
-    <meta charset="utf-8">
+    <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Webestica.com">
-    <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMKQ4P9YMZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-
-    <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+        gtag('config', 'G-GMKQ4P9YMZ');
+    </script>
+    <?php $this->head() ?>
 </head>
 
 <body>
@@ -493,18 +508,7 @@ Footer START -->
 Footer END -->
 
 <!-- **************** MAIN CONTENT END **************** -->
-
-<!-- =======================
-JS libraries, plugins and custom scripts -->
-
-<!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Vendors -->
-<script src="assets/vendor/pswmeter/pswmeter.min.js"></script>
-
-<!-- Template Functions -->
-<script src="assets/js/functions.js"></script>
-
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
