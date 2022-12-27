@@ -29,7 +29,7 @@ class AppAsset extends AssetBundle
         '/library/dropzone/dist/dropzone.css',
         '/library/flatpickr/dist/flatpickr.css',
         '/library/plyr/plyr.css',
-        '/css/style.css',
+        '/css/style-dark.css',
     ];
     public $js = [
         '/library/bootstrap/dist/js/bootstrap.bundle.min.js',
@@ -39,7 +39,7 @@ class AppAsset extends AssetBundle
         '/library/glightbox-master/dist/js/glightbox.min.js',
         '/library/flatpickr/dist/flatpickr.min.js',
         '/library/plyr/plyr.js',
-        '/library/dropzone/dist/min/dropzone.min.js',
+//        '/library/dropzone/dist/min/dropzone.min.js',
         '/js/functions.js',
     ];
     public $depends = [
