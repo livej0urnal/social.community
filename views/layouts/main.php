@@ -23,39 +23,15 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/dist/tiny-slider.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/choices.js/public/assets/styles/choices.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/vendor/glightbox-master/dist/css/glightbox.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/dropzone/dist/dropzone.css" />
-    <link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/dist/flatpickr.css" />
-    <link rel="stylesheet" type="text/css" href="assets/vendor/plyr/plyr.css" />
-
-    <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMKQ4P9YMZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GMKQ4P9YMZ');
-    </script>
-
+    <?php $this->head() ?>
 </head>
 <body>
-
+<?php $this->beginBody() ?>
 <!-- =======================
 Header START -->
 <header class="navbar-light fixed-top header-static bg-mode">
@@ -2908,21 +2884,7 @@ Header END -->
 
 <!-- =======================
 JS libraries, plugins and custom scripts -->
-
-<!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Vendors -->
-<script src="assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
-<script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-<script src="assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
-<script src="assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
-<script src="assets/vendor/plyr/plyr.js"></script>
-<script src="assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
-
-<!-- Template Functions -->
-<script src="assets/js/functions.js"></script>
-
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
