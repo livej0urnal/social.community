@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                'signup' => 'account/signup',
                 '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
             ],
         ],
