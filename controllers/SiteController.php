@@ -62,7 +62,7 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
-        $this->setMeta('Social Community - Free social App');
+        $this->setMeta('Social Community - Best Social App');
         return $this->render('index');
     }
 

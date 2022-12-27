@@ -49,7 +49,7 @@ Header START -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <!-- Logo START -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="<?= \yii\helpers\Url::home() ?>">
                 <img class="light-mode-item navbar-brand-item" src="/images/logo.svg" alt="logo">
                 <img class="dark-mode-item navbar-brand-item" src="/images/logo.svg" alt="logo">
             </a>
