@@ -427,9 +427,9 @@ var e = {
         var changeThemeToDark = () => {
             document.documentElement.setAttribute("data-theme", "dark") // set theme to dark
             if (dir == 'rtl') {
-                style.setAttribute('href', 'assets/css/style-dark-rtl.css');
+                style.setAttribute('href', '/../css/style-dark-rtl.css');
             } else {
-                style.setAttribute('href', 'assets/css/style-dark.css');
+                style.setAttribute('href', '/../css/style-dark.css');
             }
             localStorage.setItem("data-theme", "dark") // save theme to local storage
         }
