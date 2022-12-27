@@ -164,7 +164,7 @@ $this->title = $name;
         </figure>
         <!-- SVG END -->
         <!-- 404 info -->
-        <h1 class="display-1 mt-4">404</h1>
+        <h1 class="display-1 mt-4"><?= Html::encode($statusCode) ?></h1>
         <h2 class="mb-2 h1"><?= nl2br(Html::encode($message)) ?></h2>
         <p><?= Html::encode($this->title) ?></p>
         <!-- Button -->
