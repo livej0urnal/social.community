@@ -24,7 +24,7 @@ class AppAsset extends AssetBundle
         '/library/bootstrap-icons/bootstrap-icons.css',
         '/library/OverlayScrollbars-master/css/OverlayScrollbars.min.css',
         '/library/tiny-slider/dist/tiny-slider.css',
-        '/library/choices.js/public/assets/styles/choices.min.css" ',
+        '/library/choices.js/public/assets/styles/choices.min.css',
         '/library/glightbox-master/dist/css/glightbox.min.css',
         '/library/dropzone/dist/dropzone.css',
         '/library/flatpickr/dist/flatpickr.css',
