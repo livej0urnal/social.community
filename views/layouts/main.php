@@ -16,7 +16,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <title>Social - Network, Community and Event Theme</title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->registerCsrfMetaTags() ?>
     <!-- Meta Tags -->
     <meta charset="<?= Yii::$app->charset ?>">
