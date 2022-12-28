@@ -29,7 +29,7 @@
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-
+                    <!--Setting Menu Widget-->
                     <?= \app\components\SettingProfileMenuWidget::widget() ?>
 
                     <!-- Helper link START -->
