@@ -314,7 +314,7 @@ Header START -->
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                        <li><a class="dropdown-item bg-danger-soft-hover" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
                         <li> <hr class="dropdown-divider"></li>
                         <!-- Dark mode switch START -->
                         <li>
