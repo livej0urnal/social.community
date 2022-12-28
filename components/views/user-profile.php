@@ -24,7 +24,7 @@
                 <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>">View profile</a>
             </li>
             <!-- Links -->
-            <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>
+            <li><a class="dropdown-item" href="<?= Url::to(['page/edit', 'id' => $page->id]) ?>"><i class="bi bi-gear fa-fw me-2"></i>Settings</a></li>
             <li>
                 <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
                     <i class="fa-fw bi bi-life-preserver me-2"></i>Support
@@ -37,17 +37,6 @@
             </li>
             <li class="dropdown-divider"></li>
             <li><a class="dropdown-item bg-danger-soft-hover" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-            <li> <hr class="dropdown-divider"></li>
-            <!-- Dark mode switch START -->
-            <li>
-                <div class="modeswitch-wrap" id="darkModeSwitch">
-                    <div class="modeswitch-item">
-                        <div class="modeswitch-icon"></div>
-                    </div>
-                    <span>Dark mode</span>
-                </div>
-            </li>
-            <!-- Dark mode switch END -->
         </ul>
     <?php else : ?>
         <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
