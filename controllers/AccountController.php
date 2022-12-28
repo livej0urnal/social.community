@@ -34,6 +34,7 @@ class AccountController extends AppController
             ],
         ];
     }
+
     public function actionSignup()
     {
         if (!Yii::$app->user->isGuest) {
