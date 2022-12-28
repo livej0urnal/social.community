@@ -114,7 +114,6 @@
                         <!-- Title START -->
                         <div class="card-header border-0 pb-0">
                             <h1 class="h5 card-title">Account Settings</h1>
-                            <p class="mb-0">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to.</p>
                         </div>
                         <!-- Card header START -->
                         <?php Pjax::begin(['id' => 'ajax-create-profile']) ?>
