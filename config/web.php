@@ -50,6 +50,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 'signup' => 'account/signup',
+                'login' => 'account/login',
                 '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
             ],
         ],

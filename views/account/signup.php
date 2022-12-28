@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AuthAppAsset;
+use yii\widgets\ActiveForm;
 
 AuthAppAsset::register($this);
 ?>
@@ -47,8 +48,11 @@ AuthAppAsset::register($this);
                     <div class="text-center">
                         <!-- Title -->
                         <h1 class="mb-2">Sign up</h1>
-                        <span class="d-block">Already have an account? <a href="sign-in.html">Sign in here</a></span>
+                        <span class="d-block">Already have an account? <a href="<?= \yii\helpers\Url::to(['account/login']) ?>">Sign in here</a></span>
                     </div>
+                    <?php $form = ActiveForm::begin(['class' => 'mt-4']) ?>
+
+                    <?php ActiveForm::end() ?>
                     <!-- Form START -->
                     <form class="mt-4">
                         <!-- Email -->
