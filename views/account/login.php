@@ -48,7 +48,7 @@ AuthAppAsset::register($this);
                         <div class="text-center">
                             <!-- Title -->
                             <h1 class="mb-2">Sign in</h1>
-                            <span class="d-block">Don't have an account?<a href="<?= \yii\helpers\Url::to(['account/signup']) ?>">Click here to sign up</a></span>
+                            <span class="d-block">Don't have an account?<a href="<?= \yii\helpers\Url::to(['account/signup']) ?>"> Click here to sign up</a></span>
                         </div>
                         <?php $form = ActiveForm::begin(['class' => 'mt-4']) ?>
                         <div class="mb-3 mt-3 input-group-lg">
@@ -62,6 +62,7 @@ AuthAppAsset::register($this);
                         <div class="d-grid mt-lg-4"><button type="submit" class="btn btn-lg btn-primary">Login</button></div>
                         <!-- Copyright -->
                         <p class="mb-0 mt-3 text-center">Copyright ©<?= date('Y') ?> <a href="https://myprojects.company/ua/" target="_blank">My projects</a>. All rights reserved</p>
+                        <?= $form->errorSummary($model) ?>
                         <?php ActiveForm::end() ?>
                     </div>
                     <!-- Sign up END -->
