@@ -32,4 +32,13 @@ class ChangePassword extends Model
         }
 
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'password' => 'Current password',
+            'new_password' => 'New password',
+            'new_password_repeat' => 'Confirm password',
+        ];
+    }
 }
