@@ -7,11 +7,37 @@ use app\models\Signup;
 use app\models\Users;
 use app\models\Login;
 use Yii;
+use yii\filters\AccessControl;
 
 class AccountController extends AppController
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['signup', 'login'], // действия в контроллере
+                'rules' => [ // правила к действиям
+                    [
+                        'allow' => true,
+                        'actions' => ['login'], // действия в контроллере
+                        'roles' => ['?'], // Доступ к действиям только для не авторизованных пользователей
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => [], // действия в контроллере
+                        'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionSignup()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Signup();
         $model->attributes = Yii::$app->request->post('Signup');
         if($model->validate() && $model->signup()) {
@@ -31,6 +57,9 @@ class AccountController extends AppController
 
     public function actionLogin()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Login();
         if(Yii::$app->request->post('Login')) {
             $model->attributes = Yii::$app->request->post('Login');
