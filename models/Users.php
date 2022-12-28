@@ -15,7 +15,6 @@ use yii\web\IdentityInterface;
  */
 class Users extends ActiveRecord implements IdentityInterface
 {
-    public $password_repeat;
     /**
      * {@inheritdoc}
      */
@@ -30,9 +29,8 @@ class Users extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'password', 'password_repeat'], 'required'],
-            [['email', 'password', 'password_repeat'], 'string', 'max' => 255],
-            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'message'=>"Passwords don't match" ]
+            [['email', 'password'], 'required'],
+            [['email', 'password'], 'string', 'max' => 255],
         ];
     }
 
@@ -45,7 +43,6 @@ class Users extends ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'email' => 'Email',
             'password' => 'Password',
-            'password_repeat' => 'Confirm password',
         ];
     }
 
