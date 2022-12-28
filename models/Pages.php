@@ -64,8 +64,8 @@ class Pages extends ActiveRecord
             'website_url' => 'Website Url',
             'phone_number' => 'Phone Number',
             'about_page' => 'About Page',
-            'linkedin_link' => 'Linkedin Link',
-            'github_link' => 'Github Link',
+            'linkedin_link' => 'Linkedin',
+            'github_link' => 'Github',
         ];
     }
 }
