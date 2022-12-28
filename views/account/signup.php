@@ -66,54 +66,25 @@ AuthAppAsset::register($this);
                             <?php echo Yii::$app->session->getFlash('error'); ?>
                         </div>
                     <?php endif; ?>
-                    <!-- Email -->
                     <div class="mb-3 mt-3 input-group-lg">
                         <?= $form->field($model, 'email') ->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Enter email'])->label(false) ?>
                         <small>We'll never share your email with anyone else.</small>
                     </div>
 
+                    <div class="mb-3 input-group-lg">
+                        <?= $form->field($model, 'password') ->passwordInput(['class' => 'form-control', 'placeholder' => 'Enter new password'])->label(false) ?>
+                        <small>Write your password...</small>
+                    </div>
+
+                    <div class="mb-3 input-group-lg">
+                        <?= $form->field($model, 'password_repeat') ->passwordInput(['class' => 'form-control', 'placeholder' => 'Confirm password'])->label(false) ?>
+                        <small>Password and repeat password must match</small>
+                    </div>
+                    <!-- Button -->
+                    <div class="d-grid"><button type="submit" class="btn btn-lg btn-primary">Sign me up</button></div>
+                    <!-- Copyright -->
+                    <p class="mb-0 mt-3 text-center">©2022 <a target="_blank" href="https://www.webestica.com/">Webestica.</a> All rights reserved</p>
                     <?php ActiveForm::end() ?>
-                    <!-- Form START -->
-                    <form class="mt-4">
-                        <!-- Email -->
-                        <div class="mb-3 input-group-lg">
-                            <input type="email" class="form-control" placeholder="Enter email">
-                            <small>We'll never share your email with anyone else.</small>
-                        </div>
-                        <!-- New password -->
-                        <div class="mb-3 position-relative">
-                            <!-- Input group -->
-                            <div class="input-group input-group-lg">
-                                <input class="form-control fakepassword" type="password" id="psw-input" placeholder="Enter new password">
-                                <span class="input-group-text p-0">
-                  <i class="fakepasswordicon fa-solid fa-eye-slash cursor-pointer p-2 w-40px"></i>
-                </span>
-                            </div>
-                            <!-- Pswmeter -->
-                            <div id="pswmeter" class="mt-2"></div>
-                            <div class="d-flex mt-1">
-                                <div id="pswmeter-message" class="rounded"></div>
-                                <!-- Password message notification -->
-                                <div class="ms-auto">
-                                    <i class="bi bi-info-circle ps-1" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Include at least one uppercase, one lowercase, one special character, one number and 8 characters long." data-bs-original-title="" title=""></i>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Confirm password -->
-                        <div class="mb-3 input-group-lg">
-                            <input class="form-control" type="password" placeholder="Confirm password">
-                        </div>
-                        <!-- Keep me signed in -->
-                        <div class="mb-3 text-start">
-                            <input type="checkbox" class="form-check-input" id="keepsingnedCheck">
-                            <label class="form-check-label" for="keepsingnedCheck"> Keep me signed in</label>
-                        </div>
-                        <!-- Button -->
-                        <div class="d-grid"><button type="submit" class="btn btn-lg btn-primary">Sign me up</button></div>
-                        <!-- Copyright -->
-                        <p class="mb-0 mt-3 text-center">©2022 <a target="_blank" href="https://www.webestica.com/">Webestica.</a> All rights reserved</p>
-                    </form>
-                    <!-- Form END -->
                 </div>
                 <!-- Sign up END -->
             </div>
