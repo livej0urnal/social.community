@@ -37,31 +37,23 @@
                 </div>
                 <!-- Category -->
                 <div class="col-sm-6 col-lg-4">
-                    <label class="form-label">Category*</label>
-                    <select class="form-select js-choice">
-                        <option value="PV">Comedy</option>
-                        <option value="PB">Technology</option>
-                        <option value="PV">Education</option>
-                        <option value="PV">Entertainment</option>
-                        <option value="PV">Hotel</option>
-                        <option value="PV">Travel</option>
-                    </select>
+                    <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\CategoryPages::find()->all(), 'id', 'title')) ?>
                 </div>
                 <!-- Website URL -->
                 <div class="col-sm-6">
                     <label class="form-label">Website URL</label>
-                    <input type="text" class="form-control" placeholder="https://www.webestica.com">
+                    <?= $form->field($model, 'website_url')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                 </div>
                 <!-- Phone number -->
                 <div class="col-lg-6">
-                    <label class="form-label">Phone number</label>
-                    <input type="text" class="form-control" placeholder="Phone number (Required)">
+                    <label class="form-label">Phone number*</label>
+                    <?= $form->field($model, 'phone_number')->textInput(['class' => 'form-control', 'placeholder' => 'Phone number'])->label(false) ?>
                 </div>
                 <!-- Page information -->
                 <div class="col-12">
                     <label class="form-label">About page</label>
-                    <textarea class="form-control" rows="3" placeholder="Description (Required)"></textarea>
-                    <small>Character limit: 300</small>
+                    <?= $form->field($model, 'about_page')->textarea(['rows' => '5'])->label(false) ?>
+                    <small>Character limit: 400</small>
                 </div>
 
                 <!-- Divider -->
@@ -73,34 +65,18 @@
                 </div>
                 <!-- Facebook -->
                 <div class="col-sm-6">
-                    <label  class="form-label">Facebook</label>
+                    <label  class="form-label">Linkedin</label>
                     <div class="input-group">
-                        <span class="input-group-text border-0"> <i class="bi bi-facebook text-facebook"></i> </span>
-                        <input type="text" class="form-control" placeholder="https://www.facebook.com">
+                        <span class="input-group-text border-0"> <i class="bi bi-linkedin text-linkedin"></i> </span>
+                        <?= $form->field($model, 'linkedin_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                     </div>
                 </div>
                 <!-- Twitter -->
-                <div class="col-sm-6">
-                    <label class="form-label">Twitter</label>
+                <div class="col-sm-12">
+                    <label class="form-label">Github</label>
                     <div class="input-group">
-                        <span class="input-group-text border-0"> <i class="bi bi-twitter text-twitter"></i> </span>
-                        <input type="text" class="form-control" placeholder="https://www.twitter.com">
-                    </div>
-                </div>
-                <!-- Instagram -->
-                <div class="col-sm-6">
-                    <label class="form-label">Instagram</label>
-                    <div class="input-group">
-                        <span class="input-group-text border-0"> <i class="bi bi-instagram text-instagram"></i> </span>
-                        <input type="text" class="form-control" placeholder="https://www.instagram.com">
-                    </div>
-                </div>
-                <!-- Pinterest -->
-                <div class="col-sm-6">
-                    <label class="form-label">Pinterest</label>
-                    <div class="input-group">
-                        <span class="input-group-text border-0"> <i class="bi bi-pinterest text-pinterest"></i> </span>
-                        <input type="text" class="form-control" placeholder="https://www.pinterest.com">
+                        <span class="input-group-text border-0"> <i class="bi bi-github text-github"></i> </span>
+                        <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                     </div>
                 </div>
                 <!-- Button  -->
