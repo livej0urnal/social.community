@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use app\models\Pages;
 use app\models\Signup;
 use app\models\Users;
 use app\models\Login;
@@ -65,7 +66,14 @@ class AccountController extends AppController
             $model->attributes = Yii::$app->request->post('Login');
             if ($model->validate()) {
                 Yii::$app->user->login($model->getUser());
-                return $this->goHome();
+                $page = Pages::findOne(['user_id' => Yii::$app->user->identity->id]);
+                if($page) {
+                    return $this->goHome();
+                }
+                else{
+                    return $this->redirect(['page/create']);
+                }
+
             }
 
         }
