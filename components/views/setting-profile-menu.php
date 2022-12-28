@@ -34,7 +34,7 @@
         <!-- Card body END -->
         <!-- Card footer -->
         <div class="card-footer text-center py-2">
-            <a class="btn btn-link text-secondary btn-sm" href="#!">View Profile </a>
+            <a class="btn btn-link text-secondary btn-sm" href="<?= \yii\helpers\Url::to(['page/profile' , 'id' => $user_profile->id]) ?>">View Profile </a>
         </div>
     </div>
     <!-- Card END -->
