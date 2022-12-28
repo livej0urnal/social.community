@@ -10,14 +10,14 @@
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-200px rounded-top" style="background-image:url(assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="h-200px rounded-top" style="background-image:url(/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
-                                <img class="avatar-img rounded-circle border border-white border-3" src="assets/images/avatar/07.jpg" alt="">
+                                <img class="avatar-img rounded-circle border border-white border-3" src="/images/avatar/07.jpg" alt="">
                             </div>
                         </div>
                         <div class="ms-sm-4 mt-sm-3">
@@ -72,7 +72,7 @@
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="#"> <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt=""> </a>
+                        <a href="#"> <img class="avatar-img rounded-circle" src="/images/avatar/07.jpg" alt=""> </a>
                     </div>
                     <!-- Post input -->
                     <form class="w-100">
@@ -118,7 +118,7 @@
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-story me-2">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""> </a>
+                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/avatar/04.jpg" alt=""> </a>
                             </div>
                             <!-- Info -->
                             <div>
@@ -152,7 +152,7 @@
                 <div class="card-body">
                     <p>I'm thrilled to share that I've completed a graduate certificate course in project management with the president's honor roll.</p>
                     <!-- Card img -->
-                    <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
+                    <img class="card-img" src="/images/post/3by2/01.jpg" alt="Post">
                     <!-- Feed react START -->
                     <ul class="nav nav-stack py-3 small">
                         <li class="nav-item">
@@ -184,7 +184,7 @@
                     <div class="d-flex mb-3">
                         <!-- Avatar -->
                         <div class="avatar avatar-xs me-2">
-                            <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt=""> </a>
+                            <a href="#!"> <img class="avatar-img rounded-circle" src="/images/avatar/12.jpg" alt=""> </a>
                         </div>
                         <!-- Comment box  -->
                         <form class="position-relative w-100">
@@ -198,7 +198,7 @@
                             <div class="d-flex position-relative">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs">
-                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
+                                    <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/05.jpg" alt=""></a>
                                 </div>
                                 <div class="ms-2">
                                     <!-- Comment by -->
@@ -230,7 +230,7 @@
                                     <div class="d-flex">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xs">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt=""></a>
+                                            <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/06.jpg" alt=""></a>
                                         </div>
                                         <!-- Comment by -->
                                         <div class="ms-2">
@@ -259,7 +259,7 @@
                                     <div class="d-flex">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-story avatar-xs">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt=""></a>
+                                            <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/07.jpg" alt=""></a>
                                         </div>
                                         <!-- Comment by -->
                                         <div class="ms-2">
@@ -301,7 +301,7 @@
                             <div class="d-flex">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs">
-                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
+                                    <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/05.jpg" alt=""></a>
                                 </div>
                                 <!-- Comment by -->
                                 <div class="ms-2">
@@ -360,7 +360,7 @@
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar me-2">
-                                <a href="#"> <img class="avatar-img rounded-circle" src="assets/images/logo/13.svg" alt=""> </a>
+                                <a href="#"> <img class="avatar-img rounded-circle" src="/images/logo/13.svg" alt=""> </a>
                             </div>
                             <!-- Title -->
                             <div>
@@ -481,7 +481,7 @@
                             <div class="d-flex">
                                 <!-- Avatar -->
                                 <div class="avatar me-3">
-                                    <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/logo/08.svg" alt=""> </a>
+                                    <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/08.svg" alt=""> </a>
                                 </div>
                                 <!-- Info -->
                                 <div>
@@ -495,7 +495,7 @@
                             <div class="d-flex">
                                 <!-- Avatar -->
                                 <div class="avatar me-3">
-                                    <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/logo/09.svg" alt=""> </a>
+                                    <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/09.svg" alt=""> </a>
                                 </div>
                                 <!-- Info -->
                                 <div>
@@ -509,7 +509,7 @@
                             <div class="d-flex">
                                 <!-- Avatar -->
                                 <div class="avatar me-3">
-                                    <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/logo/10.svg" alt=""> </a>
+                                    <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/10.svg" alt=""> </a>
                                 </div>
                                 <!-- Info -->
                                 <div>
@@ -539,32 +539,32 @@
                             <div class="row g-2">
                                 <!-- Photos item -->
                                 <div class="col-6">
-                                    <a href="assets/images/albums/01.jpg" data-gallery="image-popup" data-glightbox="">
-                                        <img class="rounded img-fluid" src="assets/images/albums/01.jpg" alt="">
+                                    <a href="/images/albums/01.jpg" data-gallery="image-popup" data-glightbox="">
+                                        <img class="rounded img-fluid" src="/images/albums/01.jpg" alt="">
                                     </a>
                                 </div>
                                 <!-- Photos item -->
                                 <div class="col-6">
-                                    <a href="assets/images/albums/02.jpg" data-gallery="image-popup" data-glightbox="">
-                                        <img class="rounded img-fluid" src="assets/images/albums/02.jpg" alt="">
+                                    <a href="/images/albums/02.jpg" data-gallery="image-popup" data-glightbox="">
+                                        <img class="rounded img-fluid" src="/images/albums/02.jpg" alt="">
                                     </a>
                                 </div>
                                 <!-- Photos item -->
                                 <div class="col-4">
-                                    <a href="assets/images/albums/03.jpg" data-gallery="image-popup" data-glightbox="">
-                                        <img class="rounded img-fluid" src="assets/images/albums/03.jpg" alt="">
+                                    <a href="/images/albums/03.jpg" data-gallery="image-popup" data-glightbox="">
+                                        <img class="rounded img-fluid" src="/images/albums/03.jpg" alt="">
                                     </a>
                                 </div>
                                 <!-- Photos item -->
                                 <div class="col-4">
-                                    <a href="assets/images/albums/04.jpg" data-gallery="image-popup" data-glightbox="">
-                                        <img class="rounded img-fluid" src="assets/images/albums/04.jpg" alt="">
+                                    <a href="/images/albums/04.jpg" data-gallery="image-popup" data-glightbox="">
+                                        <img class="rounded img-fluid" src="/images/albums/04.jpg" alt="">
                                     </a>
                                 </div>
                                 <!-- Photos item -->
                                 <div class="col-4">
-                                    <a href="assets/images/albums/05.jpg" data-gallery="image-popup" data-glightbox="">
-                                        <img class="rounded img-fluid" src="assets/images/albums/05.jpg" alt="">
+                                    <a href="/images/albums/05.jpg" data-gallery="image-popup" data-glightbox="">
+                                        <img class="rounded img-fluid" src="/images/albums/05.jpg" alt="">
                                     </a>
                                     <!-- glightbox Albums left bar END  -->
                                 </div>
@@ -594,7 +594,7 @@
                                         <!-- Card body -->
                                         <div class="card-body p-2 pb-0">
                                             <div class="avatar avatar-story avatar-xl">
-                                                <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt=""></a>
+                                                <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/02.jpg" alt=""></a>
                                             </div>
                                             <h6 class="card-title mb-1 mt-3"> <a href="#!"> Amanda Reed </a></h6>
                                             <p class="mb-0 small lh-sm">16 mutual connections</p>
@@ -614,7 +614,7 @@
                                         <!-- Card body -->
                                         <div class="card-body p-2 pb-0">
                                             <div class="avatar avatar-xl">
-                                                <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt=""></a>
+                                                <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/03.jpg" alt=""></a>
                                             </div>
                                             <h6 class="card-title mb-1 mt-3"> <a href="#!"> Samuel Bishop </a></h6>
                                             <p class="mb-0 small lh-sm">22 mutual connections</p>
@@ -634,7 +634,7 @@
                                         <!-- Card body -->
                                         <div class="card-body p-2 pb-0">
                                             <div class="avatar avatar-xl">
-                                                <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""></a>
+                                                <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/04.jpg" alt=""></a>
                                             </div>
                                             <h6 class="card-title mb-1 mt-3"> <a href="#"> Bryan Knight </a></h6>
                                             <p class="mb-0 small lh-sm">1 mutual connection</p>
@@ -654,7 +654,7 @@
                                         <!-- Card body -->
                                         <div class="card-body p-2 pb-0">
                                             <div class="avatar avatar-xl">
-                                                <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
+                                                <a href="#!"><img class="avatar-img rounded-circle" src="/images/avatar/05.jpg" alt=""></a>
                                             </div>
                                             <h6 class="card-title mb-1 mt-3"> <a href="#!"> Amanda Reed </a></h6>
                                             <p class="mb-0 small lh-sm">15 mutual connections</p>

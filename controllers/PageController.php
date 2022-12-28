@@ -62,7 +62,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            $this->setMeta('Edit : '. $page->page_name. ' ');
+            $this->setMeta('Settings : '. $page->page_name. ' ');
             return $this->render('edit', compact('page'));
         }
     }
