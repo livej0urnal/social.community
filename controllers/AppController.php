@@ -10,26 +10,24 @@ class AppController extends Controller
 
     public function behaviors()
     {
-        return[
+        return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'signup'],
-                'rules' => [
+                'only' => ['login', 'logout'], // действия в контроллере
+                'rules' => [ // правила к действиям
                     [
                         'allow' => true,
-                        'actions' => ['login', 'signup'],
-                        'roles' => ['?'],
+                        'actions' => ['login'], // действия в контроллере
+                        'roles' => ['?'], // Доступ к действиям только для не авторизованных пользователей
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'site/index'],
-                        'roles' => ['@'],
+                        'actions' => ['logout'], // действия в контроллере
+                        'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
-
-                ]
-            ]
+                ],
+            ],
         ];
-
     }
 
     protected function setMeta($title = null, $keywords = null, $description = null)

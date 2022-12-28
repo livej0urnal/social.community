@@ -13,6 +13,27 @@ use app\controllers\AppController;
 
 class SiteController extends AppController
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['login', 'logout', 'index'], // действия в контроллере
+                'rules' => [ // правила к действиям
+                    [
+                        'allow' => true,
+                        'actions' => ['login'], // действия в контроллере
+                        'roles' => ['?'], // Доступ к действиям только для не авторизованных пользователей
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout', 'index'], // действия в контроллере
+                        'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
+                    ],
+                ],
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -47,19 +68,7 @@ class SiteController extends AppController
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->redirect('/login');
     }
 
     /**
