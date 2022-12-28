@@ -51,6 +51,7 @@ $config = [
             'rules' => [
                 'signup' => 'account/signup',
                 'login' => 'account/login',
+                'logout' => 'site/logout',
                 '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
             ],
         ],
