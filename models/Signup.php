@@ -3,7 +3,7 @@
 namespace app\models;
 
 use yii\base\Model;
-use app\models\Users;
+use app\models\User;
 
 class Signup extends Model
 {
@@ -25,7 +25,7 @@ class Signup extends Model
 
     public function signup()
     {
-        $user = new Users();
+        $user = new User();
         $user->email = $this->email;
         $user->setPassword($this->password);
         return $user->save();
