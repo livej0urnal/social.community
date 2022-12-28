@@ -110,7 +110,6 @@
                 <div class="tab-pane show active fade" id="nav-setting-tab-1">
                     <!-- Account settings START -->
                     <div class="card mb-4">
-
                         <!-- Title START -->
                         <div class="card-header border-0 pb-0">
                             <h1 class="h5 card-title">Account Settings</h1>
