@@ -43,6 +43,8 @@ class Pages extends ActiveRecord
         return [
             [['user_id', 'category_id'], 'integer'],
             [['about_page'], 'string'],
+            [['page_name', 'display_name', 'email'], 'required'],
+            ['email', 'email'],
             [['page_name', 'display_name', 'email', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
             [['page_name'], 'unique'],
             [['display_name'], 'unique'],

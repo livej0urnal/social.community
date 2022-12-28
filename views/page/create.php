@@ -1,6 +1,8 @@
 <?php
     use yii\helpers\Html;
     use yii\helpers\Url;
+    use yii\widgets\ActiveForm;
+    use yii\widgets\Pjax;
 ?>
 <!-- Main content START -->
 <div class="col-md-12 col-lg-12 vstack gap-4">
@@ -8,31 +10,34 @@
     <div class="card">
         <!-- Title START -->
         <div class="card-header border-0 pb-0">
-            <h1 class="h4 card-title mb-0"><?= Html::encode($this->title) ?></h1>
+            <h1 class="h4 card-title mb-0">Create Profile</h1>
         </div>
         <!-- Title END -->
+        <?php Pjax::begin(['id' => 'ajax-create-profile']) ?>
         <!-- Create a page form START -->
         <div class="card-body">
+            <?php $form = ActiveForm::begin(['id' => 'create-clients', 'options' => ['data-pjax' => true, 'class' => 'row g-3']]) ?>
+
             <form class="row g-3">
                 <!-- Page information -->
                 <div class="col-12">
-                    <label class="form-label">Page name</label>
-                    <input type="text" class="form-control" placeholder="Page name (Required)">
+                    <label class="form-label">Page name*</label>
+                    <?= $form->field($model, 'page_name')->textInput(['class' => 'form-control', 'placeholder' => 'Page name'])->label(false) ?>
                     <small>Name that describes what the page is about.</small>
                 </div>
                 <!-- Display name -->
                 <div class="col-sm-6 col-lg-4">
-                    <label class="form-label">Display name</label>
-                    <input type="text" class="form-control" placeholder="Display name (Required)">
+                    <label class="form-label">Display name*</label>
+                    <?= $form->field($model, 'display_name')->textInput(['class' => 'form-control', 'placeholder' => 'Display name'])->label(false) ?>
                 </div>
                 <!-- Email -->
                 <div class="col-sm-6 col-lg-4">
-                    <label class="form-label">Email</label>
-                    <input type="text" class="form-control" placeholder="Email (Required)">
+                    <label class="form-label">Email*</label>
+                    <?= $form->field($model, 'email')->textInput(['class' => 'form-control', 'placeholder' => 'Email'])->label(false) ?>
                 </div>
                 <!-- Category -->
                 <div class="col-sm-6 col-lg-4">
-                    <label class="form-label">Category (required)</label>
+                    <label class="form-label">Category*</label>
                     <select class="form-select js-choice">
                         <option value="PV">Comedy</option>
                         <option value="PB">Technology</option>
@@ -103,8 +108,10 @@
                     <button type="submit" class="btn btn-primary mb-0">Create a page</button>
                 </div>
             </form>
+            <?php ActiveForm::end() ?>
         </div>
         <!-- Create a page form END -->
+        <?php Pjax::end() ?>
     </div>
     <!-- Create a page END -->
 </div>

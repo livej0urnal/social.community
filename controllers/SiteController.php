@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Pages;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -57,8 +58,15 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
-        $this->setMeta('Social Community');
-        return $this->render('index');
+        $page = Pages::findOne(['user_id' => Yii::$app->user->identity->id]);
+        if($page) {
+            $this->setMeta('Social Community');
+            return $this->render('index');
+        }
+        else{
+            $this->redirect('page/create');
+        }
+
     }
 
     /**
