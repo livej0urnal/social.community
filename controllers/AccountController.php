@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\Signup;
 use app\models\Users;
+use app\models\Login;
 use Yii;
 
 class AccountController extends AppController
@@ -30,6 +31,8 @@ class AccountController extends AppController
 
     public function actionLogin()
     {
-        return $this->render('login');
+        $model = new Login();
+        $this->layout = false;
+        return $this->render('login', compact('model'));
     }
 }
