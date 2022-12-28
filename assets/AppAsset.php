@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         '/library/flatpickr/dist/flatpickr.css',
         '/library/plyr/plyr.css',
         '/css/style-dark.css',
+        '/css/main.css',
     ];
     public $js = [
         '/library/bootstrap/dist/js/bootstrap.bundle.min.js',

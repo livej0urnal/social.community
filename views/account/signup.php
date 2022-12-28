@@ -51,6 +51,26 @@ AuthAppAsset::register($this);
                         <span class="d-block">Already have an account? <a href="<?= \yii\helpers\Url::to(['account/login']) ?>">Sign in here</a></span>
                     </div>
                     <?php $form = ActiveForm::begin(['class' => 'mt-4']) ?>
+                    <?php if(Yii::$app->session->hasFlash('success')): ?>
+                        <div class="alert alert-success alert-dismissable" role="alert" style="color: green;">
+
+                            <?php echo Yii::$app->session->getFlash('success'); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if(Yii::$app->session->hasFlash('error')) : ?>
+                        <div class="alert alert-success alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <?php echo Yii::$app->session->getFlash('error'); ?>
+                        </div>
+                    <?php endif; ?>
+                    <!-- Email -->
+                    <div class="mb-3 mt-3 input-group-lg">
+                        <?= $form->field($model, 'email') ->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Enter email'])->label(false) ?>
+                        <small>We'll never share your email with anyone else.</small>
+                    </div>
 
                     <?php ActiveForm::end() ?>
                     <!-- Form START -->

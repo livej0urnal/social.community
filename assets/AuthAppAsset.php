@@ -12,6 +12,7 @@ class AuthAppAsset extends AssetBundle
         '/library/font-awesome/css/all.min.css',
         '/library/bootstrap-icons/bootstrap-icons.css',
         '/css/style-dark.css',
+        '/css/main.css',
     ];
     public $js = [
         '/library/bootstrap/dist/js/bootstrap.bundle.min.js',
