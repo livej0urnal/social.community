@@ -52,7 +52,7 @@ AuthAppAsset::register($this);
                     </div>
                     <?php $form = ActiveForm::begin(['class' => 'mt-4']) ?>
                     <div class="mb-3 mt-3 input-group-lg">
-                        <?= $form->field($model, 'email') ->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Enter email'])->label(false) ?>
+                        <?= $form->field($model, 'email') ->textInput(['autofocus' => false, 'class' => 'form-control', 'placeholder' => 'Enter email'])->label(false) ?>
                         <small>We'll never share your email with anyone else.</small>
                     </div>
 
