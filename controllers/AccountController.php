@@ -12,13 +12,14 @@ class AccountController extends AppController
     public function actionSignup()
     {
         $model = new Signup();
-        if($model->validate() && $model->load()) {
-            $model->signup();
-            if($model->signup()) {
-                Yii::$app->session->setFlash('success', 'Signup success!');
-                $model = new Signup();
-                return $this->redirect('account/login');
-            }
+        $model->attributes = Yii::$app->request->post('Signup');
+        if($model->validate() && $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Signup success!');
+            return $this->redirect('account/login');
+
+        }
+        else{
+            Yii::$app->session->setFlash('error', 'Error');
         }
         $this->setMeta('Sign up ');
         $this->layout = false;
