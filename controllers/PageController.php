@@ -36,6 +36,19 @@ class PageController extends AppController
     public function actionCreate()
     {
         $model = new Pages();
+        $model->user_id = Yii::$app->user->identity->id;
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
+
+            $model->save();
+            if($model->save()) {
+                Yii::$app->session->setFlash('success', 'New Profile saved!');
+                return $this->goHome();
+            }
+            else{
+                Yii::$app->session->setFlash('error', 'Error validation!');
+            }
+
+        }
         $this->setMeta('Create new page ');
         return $this->render('create', compact('model'));
     }
