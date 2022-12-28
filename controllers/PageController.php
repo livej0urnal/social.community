@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use app\models\ChangePassword;
 use Yii;
 use app\models\Pages;
 use yii\filters\AccessControl;
@@ -75,6 +76,8 @@ class PageController extends AppController
                 }
 
             }
+            $change_password = new ChangePassword();
+
             $this->setMeta('Settings : '. $page->page_name. ' ');
             return $this->render('edit', compact('page', 'model'));
         }
