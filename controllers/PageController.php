@@ -36,22 +36,31 @@ class PageController extends AppController
 
     public function actionCreate()
     {
-        $model = new Pages();
-        $model->user_id = Yii::$app->user->identity->id;
-        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
-
-            $model->save();
-            if($model->save()) {
-                Yii::$app->session->setFlash('success', 'New Profile saved!');
-                return $this->goHome();
-            }
-            else{
-                Yii::$app->session->setFlash('error', 'Error validation!');
-            }
-
+        $id = Yii::$app->request->get('id');
+        $user_id = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user_id]);
+        if($page) {
+            return $this->redirect(['page/profile', 'id' => $page->id]);
         }
-        $this->setMeta('Create new page ');
-        return $this->render('create', compact('model'));
+        else{
+            $model = new Pages();
+            $model->user_id = Yii::$app->user->identity->id;
+            if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
+
+                $model->save();
+                if($model->save()) {
+                    Yii::$app->session->setFlash('success', 'New Profile saved!');
+                    return $this->goHome();
+                }
+                else{
+                    Yii::$app->session->setFlash('error', 'Error validation!');
+                }
+
+            }
+            $this->setMeta('Create new page ');
+            return $this->render('create', compact('model'));
+        }
+
     }
 
     public function actionEdit($id)
