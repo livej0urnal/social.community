@@ -16,7 +16,7 @@ class Signup extends Model
         return [
             [['email' , 'password', 'password_repeat'], 'required'],
             ['email' , 'email'],
-            ['email', 'unique', 'targetClass' => 'app/models/Users'],
+            ['email', 'unique', 'targetClass' => 'app/models/User'],
             [['password', 'password_repeat'], 'string' , 'min' => 6, 'max' => 20],
             ['password_repeat' , 'compare', 'compareAttribute' => 'password', 'message' => 'Confirm password and password do not match!']
         ];
