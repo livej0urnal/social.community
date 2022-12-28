@@ -32,13 +32,13 @@ class AccountController extends AppController
     public function actionLogin()
     {
         $model = new Login();
-        if($model->validate()) {
+        if(Yii::$app->request->post('Login')) {
             $model->attributes = Yii::$app->request->post('Login');
-            Yii::$app->user->login($model->getUser());
-            return $this->goHome();
-        }
-        else{
-//            $model = new Login();
+            if ($model->validate()) {
+                Yii::$app->user->login($model->getUser());
+                return $this->goHome();
+            }
+
         }
         $this->setMeta('Sign in ');
         $this->layout = false;
