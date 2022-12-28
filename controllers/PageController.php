@@ -52,4 +52,17 @@ class PageController extends AppController
         $this->setMeta('Create new page ');
         return $this->render('create', compact('model'));
     }
+
+    public function actionEdit($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user_id = Yii::$app->user->identity->id;
+        $page = Pages::findOne($id);
+        if($page->user_id != $user_id) {
+            throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
+        }
+        else{
+            return $this->render('edit', compact('page'));
+        }
+    }
 }

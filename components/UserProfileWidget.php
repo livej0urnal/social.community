@@ -15,8 +15,9 @@ class UserProfileWidget extends Widget
         $user = Yii::$app->user->identity->id;
         if($user)
         {
+            $user_account = User::findOne($user);
             $page = Pages::findOne(['user_id' => $user]);
         }
-        return $this->render('user-profile', compact('page'));
+        return $this->render('user-profile', compact('page', 'user', 'user_account'));
     }
 }

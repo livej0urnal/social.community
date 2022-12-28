@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/page/edit/<id:\d>/' => 'page/edit',
                 'signup' => 'account/signup',
                 'login' => 'account/login',
                 'logout' => 'site/logout',
