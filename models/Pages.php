@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "pages".
@@ -19,7 +20,7 @@ use Yii;
  * @property string|null $linkedin_link
  * @property string|null $github_link
  */
-class Pages extends \yii\db\ActiveRecord
+class Pages extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -27,6 +28,11 @@ class Pages extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'pages';
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(CategoryPages::className() , ['id' => 'category_id']);
     }
 
     /**
