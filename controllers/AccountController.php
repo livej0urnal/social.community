@@ -32,6 +32,7 @@ class AccountController extends AppController
     public function actionLogin()
     {
         $model = new Login();
+        $this->setMeta('Sign in ');
         $this->layout = false;
         return $this->render('login', compact('model'));
     }
