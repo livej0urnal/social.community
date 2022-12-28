@@ -83,7 +83,7 @@ AuthAppAsset::register($this);
                     <!-- Button -->
                     <div class="d-grid"><button type="submit" class="btn btn-lg btn-primary">Sign me up</button></div>
                     <!-- Copyright -->
-                    <p class="mb-0 mt-3 text-center">©2022 <a target="_blank" href="https://www.webestica.com/">Webestica.</a> All rights reserved</p>
+                    <p class="mb-0 mt-3 text-center">Copyright ©<?= date('Y') ?> <a href="https://myprojects.company/ua/" target="_blank">My projects</a>. All rights reserved</p>
                     <?php ActiveForm::end() ?>
                 </div>
                 <!-- Sign up END -->
