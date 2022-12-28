@@ -14,6 +14,7 @@ class AccountController extends AppController
         $model = new Signup();
         $model->attributes = Yii::$app->request->post('Signup');
         if($model->validate() && $model->signup()) {
+            $model = new Signup();
             Yii::$app->session->setFlash('success', 'Signup success!');
             return $this->redirect('account/login');
 
