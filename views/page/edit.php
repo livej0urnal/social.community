@@ -1,4 +1,8 @@
 <?php
+    use yii\widgets\Pjax;
+    use yii\widgets\ActiveForm;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
 ?>
 
 
@@ -113,72 +117,81 @@
                             <p class="mb-0">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to.</p>
                         </div>
                         <!-- Card header START -->
-                        <!-- Card body START -->
+                        <?php Pjax::begin(['id' => 'ajax-create-profile']) ?>
+                        <!-- Create a page form START -->
                         <div class="card-body">
-                            <!-- Form settings START -->
+                            <?php $form = ActiveForm::begin(['id' => 'create-clients', 'options' => ['data-pjax' => true, 'class' => 'row g-3']]) ?>
+
                             <form class="row g-3">
-                                <!-- First name -->
-                                <div class="col-sm-6 col-lg-4">
-                                    <label class="form-label">First name</label>
-                                    <input type="text" class="form-control" placeholder="" value="Sam">
-                                </div>
-                                <!-- Last name -->
-                                <div class="col-sm-6 col-lg-4">
-                                    <label class="form-label">Last name</label>
-                                    <input type="text" class="form-control" placeholder="" value="Lanson">
-                                </div>
-                                <!-- Additional name -->
-                                <div class="col-sm-6 col-lg-4">
-                                    <label class="form-label">Additional name</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <!-- User name -->
-                                <div class="col-sm-6">
-                                    <label class="form-label">User name</label>
-                                    <input type="text" class="form-control" placeholder="" value="@samlanson">
-                                </div>
-                                <!-- Birthday -->
-                                <div class="col-lg-6">
-                                    <label class="form-label">Birthday </label>
-                                    <input type="text" class="form-control flatpickr" value="12/12/1990">
-                                </div>
-                                <!-- Allow checkbox -->
+                                <!-- Page information -->
                                 <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="allowChecked" checked>
-                                        <label class="form-check-label" for="allowChecked">
-                                            Allow anyone to add you to their team
-                                        </label>
-                                    </div>
+                                    <label class="form-label">Page name*</label>
+                                    <?= $form->field($model, 'page_name')->textInput(['class' => 'form-control', 'placeholder' => 'Page name'])->label(false) ?>
+                                    <small>Name that describes what the page is about.</small>
+                                </div>
+                                <!-- Display name -->
+                                <div class="col-sm-6 col-lg-4">
+                                    <label class="form-label">Display name*</label>
+                                    <?= $form->field($model, 'display_name')->textInput(['class' => 'form-control', 'placeholder' => 'Display name'])->label(false) ?>
+                                </div>
+                                <!-- Email -->
+                                <div class="col-sm-6 col-lg-4">
+                                    <label class="form-label">Email*</label>
+                                    <?= $form->field($model, 'email')->textInput(['class' => 'form-control', 'placeholder' => 'Email'])->label(false) ?>
+                                </div>
+                                <!-- Category -->
+                                <div class="col-sm-6 col-lg-4">
+                                    <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\CategoryPages::find()->all(), 'id', 'title')) ?>
+                                </div>
+                                <!-- Website URL -->
+                                <div class="col-sm-6">
+                                    <label class="form-label">Website URL</label>
+                                    <?= $form->field($model, 'website_url')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                 </div>
                                 <!-- Phone number -->
-                                <div class="col-sm-6">
-                                    <label class="form-label">Phone number</label>
-                                    <input type="text" class="form-control" placeholder="" value="(678) 324-1251">
-                                    <!-- Add new number -->
-                                    <a class="btn btn-sm btn-dashed rounded mt-2" href="#!"> <i class="bi bi-plus-circle-dotted me-1"></i>Add new phone number</a>
-                                </div>
-                                <!-- Phone number -->
-                                <div class="col-sm-6">
-                                    <label class="form-label">Email</label>
-                                    <input type="text" class="form-control" placeholder="" value="sam@webestica.com">
-                                    <!-- Add new email -->
-                                    <a class="btn btn-sm btn-dashed rounded mt-2" href="#!"> <i class="bi bi-plus-circle-dotted me-1"></i>Add new email address</a>
+                                <div class="col-lg-6">
+                                    <label class="form-label">Phone number*</label>
+                                    <?= $form->field($model, 'phone_number')->textInput(['class' => 'form-control', 'placeholder' => 'Phone number'])->label(false) ?>
                                 </div>
                                 <!-- Page information -->
                                 <div class="col-12">
-                                    <label class="form-label">Overview</label>
-                                    <textarea class="form-control" rows="4" placeholder="Description (Required)">Interested has all Devonshire difficulty gay assistance joy. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance.</textarea>
-                                    <small>Character limit: 300</small>
+                                    <label class="form-label">About page</label>
+                                    <?= $form->field($model, 'about_page')->textarea(['rows' => '5'])->label(false) ?>
+                                    <small>Character limit: 400</small>
+                                </div>
+
+                                <!-- Divider -->
+                                <hr>
+
+                                <!-- Social Links START -->
+                                <div class="col-12">
+                                    <h5 class="card-title mb-0">Social Links</h5>
+                                </div>
+                                <!-- Facebook -->
+                                <div class="col-sm-6">
+                                    <label  class="form-label">Linkedin</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text border-0"> <i class="bi bi-linkedin text-linkedin"></i> </span>
+                                        <?= $form->field($model, 'linkedin_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
+                                    </div>
+                                </div>
+                                <!-- Twitter -->
+                                <div class="col-sm-12">
+                                    <label class="form-label">Github</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text border-0"> <i class="bi bi-github text-github"></i> </span>
+                                        <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
+                                    </div>
                                 </div>
                                 <!-- Button  -->
                                 <div class="col-12 text-end">
-                                    <button type="submit" class="btn btn-sm btn-primary mb-0">Save changes</button>
+                                    <button type="submit" class="btn btn-success mb-0">Save</button>
                                 </div>
                             </form>
-                            <!-- Settings END -->
+                            <?php ActiveForm::end() ?>
                         </div>
-                        <!-- Card body END -->
+                        <!-- Create a page form END -->
+                        <?php Pjax::end() ?>
                     </div>
                     <!-- Account settings END -->
 

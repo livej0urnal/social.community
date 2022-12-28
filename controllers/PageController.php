@@ -62,8 +62,21 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
+            $model = Pages::findOne($id);
+            if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
+
+                $model->update();
+                if($model->update()) {
+                    Yii::$app->session->setFlash('success', 'saved profile');
+                    $model = Pages::findOne($id);
+                }
+                else{
+                    Yii::$app->session->setFlash('error', 'Error validation!');
+                }
+
+            }
             $this->setMeta('Settings : '. $page->page_name. ' ');
-            return $this->render('edit', compact('page'));
+            return $this->render('edit', compact('page', 'model'));
         }
     }
 
@@ -76,6 +89,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
+
             $this->setMeta('Profile : '. $page->page_name. ' ');
             return $this->render('profile', compact('page'));
         }
