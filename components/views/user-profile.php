@@ -1,4 +1,6 @@
 <?php
+    use yii\helpers\Url;
+    use yii\helpers\Html;
 ?>
 
 <li class="nav-item ms-2 dropdown">
@@ -15,11 +17,11 @@
                         <img class="avatar-img rounded-circle" src="/images/avatar/06.jpg" alt="avatar">
                     </div>
                     <div>
-                        <a class="h6 stretched-link" href="#">Lori Ferguson</a>
-                        <p class="small m-0">Web Developer</p>
+                        <a class="h6 stretched-link" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"><?= $page->display_name ?></a>
+                        <p class="small m-0"><?= $page->category->title ?></p>
                     </div>
                 </div>
-                <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile.html">View profile</a>
+                <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>">View profile</a>
             </li>
             <!-- Links -->
             <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>

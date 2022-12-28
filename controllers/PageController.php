@@ -24,7 +24,7 @@ class PageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create'], // действия в контроллере
+                        'actions' => ['create', 'profile', 'edit'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -62,6 +62,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
+            $this->setMeta('Edit : '. $page->page_name. ' ');
             return $this->render('edit', compact('page'));
         }
     }
@@ -75,6 +76,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
+            $this->setMeta('Profile : '. $page->page_name. ' ');
             return $this->render('profile', compact('page'));
         }
     }

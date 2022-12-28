@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/page/profile/<id:\d>/' => 'page/profile',
                 '/page/edit/<id:\d>/' => 'page/edit',
                 'signup' => 'account/signup',
                 'login' => 'account/login',
