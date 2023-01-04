@@ -2,7 +2,7 @@
 ?>
 
 <li class="nav-item ms-2">
-    <a class="nav-link icon-md btn btn-light p-0" href="<?= \yii\helpers\Url::to(['message/single']) ?>">
+    <a class="nav-link icon-md btn btn-light p-0" href="<?= \yii\helpers\Url::to(['message/single', 'user' => $user]) ?>">
         <i class="bi bi-chat-left-text-fill fs-6"> </i>
     </a>
 </li>

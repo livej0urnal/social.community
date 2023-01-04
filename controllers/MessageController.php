@@ -14,16 +14,16 @@ class MessageController extends AppController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['signup', 'login'], // действия в контроллере
+                'only' => ['single'], // действия в контроллере
                 'rules' => [ // правила к действиям
                     [
                         'allow' => true,
-                        'actions' => ['single'], // действия в контроллере
+                        'actions' => [], // действия в контроллере
                         'roles' => ['?'], // Доступ к действиям только для не авторизованных пользователей
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['*'], // действия в контроллере
+                        'actions' => ['single'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -32,12 +32,15 @@ class MessageController extends AppController
     }
 
 
-    public function actionSingle()
+    public function actionSingle($user)
     {
         $user = Yii::$app->user->identity->id;
-        if($user)
-        {
-            return $this->render('single', compact('user'));
+        $page = Pages::findOne(['user_id' => $user]);
+        if($user) {
+            return $this->redirect('account/login');
+        }
+        else{
+            return $this->render('single', compact('page' , 'user'));
         }
 
     }
