@@ -61,7 +61,6 @@ class Pages extends ActiveRecord
         if ($this->validate()) {
             $path  = 'uploads/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
-
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
