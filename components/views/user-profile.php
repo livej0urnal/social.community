@@ -30,16 +30,6 @@
             </li>
             <!-- Links -->
             <li><a class="dropdown-item" href="<?= Url::to(['page/edit', 'id' => $page->id]) ?>"><i class="bi bi-gear fa-fw me-2"></i>Settings</a></li>
-            <li>
-                <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
-                    <i class="fa-fw bi bi-life-preserver me-2"></i>Support
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="docs/index.html" target="_blank">
-                    <i class="fa-fw bi bi-card-text me-2"></i>Documentation
-                </a>
-            </li>
             <li class="dropdown-divider"></li>
             <li><a class="dropdown-item bg-danger-soft-hover" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
         </ul>
