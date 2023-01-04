@@ -133,7 +133,10 @@ use yii\helpers\Url;
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle border border-white border-3']) ?>
-                                        <a href="#" class="badge-danger text-danger text-decoration-underline">Delete</a>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="#" id="drop-avatar" class="mt-5 badge-danger text-danger text-decoration-underline" data-value="<?= $page->image ?>" data-page="<?= $page->id ?>">Delete</a>
                                     </div>
                                 </div>
                             </div>
