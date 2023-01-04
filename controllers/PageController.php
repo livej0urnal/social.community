@@ -120,6 +120,9 @@ class PageController extends AppController
         $user_id = Yii::$app->user->identity->id;
         $page = Pages::findOne($id);
         if($page->user_id != $user_id && $page->delete != 1) {
+            throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
+        }
+        else{
 
         }
     }
