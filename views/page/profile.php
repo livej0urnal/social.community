@@ -1,4 +1,6 @@
 <?php
+    use yii\helpers\Html;
+    use yii\helpers\Url;
 ?>
 
 <!-- Container START -->
@@ -10,14 +12,14 @@
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-200px rounded-top" style="background-image:url(/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="h-200px rounded-top"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
-                                <img class="avatar-img rounded-circle border border-white border-3" src="/images/avatar/07.jpg" alt="">
+                                <?= Html::img($page->image, ['alt' => $page->display_name, 'class' => 'avatar-img rounded-circle border border-white border-3']) ?>
                             </div>
                         </div>
                         <div class="ms-sm-4 mt-sm-3">
