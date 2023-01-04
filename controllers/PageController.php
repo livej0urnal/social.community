@@ -159,7 +159,7 @@ class PageController extends AppController
             $page->image = null;
             unlink($image);
             $page->save();
-            return $this->redirect('site/index');
+            return $this->redirect('/site/index');
         }
     }
 }
