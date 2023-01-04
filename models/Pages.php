@@ -22,6 +22,7 @@ use yii\db\ActiveRecord;
  */
 class Pages extends ActiveRecord
 {
+    public $imageFile;
     /**
      * {@inheritdoc}
      */
@@ -45,10 +46,21 @@ class Pages extends ActiveRecord
             [['about_page'], 'string'],
             [['page_name', 'display_name', 'email', 'category_id', 'phone_number'], 'required'],
             ['email', 'email'],
-            [['page_name', 'display_name', 'email', 'images', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
+            [['page_name', 'display_name', 'email', 'image', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
             [['page_name'], 'unique'],
             [['display_name'], 'unique'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -68,7 +80,7 @@ class Pages extends ActiveRecord
             'about_page' => 'About Page',
             'linkedin_link' => 'Linkedin',
             'github_link' => 'Github',
-            'images' => 'Avatar'
+            'image' => 'Avatar'
         ];
     }
 }

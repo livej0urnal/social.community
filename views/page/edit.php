@@ -128,6 +128,13 @@ use yii\helpers\Url;
                                     <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                 </div>
                             </div>
+
+                            <!-- Twitter -->
+                            <div class="col-sm-12">
+                                <label class="form-label">Avatar</label>
+                                <?= $form->field($model, 'image')->fileInput(['class' => 'form-control', 'placeholder' => 'Avatar'])->label(false) ?>
+
+                            </div>
                             <!-- Button  -->
                             <div class="col-12 text-end">
                                 <button type="submit" class="btn btn-success mb-0">Save</button>
