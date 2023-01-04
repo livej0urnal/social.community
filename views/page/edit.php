@@ -197,10 +197,11 @@ use yii\helpers\Url;
                         <!-- Card body START -->
                         <div class="card-body">
                             <?php if ($page->delete == '1'): ?>
+                                <a href="#" id="restore-account" data-id="<?= $page->id ?>"
+                                   class="btn btn-warning btn-sm mb-0">Restore my account</a>
+                            <?php else : ?>
                                 <a href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"
                                    class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
-                            <?php else : ?>
-
                                 <a href="#" id="delete-account" data-id="<?= $page->id ?>"
                                    class="btn btn-danger btn-sm mb-0">Delete my account</a>
                             <?php endif; ?>
