@@ -158,7 +158,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            FileHelper::unlink(Yii::$app->basePath . $image);
+            FileHelper::unlink($image);
             $page->image = null;
             $page->update(false);
             return $this->redirect(Yii::$app->request->referrer);
