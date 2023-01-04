@@ -42,6 +42,7 @@ class AppAsset extends AssetBundle
         '/library/plyr/plyr.js',
 //        '/library/dropzone/dist/min/dropzone.min.js',
         '/js/functions.js',
+        '/js/main.js',
     ];
     public $depends = [
 //        'yii\web\YiiAsset',
