@@ -128,7 +128,11 @@ use yii\helpers\Url;
                                     <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                 </div>
                             </div>
+                            <div class="card-header border-0 pb-0">
+                                <h1 class="h5 card-title">Avatar Settings</h1>
+                            </div>
                             <?php if($page->image) : ?>
+
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-3">
