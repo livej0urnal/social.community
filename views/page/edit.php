@@ -132,7 +132,7 @@ use yii\helpers\Url;
                             <!-- Twitter -->
                             <div class="col-sm-12">
                                 <label class="form-label">Avatar</label>
-                                <?= $form->field($model, 'image')->fileInput(['class' => 'form-control', 'placeholder' => 'Avatar'])->label(false) ?>
+                                <?= $form->field($model, 'imageFile')->fileInput(['class' => 'form-control', 'placeholder' => 'Avatar'])->label(false) ?>
 
                             </div>
                             <!-- Button  -->
