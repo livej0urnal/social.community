@@ -39,6 +39,11 @@ class Pages extends ActiveRecord
         return $this->hasOne(CategoryPages::className() , ['id' => 'category_id']);
     }
 
+    public function getPosts()
+    {
+        return $this->hasMany(Posts::className(), ['page_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
