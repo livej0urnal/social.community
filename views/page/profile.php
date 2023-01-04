@@ -439,13 +439,7 @@
                         </div>
                         <!-- Card body START -->
                         <div class="card-body position-relative pt-0">
-                            <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy.</p>
-                            <!-- Date time -->
-                            <ul class="list-unstyled mt-3 mb-0">
-                                <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> October 20, 1990 </strong> </li>
-                                <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li>
-                                <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> webestica@gmail.com </strong> </li>
-                            </ul>
+                            <p><?= $page->about_page ?></p>
                         </div>
                         <!-- Card body END -->
                     </div>
