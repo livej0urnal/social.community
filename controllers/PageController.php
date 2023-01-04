@@ -79,8 +79,9 @@ class PageController extends AppController
             $model = Pages::findOne($id);
             if(Yii::$app->request->isAjax && Yii::$app->request->isPost){
                 $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                $model->upload(false);
-                if($model->update(false)) {
+                $model->upload();
+                if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
+                    $model->update(false);
                     Yii::$app->session->setFlash('success', 'saved profile');
                     $model = Pages::findOne($id);
                 }
