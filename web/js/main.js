@@ -1,6 +1,5 @@
 $('#delete-account').on('click', function () {
     if (window.confirm('Are you sure?')) {
-        console.log($(this).attr('data-id'));
         var id = $(this).attr('data-id');
         $.ajax({
             url: '/page/drop?id=' + id,
@@ -12,11 +11,19 @@ $('#delete-account').on('click', function () {
 
 $('#restore-account').on('click', function () {
     if (window.confirm('Are you sure?')) {
-        console.log($(this).attr('data-id'));
         var id = $(this).attr('data-id');
         $.ajax({
             url: '/page/restore?id=' + id,
             method: 'GET',
         })
     }
+});
+
+$('#drop-avatar').on('click', function () {
+   var id = $(this).attr('data-page');
+   var image = $(this).attr('data-value');
+   if(window.confirm('Are you sure?'))
+   {
+       console.log(image);
+   }
 });

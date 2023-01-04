@@ -136,7 +136,7 @@ use yii\helpers\Url;
 
                                     </div>
                                     <div class="col-sm-2">
-                                        <a href="#" id="drop-avatar" class="mt-5 badge-danger text-danger text-decoration-underline" data-value="<?= $page->image ?>" data-page="<?= $page->id ?>">Delete</a>
+                                        <a href="#" id="drop-avatar" class="mt-5 badge-danger text-danger text-decoration-underline" data-value="<?= $page->image ?>" data-page="<?= $page->id ?>">Delete avatar</a>
                                     </div>
                                 </div>
                             </div>
