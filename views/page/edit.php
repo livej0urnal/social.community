@@ -1,8 +1,10 @@
 <?php
-    use yii\widgets\Pjax;
-    use yii\widgets\ActiveForm;
-    use yii\helpers\Html;
-    use yii\helpers\Url;
+
+use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 ?>
 
 
@@ -16,7 +18,8 @@
             <!-- Advanced filter responsive toggler START -->
             <!-- Divider -->
             <div class="d-flex align-items-center mb-4 d-lg-none">
-                <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="btn btn-primary fw-bold fa-solid fa-sliders"></i>
                     <span class="h6 mb-0 fw-bold d-lg-none ms-2">Settings</span>
                 </button>
@@ -27,7 +30,8 @@
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
                     <!-- Offcanvas header -->
                     <div class="offcanvas-header">
-                        <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                     </div>
                     <!--Setting Menu Widget-->
                     <?= \app\components\SettingProfileMenuWidget::widget() ?>
@@ -103,9 +107,10 @@
                                 </div>
                                 <!-- Facebook -->
                                 <div class="col-sm-6">
-                                    <label  class="form-label">Linkedin</label>
+                                    <label class="form-label">Linkedin</label>
                                     <div class="input-group">
-                                        <span class="input-group-text border-0"> <i class="bi bi-linkedin text-linkedin"></i> </span>
+                                        <span class="input-group-text border-0"> <i
+                                                    class="bi bi-linkedin text-linkedin"></i> </span>
                                         <?= $form->field($model, 'linkedin_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                     </div>
                                 </div>
@@ -113,7 +118,8 @@
                                 <div class="col-sm-12">
                                     <label class="form-label">Github</label>
                                     <div class="input-group">
-                                        <span class="input-group-text border-0"> <i class="bi bi-github text-github"></i> </span>
+                                        <span class="input-group-text border-0"> <i
+                                                    class="bi bi-github text-github"></i> </span>
                                         <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                     </div>
                                 </div>
@@ -139,33 +145,46 @@
                         <!-- Title START -->
                         <div class="card-body">
                             <?php $form = ActiveForm::begin(['id' => 'changePassword']) ?>
+                            <?php if (Yii::$app->session->hasFlash('success')): ?>
+                                <div class="alert alert-success alert-dismissable" role="alert" style="color: green;">
+
+                                    <?php echo Yii::$app->session->getFlash('success'); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (Yii::$app->session->hasFlash('error')) : ?>
+                                <div class="alert alert-success alert-dismissable" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo Yii::$app->session->getFlash('error'); ?>
+                                </div>
+                            <?php endif; ?>
                             <!-- Settings START -->
-                            <form class="row g-3">
+                            <!-- Current password -->
+                            <div class="col-12 mt-3">
+                                <label class="form-label">Current password</label>
+                                <?= $form->field($change_password, 'password')->passwordInput(['class' => 'form-control', 'placeholder' => 'Current password'])->label(false) ?>
+                            </div>
+
+                            <div class="row">
                                 <!-- Current password -->
-                                <div class="col-12 mt-3">
+                                <div class="col-6 mt-3">
                                     <label class="form-label">Current password</label>
-                                    <?= $form->field($change_password, 'password')->passwordInput(['class' => 'form-control', 'placeholder' => 'Current password'])->label(false) ?>
+                                    <?= $form->field($change_password, 'new_password')->passwordInput(['class' => 'form-control', 'placeholder' => 'New password'])->label(false) ?>
                                 </div>
+                                <!-- New password -->
+                                <div class="col-6 mt-3">
+                                    <label class="form-label">Confirm password</label>
+                                    <!-- Input group -->
+                                    <?= $form->field($change_password, 'new_password_repeat')->passwordInput(['class' => 'form-control', 'placeholder' => 'Confirm password'])->label(false) ?>
+                                </div>
+                            </div>
 
-                                <div class="row">
-                                    <!-- Current password -->
-                                    <div class="col-6 mt-3">
-                                        <label class="form-label">Current password</label>
-                                        <?= $form->field($change_password, 'new_password')->passwordInput(['class' => 'form-control', 'placeholder' => 'New password'])->label(false) ?>
-                                    </div>
-                                    <!-- New password -->
-                                    <div class="col-6 mt-3">
-                                        <label class="form-label">Confirm password</label>
-                                        <!-- Input group -->
-                                        <?= $form->field($change_password, 'new_password_repeat')->passwordInput(['class' => 'form-control', 'placeholder' => 'Confirm password'])->label(false) ?>
-                                    </div>
-                                </div>
-
-                                <!-- Button  -->
-                                <div class="col-12 mt-3 text-end">
-                                    <button type="submit" class="btn btn-primary mb-0">Update password</button>
-                                </div>
-                            </form>
+                            <!-- Button  -->
+                            <div class="col-12 mt-3 text-end">
+                                <button type="submit" class="btn btn-primary mb-0">Update password</button>
+                            </div>
                             <!-- Settings END -->
                             <?php ActiveForm::end() ?>
                         </div>
@@ -181,7 +200,9 @@
                         <!-- Card header START -->
                         <div class="card-header border-0 pb-0">
                             <h5 class="card-title">Delete account</h5>
-                            <p class="mb-0">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to.</p>
+                            <p class="mb-0">He moonlights difficult engrossed it, sportsmen. Interested has all
+                                Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration
+                                to.</p>
                         </div>
                         <!-- Card header START -->
                         <!-- Card body START -->
@@ -189,12 +210,13 @@
                             <!-- Delete START -->
                             <h6>Before you go...</h6>
                             <ul>
-                                <li>Take a backup of your data <a href="#">Here</a> </li>
+                                <li>Take a backup of your data <a href="#">Here</a></li>
                                 <li>If you delete your account, you will lose your all data.</li>
                             </ul>
                             <div class="form-check form-check-md my-4">
                                 <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck">
-                                <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my account</label>
+                                <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my
+                                    account</label>
                             </div>
                             <a href="#" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
                             <a href="#" class="btn btn-danger btn-sm mb-0">Delete my account</a>
