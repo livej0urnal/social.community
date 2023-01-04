@@ -22,7 +22,7 @@ use yii\base\Model;
  * @property string|null $linkedin_link
  * @property string|null $github_link
  */
-class Pages extends Model
+class Pages extends ActiveRecord
 {
     public $imageFile;
     /**
