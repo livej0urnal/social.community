@@ -8,6 +8,7 @@ use app\models\User;
 use Yii;
 use app\models\Pages;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 class PageController extends AppController
@@ -152,14 +153,14 @@ class PageController extends AppController
         $image = Yii::$app->request->get('image');
         $user_id = Yii::$app->user->identity->id;
         $page = Pages::findOne($id);
-        if($page->user_id != $user_id && $page->delete != '1') {
+        if($page->user_id != $user_id) {
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            $page->image = null;
             unlink($image);
-            $page->save();
-            return $this->redirect('/site/index');
+            $page->image = null;
+            $page->update();
+            return $this->redirect(Yii::$app->request->referrer);
         }
     }
 }
