@@ -13,18 +13,6 @@
                     <a class="nav-link d-flex mb-0 active" href="#nav-setting-tab-1" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/person-outline-filled.svg" alt=""><span>Account </span></a>
                 </li>
                 <li class="nav-item" data-bs-dismiss="offcanvas">
-                    <a class="nav-link d-flex mb-0" href="#nav-setting-tab-2" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/notification-outlined-filled.svg" alt=""><span>Notification </span></a>
-                </li>
-                <li class="nav-item" data-bs-dismiss="offcanvas">
-                    <a class="nav-link d-flex mb-0" href="#nav-setting-tab-3" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/shield-outline-filled.svg" alt=""><span>Privacy and safety </span></a>
-                </li>
-                <li class="nav-item" data-bs-dismiss="offcanvas">
-                    <a class="nav-link d-flex mb-0" href="#nav-setting-tab-4" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/handshake-outline-filled.svg" alt=""><span>Communications </span></a>
-                </li>
-                <li class="nav-item" data-bs-dismiss="offcanvas">
-                    <a class="nav-link d-flex mb-0" href="#nav-setting-tab-5" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/chat-alt-outline-filled.svg" alt=""><span>Messaging </span></a>
-                </li>
-                <li class="nav-item" data-bs-dismiss="offcanvas">
                     <a class="nav-link d-flex mb-0" href="#nav-setting-tab-6" data-bs-toggle="tab"> <img class="me-2 h-20px fa-fw" src="/images/icon/trash-var-outline-filled.svg" alt=""><span>Close account </span></a>
                 </li>
             </ul>
