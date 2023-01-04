@@ -128,32 +128,30 @@ use yii\helpers\Url;
                                     <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                 </div>
                             </div>
+                            <?php if($page->image) : ?>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle border border-white border-3']) ?>
 
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="#" id="drop-avatar"
+                                           class="mt-5 badge-danger text-danger text-decoration-underline"
+                                           data-value="<?= $page->image ?>"
+                                           data-page="<?= $page->id ?>">
+                                            Delete avatar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif; ?>
                             <!-- Avatar -->
                             <div class="col-sm-12">
                                 <label class="form-label">Avatar</label>
                                 <?= $form->field($model, 'imageFile')->fileInput(['class' => 'form-control', 'placeholder' => 'Avatar'])->label(false) ?>
 
                             </div>
-
-                            <?php if($page->image) : ?>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle border border-white border-3']) ?>
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <a href="#" id="drop-avatar"
-                                               class="mt-5 badge-danger text-danger text-decoration-underline"
-                                               data-value="<?= $page->image ?>"
-                                               data-page="<?= $page->id ?>">
-                                                Delete avatar
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
                             <!-- Button  -->
                             <div class="col-12 text-end">
                                 <button type="submit" class="btn btn-success mb-0">Save</button>
