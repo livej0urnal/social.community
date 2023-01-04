@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use yii\base\Model;
 
 /**
  * This is the model class for table "pages".
