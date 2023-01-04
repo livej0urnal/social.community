@@ -76,7 +76,6 @@ class PageController extends AppController
             $model = Pages::findOne($id);
             if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
 
-                $model->update();
                 if($model->update()) {
                     Yii::$app->session->setFlash('success', 'saved profile');
                     $model = Pages::findOne($id);
