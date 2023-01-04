@@ -143,7 +143,6 @@ use yii\helpers\Url;
                         <!-- Title START -->
                         <div class="card-header border-0 pb-0">
                             <h5 class="card-title">Change your password</h5>
-                            <p class="mb-0">See resolved goodness felicity shy civility domestic had but.</p>
                         </div>
                         <!-- Title START -->
                         <div class="card-body">
