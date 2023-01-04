@@ -27,7 +27,7 @@ class PageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'profile', 'edit', 'drop', 'restore', 'drop_image'], // действия в контроллере
+                        'actions' => ['create', 'profile', 'edit', 'drop', 'restore', 'drop-image'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],

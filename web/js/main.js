@@ -25,7 +25,7 @@ $('#drop-avatar').on('click', function () {
    if(window.confirm('Are you sure?'))
    {
        $.ajax({
-          url: '/pages/drop-image?id=' + id + '&image=' + image,
+          url: '/page/drop-image?id=' + id + '&image=' + image,
           method: 'GET',
        });
    }
