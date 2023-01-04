@@ -52,7 +52,7 @@ class Pages extends ActiveRecord
             [['page_name', 'display_name', 'email', 'image', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
             [['page_name'], 'unique'],
             [['display_name'], 'unique'],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -61,6 +61,7 @@ class Pages extends ActiveRecord
         if ($this->validate()) {
             $path  = 'uploads/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
+
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
