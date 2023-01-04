@@ -105,7 +105,7 @@
                         <!-- Card body END -->
                         <!-- Card footer -->
                         <div class="card-footer text-center py-2">
-                            <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
+                            <a class="btn btn-link btn-sm" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>">View Profile </a>
                         </div>
                     </div>
                     <!-- Card END -->
