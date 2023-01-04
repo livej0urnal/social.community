@@ -26,7 +26,7 @@ class PageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'profile', 'edit'], // действия в контроллере
+                        'actions' => ['create', 'profile', 'edit', 'drop'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -111,6 +111,16 @@ class PageController extends AppController
 
             $this->setMeta('Profile : '. $page->page_name. ' ');
             return $this->render('profile', compact('page'));
+        }
+    }
+
+    public function actionDrop($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user_id = Yii::$app->user->identity->id;
+        $page = Pages::findOne($id);
+        if($page->user_id != $user_id && $page->delete != 1) {
+
         }
     }
 }
