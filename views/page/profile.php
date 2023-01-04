@@ -29,21 +29,7 @@
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            <button class="btn btn-danger-soft me-2" type="button"> <i class="bi bi-pencil-fill pe-1"></i> Edit profile </button>
-                            <div class="dropdown">
-                                <!-- Card share action menu -->
-                                <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </button>
-                                <!-- Card share action dropdown menu -->
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a message</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your profile to PDF</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a></li>
-                                </ul>
-                            </div>
+                            <button class="btn btn-danger-soft me-2" type="button" onclick="location.href = '<?= Url::to(['page/edit' , 'id' => $page->id]) ?>'"> <i class="bi bi-pencil-fill pe-1"></i> Edit profile </button>
                         </div>
                     </div>
                     <!-- List profile -->
