@@ -11,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
+use app\models\Posts;
 
 class PageController extends AppController
 {
