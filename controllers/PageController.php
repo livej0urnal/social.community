@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\controllers\AppController;
 use app\models\ChangePassword;
+use app\models\User;
 use Yii;
 use app\models\Pages;
 use yii\filters\AccessControl;
@@ -86,7 +87,14 @@ class PageController extends AppController
 
             }
             $change_password = new ChangePassword();
-
+            $change_password->attributes = Yii::$app->request->post('changePassword');
+            if($change_password->validate()) {
+                $user = User::findOne($user_id);
+                $user->setPassword($change_password->new_password);
+                $user->save();
+                Yii::$app->session->setFlash('success', 'Changed password success!');
+                $change_password = new ChangePassword();
+            }
             $this->setMeta('Settings : '. $page->page_name. ' ');
             return $this->render('edit', compact('page', 'model', 'change_password'));
         }
