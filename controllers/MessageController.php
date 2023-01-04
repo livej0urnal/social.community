@@ -14,7 +14,7 @@ class MessageController extends AppController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['single'], // действия в контроллере
+                'only' => ['*'], // действия в контроллере
                 'rules' => [ // правила к действиям
                     [
                         'allow' => true,
@@ -36,10 +36,11 @@ class MessageController extends AppController
     {
         $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => $user]);
-        if($user) {
-            return $this->redirect('account/login');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
         }
         else{
+            $this->setMeta('Chat messages');
             return $this->render('single', compact('page' , 'user'));
         }
 
