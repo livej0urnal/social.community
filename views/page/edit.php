@@ -58,7 +58,7 @@ use yii\helpers\Url;
                         <?php Pjax::begin(['id' => 'ajax-create-profile']) ?>
                         <!-- Create a page form START -->
                         <div class="card-body">
-                            <?php $form = ActiveForm::begin(['id' => 'create-clients', 'options' => ['data-pjax' => true, 'class' => 'row g-3']]) ?>
+                            <?php $form = ActiveForm::begin(['id' => 'create-clients', 'options' => ['data-pjax' => true, 'class' => 'row g-3', 'enctype' => 'multipart/form-data']]) ?>
                             <?php if (Yii::$app->session->hasFlash('success')): ?>
                                 <div class="alert alert-success alert-dismissable" role="alert" style="color: green;">
 
