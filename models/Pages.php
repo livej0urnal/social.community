@@ -45,7 +45,7 @@ class Pages extends ActiveRecord
             [['about_page'], 'string'],
             [['page_name', 'display_name', 'email', 'category_id', 'phone_number'], 'required'],
             ['email', 'email'],
-            [['page_name', 'display_name', 'email', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
+            [['page_name', 'display_name', 'email', 'images', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
             [['page_name'], 'unique'],
             [['display_name'], 'unique'],
         ];
@@ -68,6 +68,7 @@ class Pages extends ActiveRecord
             'about_page' => 'About Page',
             'linkedin_link' => 'Linkedin',
             'github_link' => 'Github',
+            'images' => 'Avatar'
         ];
     }
 }
