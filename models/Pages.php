@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use yii\base\Model;
 
@@ -58,8 +59,10 @@ class Pages extends ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $saveFile = $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->image = $saveFile;
+            $path  = 'uploads/'. date('Y-m-d') ;
+            FileHelper::createDirectory($path);
+            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = $path;
             return true;
         } else {
             return false;
