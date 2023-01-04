@@ -25,7 +25,7 @@
                         <div class="ms-sm-4 mt-sm-3">
                             <!-- Info -->
                             <h1 class="mb-0 h5"><?= $page->page_name ?></h1>
-                            <p>250 connections</p>
+                            <p><?= $page->display_name ?></p>
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
@@ -34,9 +34,7 @@
                     </div>
                     <!-- List profile -->
                     <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
-                        <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> Lead Developer</li>
-                        <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> New Hampshire</li>
-                        <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> Joined on Nov 26, 2019</li>
+                        <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $page->category->title ?></li>
                     </ul>
                 </div>
                 <!-- Card body END -->
