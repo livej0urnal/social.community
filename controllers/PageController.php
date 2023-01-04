@@ -8,6 +8,7 @@ use app\models\User;
 use Yii;
 use app\models\Pages;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 
 class PageController extends AppController
 {
@@ -75,7 +76,7 @@ class PageController extends AppController
         else{
             $model = Pages::findOne($id);
             if(Yii::$app->request->isAjax && Yii::$app->request->isPost){
-                $model->imageFile = Pages::getInstance($model, 'imageFile');
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
                 if($model->update()) {
                     Yii::$app->session->setFlash('success', 'saved profile');
                     $model = Pages::findOne($id);
