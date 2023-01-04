@@ -88,7 +88,7 @@ class PageController extends AppController
             }
             $change_password = new ChangePassword();
             $change_password->attributes = Yii::$app->request->post('changePassword');
-            if($change_password->validate()) {
+            if($change_password->load(Yii::$app->request->post())) {
                 $user = User::findOne($user_id);
                 $user->setPassword($change_password->new_password);
                 $user->save();
