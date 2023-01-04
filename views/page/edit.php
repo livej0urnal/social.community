@@ -189,12 +189,21 @@ use yii\helpers\Url;
                         <div class="card-header border-0 pb-0">
                             <h5 class="card-title">Delete account</h5>
                             <p class="mb-0">Deleted accounts can be restored.</p>
+                            <?php if ($page->delete == '1'): ?>
+                                <p class="mb-3 text-danger">You page is deleted!</p>
+                            <?php endif; ?>
                         </div>
                         <!-- Card header START -->
                         <!-- Card body START -->
                         <div class="card-body">
-                            <a href="<?= Url::to(['page/profile' , 'id' => $page->id]) ?>" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
-                            <a href="#" id="delete-account" data-id="<?= $page->id ?>" class="btn btn-danger btn-sm mb-0">Delete my account</a>
+                            <?php if ($page->delete == '1'): ?>
+                                <a href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"
+                                   class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
+                            <?php else : ?>
+
+                                <a href="#" id="delete-account" data-id="<?= $page->id ?>"
+                                   class="btn btn-danger btn-sm mb-0">Delete my account</a>
+                            <?php endif; ?>
                             <!-- Delete END -->
                         </div>
                         <!-- Card body END -->
