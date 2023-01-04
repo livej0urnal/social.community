@@ -12,7 +12,7 @@
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-200px rounded-top"></div>
+                <div class="h-100px rounded-top"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="ms-sm-4 mt-sm-3">
                             <!-- Info -->
-                            <h1 class="mb-0 h5">Sam Lanson <i class="bi bi-patch-check-fill text-success small"></i></h1>
+                            <h1 class="mb-0 h5"><?= $page->page_name ?></h1>
                             <p>250 connections</p>
                         </div>
                         <!-- Button -->
