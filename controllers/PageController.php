@@ -26,7 +26,7 @@ class PageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'profile', 'edit', 'drop'], // действия в контроллере
+                        'actions' => ['create', 'profile', 'edit', 'drop', 'restore'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -126,6 +126,21 @@ class PageController extends AppController
             $page->delete = '1';
             $page->save();
             return $this->redirect('/site/logout');
+        }
+    }
+
+    public function actionRestore($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user_id = Yii::$app->user->identity->id;
+        $page = Pages::findOne($id);
+        if($page->user_id != $user_id && $page->delete != '1') {
+            throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
+        }
+        else{
+            $page->delete = null;
+            $page->save();
+            return $this->redirect('/site/index');
         }
     }
 }
