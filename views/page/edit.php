@@ -157,21 +157,6 @@ use yii\helpers\Url;
                         <!-- Title START -->
                         <div class="card-body">
                             <?php $form = ActiveForm::begin(['id' => 'changePassword']) ?>
-                            <?php if (Yii::$app->session->hasFlash('success')): ?>
-                                <div class="alert alert-success alert-dismissable" role="alert" style="color: green;">
-
-                                    <?php echo Yii::$app->session->getFlash('success'); ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if (Yii::$app->session->hasFlash('error')) : ?>
-                                <div class="alert alert-success alert-dismissable" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <?php echo Yii::$app->session->getFlash('error'); ?>
-                                </div>
-                            <?php endif; ?>
                             <!-- Settings START -->
                             <!-- Current password -->
                             <div class="col-12 mt-3">
