@@ -27,7 +27,7 @@ class PageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'profile', 'edit', 'drop', 'restore'], // действия в контроллере
+                        'actions' => ['create', 'profile', 'edit', 'drop', 'restore', 'drop_image'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -143,6 +143,23 @@ class PageController extends AppController
             $page->delete = null;
             $page->save();
             return $this->redirect('/site/index');
+        }
+    }
+
+    public function actionDropImage($id, $image)
+    {
+        $id = Yii::$app->request->get('id');
+        $image = Yii::$app->request->get('image');
+        $user_id = Yii::$app->user->identity->id;
+        $page = Pages::findOne($id);
+        if($page->user_id != $user_id && $page->delete != '1') {
+            throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
+        }
+        else{
+            $page->image = null;
+            unlink($image);
+            $page->save();
+            return $this->redirect('/page/profile' , ['id' => $page->id]);
         }
     }
 }
