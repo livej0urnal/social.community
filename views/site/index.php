@@ -79,7 +79,7 @@
                             <!-- Side Nav START -->
                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="my-profile.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/home-outline-filled.svg" alt=""><span>Feed </span></a>
+                                    <a class="nav-link" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"> <img class="me-2 h-20px fa-fw" src="/images/icon/home-outline-filled.svg" alt=""><span>Feed </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="my-profile-connections.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/person-outline-filled.svg" alt=""><span>Connections </span></a>
