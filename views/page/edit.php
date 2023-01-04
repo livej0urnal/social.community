@@ -128,7 +128,15 @@ use yii\helpers\Url;
                                     <?= $form->field($model, 'github_link')->textInput(['class' => 'form-control', 'placeholder' => 'https://www.site.com'])->label(false) ?>
                                 </div>
                             </div>
-
+                            <?php if($page->image) : ?>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle border border-white border-3']) ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif; ?>
                             <!-- Twitter -->
                             <div class="col-sm-12">
                                 <label class="form-label">Avatar</label>
