@@ -6,7 +6,7 @@
 <li class="nav-item ms-2 dropdown">
     <?php if($page) : ?>
         <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="avatar-img rounded-2" src="/images/avatar/06.jpg" alt="">
+            <?= Html::img($page->image, ['alt' => $page->display_name, 'class' => 'avatar-img rounded-2']) ?>
         </a>
         <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
             <!-- Profile info -->
@@ -14,7 +14,7 @@
                 <div class="d-flex align-items-center position-relative">
                     <!-- Avatar -->
                     <div class="avatar me-3">
-                        <img class="avatar-img rounded-circle" src="/images/avatar/06.jpg" alt="avatar">
+                        <?= Html::img($page->image, ['alt' => $page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                     </div>
                     <div>
                         <a class="h6 stretched-link" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"><?= $page->display_name ?></a>
