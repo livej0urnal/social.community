@@ -8,6 +8,7 @@ use app\models\User;
 use Yii;
 use app\models\Pages;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 
@@ -157,9 +158,9 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            unlink($image);
+            FileHelper::removeDirectory($image);
             $page->image = null;
-            $page->update();
+            $page->update(false);
             return $this->redirect(Yii::$app->request->referrer);
         }
     }
