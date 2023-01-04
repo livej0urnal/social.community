@@ -1,3 +1,7 @@
+<?php
+    use yii\helpers\Url;
+    use yii\helpers\Html;
+?>
 <div class="row g-4">
 
     <!-- Sidenav START -->
@@ -31,12 +35,18 @@
                             <div class="text-center">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-lg mt-n5 mb-3">
-                                    <a href="#!"><img class="avatar-img rounded border border-white border-3" src="/images/avatar/07.jpg" alt=""></a>
+                                    <a href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>">
+                                        <?php if ($page->image) : ?>
+                                            <?= Html::img($page->image, ['alt' => $page->display_name, 'class' => 'avatar-img rounded border border-white border-3']) ?>
+                                        <?php else: ?>
+                                            <img class="avatar-img rounded border border-white border-3" src="/images/avatar/avatar.png" alt="">
+                                        <?php endif; ?>
+                                    </a>
                                 </div>
                                 <!-- Info -->
-                                <h5 class="mb-0"> <a href="#!">Sam Lanson </a> </h5>
-                                <small>Web Developer at Webestica</small>
-                                <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
+                                <h5 class="mb-0"> <a href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"> <?= $page->page_name ?> </a> </h5>
+                                <small><?= $page->category->title ?></small>
+                                <p class="mt-3"><?= $page->about_page ?></p>
 
                                 <!-- User stat START -->
                                 <div class="hstack gap-2 gap-xl-3 justify-content-center">

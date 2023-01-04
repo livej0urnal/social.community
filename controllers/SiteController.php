@@ -61,7 +61,7 @@ class SiteController extends AppController
         $page = Pages::findOne(['user_id' => Yii::$app->user->identity->id]);
         if($page) {
             $this->setMeta('Social Community');
-            return $this->render('index');
+            return $this->render('index', compact('page'));
         }
         else{
             $this->redirect('page/create');
