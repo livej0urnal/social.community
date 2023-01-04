@@ -24,6 +24,9 @@ $('#drop-avatar').on('click', function () {
    var image = $(this).attr('data-value');
    if(window.confirm('Are you sure?'))
    {
-       console.log(image);
+       $.ajax({
+          url: '/pages/drop-image?id=' + id + '&image=' + image,
+          method: 'GET',
+       });
    }
 });
