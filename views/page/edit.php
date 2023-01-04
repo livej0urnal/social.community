@@ -138,38 +138,36 @@
                         </div>
                         <!-- Title START -->
                         <div class="card-body">
+                            <?php $form = ActiveForm::begin(['id' => 'changePassword']) ?>
                             <!-- Settings START -->
                             <form class="row g-3">
                                 <!-- Current password -->
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                     <label class="form-label">Current password</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <?= $form->field($change_password, 'password')->passwordInput(['class' => 'form-control', 'placeholder' => 'Current password'])->label(false) ?>
                                 </div>
-                                <!-- New password -->
-                                <div class="col-12">
-                                    <label class="form-label">New password</label>
-                                    <!-- Input group -->
-                                    <div class="input-group">
-                                        <input class="form-control fakepassword" type="password" id="psw-input" placeholder="Enter new password">
-                                        <span class="input-group-text p-0">
-                          <i class="fakepasswordicon fa-solid fa-eye-slash cursor-pointer p-2 w-40px"></i>
-                        </span>
+
+                                <div class="row">
+                                    <!-- Current password -->
+                                    <div class="col-6 mt-3">
+                                        <label class="form-label">Current password</label>
+                                        <?= $form->field($change_password, 'new_password')->passwordInput(['class' => 'form-control', 'placeholder' => 'New password'])->label(false) ?>
                                     </div>
-                                    <!-- Pswmeter -->
-                                    <div id="pswmeter" class="mt-2"></div>
-                                    <div id="pswmeter-message" class="rounded mt-1"></div>
+                                    <!-- New password -->
+                                    <div class="col-6 mt-3">
+                                        <label class="form-label">Confirm password</label>
+                                        <!-- Input group -->
+                                        <?= $form->field($change_password, 'new_password_repeat')->passwordInput(['class' => 'form-control', 'placeholder' => 'Confirm password'])->label(false) ?>
+                                    </div>
                                 </div>
-                                <!-- Confirm password -->
-                                <div class="col-12">
-                                    <label class="form-label">Confirm password</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
+
                                 <!-- Button  -->
-                                <div class="col-12 text-end">
+                                <div class="col-12 mt-3 text-end">
                                     <button type="submit" class="btn btn-primary mb-0">Update password</button>
                                 </div>
                             </form>
                             <!-- Settings END -->
+                            <?php ActiveForm::end() ?>
                         </div>
                     </div>
                     <!-- Card END -->
