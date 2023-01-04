@@ -95,7 +95,7 @@ class PageController extends AppController
                 $change_password = new ChangePassword();
             }
             $this->setMeta('Settings : '. $page->page_name. ' ');
-            return $this->render('edit', compact('page', 'model', 'change_password', 'user_id'));
+            return $this->render('edit', compact('page', 'model', 'change_password', 'user_id', 'page'));
         }
     }
 

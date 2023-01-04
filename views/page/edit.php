@@ -193,7 +193,7 @@ use yii\helpers\Url;
                         <!-- Card header START -->
                         <!-- Card body START -->
                         <div class="card-body">
-                            <a href="<?= Url::to(['page/profile' , 'id' => $user_id]) ?>" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
+                            <a href="<?= Url::to(['page/profile' , 'id' => $page->id]) ?>" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
                             <a href="#" class="btn btn-danger btn-sm mb-0">Delete my account</a>
                             <!-- Delete END -->
                         </div>
