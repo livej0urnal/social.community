@@ -83,7 +83,8 @@ use yii\helpers\Url;
                             </div>
                             <!-- Category -->
                             <div class="col-sm-6 col-lg-4">
-                                <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\CategoryPages::find()->all(), 'id', 'title')) ?>
+                                <label class="form-label">Category*</label>
+                                <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\CategoryPages::find()->all(), 'id', 'title'))->label(false) ?>
                             </div>
                             <!-- Website URL -->
                             <div class="col-sm-6">
@@ -187,25 +188,12 @@ use yii\helpers\Url;
                         <!-- Card header START -->
                         <div class="card-header border-0 pb-0">
                             <h5 class="card-title">Delete account</h5>
-                            <p class="mb-0">He moonlights difficult engrossed it, sportsmen. Interested has all
-                                Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration
-                                to.</p>
+                            <p class="mb-0">Deleted accounts can be restored.</p>
                         </div>
                         <!-- Card header START -->
                         <!-- Card body START -->
                         <div class="card-body">
-                            <!-- Delete START -->
-                            <h6>Before you go...</h6>
-                            <ul>
-                                <li>Take a backup of your data <a href="#">Here</a></li>
-                                <li>If you delete your account, you will lose your all data.</li>
-                            </ul>
-                            <div class="form-check form-check-md my-4">
-                                <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck">
-                                <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my
-                                    account</label>
-                            </div>
-                            <a href="#" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
+                            <a href="<?= Url::to(['page/profile' , 'id' => $user_id]) ?>" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">Keep my account</a>
                             <a href="#" class="btn btn-danger btn-sm mb-0">Delete my account</a>
                             <!-- Delete END -->
                         </div>
