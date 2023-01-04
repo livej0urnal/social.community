@@ -56,8 +56,9 @@ class Pages extends ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            return true;
+            $saveFile = $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = $saveFile;
+            return $saveFile;
         } else {
             return false;
         }
