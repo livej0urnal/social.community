@@ -52,7 +52,7 @@ class Pages extends ActiveRecord
             [['page_name', 'display_name', 'email', 'image', 'website_url', 'phone_number', 'linkedin_link', 'github_link'], 'string', 'max' => 255],
             [['page_name'], 'unique'],
             [['display_name'], 'unique'],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 
