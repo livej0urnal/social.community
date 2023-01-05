@@ -44,6 +44,11 @@ class Pages extends ActiveRecord
         return $this->hasMany(Posts::className(), ['page_id' => 'id']);
     }
 
+    public function getPage()
+    {
+        return $this->hasOne(Friends::className(), ['friend_id' => 'id']);
+    }
+
     public function getFriends()
     {
         return $this->hasMany(Friends::className() , ['page_id' => 'id']);
