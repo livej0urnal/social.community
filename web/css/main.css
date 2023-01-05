@@ -6,3 +6,10 @@
     color: red;
     padding: 5px 0;
 }
+.pagination li.active>a{
+    background: #0f6fec;
+    color: white;
+}
+.pagination .disabled{
+    display: none;
+}
