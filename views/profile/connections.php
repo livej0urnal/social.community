@@ -15,11 +15,12 @@
             <div class="card-header border-0 pb-0">
                 <h5 class="card-title"> Connections</h5>
             </div>
-            <?php if(!empty($page->friends)) : ?>
+            <?php $friends = $page->friends; if(!empty($friends)) : ?>
             <!-- Card header END -->
             <!-- Card body START -->
+
             <div class="card-body">
-                <?php foreach ($page->friends as $friend) : ?>
+                <?php foreach ($friends as $friend) : ?>
                 <!-- Connections Item -->
                 <div class="d-md-flex align-items-center mb-4">
                     <!-- Avatar -->
