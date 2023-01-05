@@ -51,6 +51,7 @@ class Pages extends ActiveRecord
     {
         return [
             [['user_id', 'category_id'], 'integer'],
+            [['user_id'], 'unique'],
             [['about_page'], 'string'],
             [['page_name', 'display_name', 'email', 'category_id', 'phone_number'], 'required'],
             ['email', 'email'],

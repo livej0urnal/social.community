@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\Pages;
 use app\models\Posts;
+use app\models\Users;
+use Faker\Factory;
 use Yii;
 use yii\filters\AccessControl;
 
@@ -24,7 +26,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections'], // действия в контроллере
+                        'actions' => ['connections', 'fake'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -41,5 +43,20 @@ class ProfileController extends AppController
         $page = Pages::findOne(['user_id' => $user]);
         $this->setMeta('Connections ');
         return $this->render('connections', compact('user'));
+    }
+
+    public function actionFake()
+    {
+        $faker = Factory::create();
+
+        for($i = 0; $i < 300; $i++)
+        {
+            $user = new Users();
+            $user->email = $faker->email();
+            $password = $faker->password();
+            $user->setPassword($password);
+            $user->save(false);
+        }
+        die('Data generation is complete!');
     }
 }
