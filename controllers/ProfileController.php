@@ -35,10 +35,11 @@ class ProfileController extends AppController
     public function actionConnections($user)
     {
         $user = Yii::$app->request->get('user');
-        if (!Yii::$app->user->isGuest) {
+        if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
         $page = Pages::findOne(['user_id' => $user]);
+        $this->setMeta('Connections ');
         return $this->render('connections', compact('user'));
     }
 }
