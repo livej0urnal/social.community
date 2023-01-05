@@ -46,7 +46,7 @@ class ProfileController extends AppController
         $page = Pages::find()->where(['user_id' => $user])->one();
         $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['id' => SORT_DESC])->all();
         $query = Friends::find()->orderby(['id' => SORT_DESC]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 25, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 20, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $friends = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta('Connections ');
         return $this->render('connections', compact('user', 'page', 'friends', 'pages'));
