@@ -62,10 +62,10 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
-//            $friends = new Friends();
-//            $friends->page_id = rand(1, 300);
-//            $friends->friend_id = rand(1,300);
-//            $friends->save(false);
+            $friends = new Friends();
+            $friends->page_id = rand(1, 300);
+            $friends->friend_id = 1;
+            $friends->save(false);
 
 //            $feed = new Feeds();
 //            $feed->page_id = rand(1,300);
@@ -78,17 +78,17 @@ class ProfileController extends AppController
 //            $user->setPassword($password);
 //            $user->save(false);
 
-            $page = new Pages();
-            $page->user_id = rand(300, 600);
-            $page->page_name = $faker->name();
-            $page->display_name = $faker->text(30);
-            $page->email = $faker->email();
-            $page->website_url = $faker->url();
-            $page->category_id = rand(0, 5);
-            $page->phone_number = $faker->phoneNumber();
-            $page->about_page = $faker->text(100);
-            $page->image = '/images/avatar/' . rand(01, 14). '.jpg';
-            $page->save(false);
+//            $page = new Pages();
+//            $page->user_id = rand(300, 600);
+//            $page->page_name = $faker->name();
+//            $page->display_name = $faker->text(30);
+//            $page->email = $faker->email();
+//            $page->website_url = $faker->url();
+//            $page->category_id = rand(0, 5);
+//            $page->phone_number = $faker->phoneNumber();
+//            $page->about_page = $faker->text(100);
+//            $page->image = '/images/avatar/' . rand(01, 14). '.jpg';
+//            $page->save(false);
         }
         die('Data generation is complete!');
     }
