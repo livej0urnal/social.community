@@ -44,6 +44,16 @@ class Pages extends ActiveRecord
         return $this->hasMany(Posts::className(), ['page_id' => 'id']);
     }
 
+    public function getFriends()
+    {
+        return $this->hasMany(Friends::className() , ['page_id' => 'id']);
+    }
+
+    public function getFeeds()
+    {
+        return $this->hasMany(Feeds::className() , ['page_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
