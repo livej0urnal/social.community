@@ -3,11 +3,12 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
-use Yii;
 use app\models\Pages;
+use app\models\Posts;
+use Yii;
 use yii\filters\AccessControl;
 
-class MessageController extends AppController
+class ProfileController extends AppController
 {
     public function behaviors()
     {
@@ -23,7 +24,7 @@ class MessageController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['single'], // действия в контроллере
+                        'actions' => ['connections'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -31,18 +32,12 @@ class MessageController extends AppController
         ];
     }
 
-
-    public function actionSingle($user)
+    public function actionConnections($user)
     {
         $user = Yii::$app->user->identity->id;
-        $page = Pages::findOne(['user_id' => $user]);
-        if (Yii::$app->user->isGuest) {
+        if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        else{
-            $this->setMeta('Chat messages');
-            return $this->render('single', compact('page' , 'user'));
-        }
-
+        $page = Pages::findOne(['user_id' => $user]);
     }
 }
