@@ -43,7 +43,7 @@ class ProfileController extends AppController
             return $this->goHome();
         }
         $page = Pages::findOne(['user_id' => $user]);
-        $friends = Friends::find()->where(['friend_id' => $page->id])->all();
+        $friends = Friends::find()->where(['page_id' => $page->id])->all();
         $this->setMeta('Connections ');
         return $this->render('connections', compact('user', 'friends'));
     }
