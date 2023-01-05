@@ -50,6 +50,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '/connections/<user:\d>/' => 'profile/connections',
+                '/friend/<id:\d>/' => 'profile/friend',
                 '/profile/<id:\d>/' => 'page/profile',
                 '/page/edit/<id:\d>/' => 'page/edit',
                 'signup' => 'account/signup',
