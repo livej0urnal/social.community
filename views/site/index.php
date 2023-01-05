@@ -94,10 +94,7 @@
                                     <a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/chat-outline-filled.svg" alt=""><span>Groups </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="settings.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/cog-outline-filled.svg" alt=""><span>Settings </span></a>
+                                    <a class="nav-link" href="<?= Url::to(['page/edit' , 'id' => $page->id]) ?>"> <img class="me-2 h-20px fa-fw" src="/images/icon/cog-outline-filled.svg" alt=""><span>Settings </span></a>
                                 </li>
                             </ul>
                             <!-- Side Nav END -->
