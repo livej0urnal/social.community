@@ -28,7 +28,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -46,6 +46,14 @@ class ProfileController extends AppController
         $friends = Friends::find()->where(['page_id' => $page->id])->all();
         $this->setMeta('Connections ');
         return $this->render('connections', compact('user', 'friends'));
+    }
+
+    public function actionFriend($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $page = Pages::find()->where(['id' => $id])->with('friends', 'feeds')->one();
+        $this->setMeta($page->page_name);
+        return $this->render('friend', compact('page'));
     }
 
     public function actionFake()
@@ -70,17 +78,17 @@ class ProfileController extends AppController
 //            $user->setPassword($password);
 //            $user->save(false);
 
-//            $page = new Pages();
-//            $page->user_id = rand(2, 300);
-//            $page->page_name = $faker->name();
-//            $page->display_name = $faker->text(30);
-//            $page->email = $faker->email();
-//            $page->website_url = $faker->url();
-//            $page->category_id = rand(0, 5);
-//            $page->phone_number = $faker->phoneNumber();
-//            $page->about_page = $faker->text(100);
-//            $page->image = '/images/avatar/' . rand(01, 14). '.jpg';
-//            $page->save(false);
+            $page = new Pages();
+            $page->user_id = rand(300, 600);
+            $page->page_name = $faker->name();
+            $page->display_name = $faker->text(30);
+            $page->email = $faker->email();
+            $page->website_url = $faker->url();
+            $page->category_id = rand(0, 5);
+            $page->phone_number = $faker->phoneNumber();
+            $page->about_page = $faker->text(100);
+            $page->image = '/images/avatar/' . rand(01, 14). '.jpg';
+            $page->save(false);
         }
         die('Data generation is complete!');
     }
