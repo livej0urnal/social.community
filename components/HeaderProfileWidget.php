@@ -18,6 +18,7 @@ class HeaderProfileWidget extends Widget
         {
             $user_account = User::findOne($user);
             $page = Pages::findOne(['user_id' => $user]);
+            $page = Pages::find()->where(['user_id' => $user])->with('friends', 'feeds')->one();
         }
         return $this->render('header-profile', compact('user' , 'page' , 'user_account') );
     }
