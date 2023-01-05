@@ -11,6 +11,7 @@ use Yii;
 use yii\filters\AccessControl;
 use app\models\Friends;
 use app\models\Feeds;
+use yii\data\Pagination;
 
 class ProfileController extends AppController
 {
@@ -43,8 +44,8 @@ class ProfileController extends AppController
             return $this->goHome();
         }
 //        $page = Pages::findOne(['user_id' => $user]);
-        $page = Pages::find()->where(['user_id' => $user])->with('friends')->orderBy(['user_id' => SORT_DESC])->one();
-//        $friends = Friends::find()->where(['page_id' => $page->id])->all();
+        $page = Pages::find()->where(['user_id' => $user])->one();
+        $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['id' => SORT_DESC])->limit(100)->all();
 
         $this->setMeta('Connections ');
         return $this->render('connections', compact('user', 'page', 'friends'));
