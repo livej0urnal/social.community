@@ -43,12 +43,13 @@ class ProfileController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-//        $page = Pages::findOne(['user_id' => $user]);
         $page = Pages::find()->where(['user_id' => $user])->one();
-        $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['id' => SORT_DESC])->limit(100)->all();
-
+        $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['id' => SORT_DESC])->all();
+        $query = Friends::find()->orderby(['id' => SORT_DESC]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 25, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $friends = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta('Connections ');
-        return $this->render('connections', compact('user', 'page', 'friends'));
+        return $this->render('connections', compact('user', 'page', 'friends', 'pages'));
     }
 
     public function actionFriend($id)
@@ -65,10 +66,10 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
-            $friends = new Friends();
-            $friends->page_id = 2;
-            $friends->friend_id = rand(1, 300);
-            $friends->save(false);
+//            $friends = new Friends();
+//            $friends->page_id = 2;
+//            $friends->friend_id = rand(1, 300);
+//            $friends->save(false);
 
 //            $feed = new Feeds();
 //            $feed->page_id = rand(1,300);
