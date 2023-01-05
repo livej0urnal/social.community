@@ -25,14 +25,14 @@
                 <div class="d-md-flex align-items-center mb-4">
                     <!-- Avatar -->
                     <div class="avatar me-3 mb-3 mb-md-0">
-                        <a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->page->id]) ?>">
-                            <?= Html::img($friend->page->image, ['alt' => $friend->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
+                        <a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>">
+                            <?= Html::img($friend->friend->image, ['alt' => $friend->friend->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                         </a>
                     </div>
                     <!-- Info -->
                     <div class="w-100">
                         <div class="d-sm-flex align-items-start">
-                            <h6 class="mb-0"><a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->page->id]) ?>"><?= $friend->page->page_name ?> </a></h6>
+                            <h6 class="mb-0"><a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>"><?= $friend->friend->page_name ?> </a></h6>
                             <p class="small ms-sm-2 mb-0">Full Stack Web Developer</p>
                         </div>
                         <!-- Connections START -->

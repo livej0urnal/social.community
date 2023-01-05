@@ -28,7 +28,7 @@ class Friends extends \yii\db\ActiveRecord
 
     public function getFriend()
     {
-        return $this->hasOne(Pages::className() , ['id' => 'page_id']);
+        return $this->hasOne(Pages::className() , ['id' => 'friend_id']);
     }
 
     /**
@@ -38,6 +38,7 @@ class Friends extends \yii\db\ActiveRecord
     {
         return [
             [['page_id', 'friend_id'], 'integer'],
+            ['friend_id', 'unique', 'targetAttribute' => 'page_id'],
         ];
     }
 
