@@ -33,8 +33,9 @@ $('#drop-avatar').on('click', function () {
 
 window.onload = function () {
     var location = window.location.pathname;
-    console.log(location);
-    var link = $('.link-profile-href').attr('href');
-    console.log(link);
-
+    $(".link-profile-href").each(function() {
+        if ($(this).attr('href') === location) {
+            $(this).addClass('active');
+        }
+    })
 };
