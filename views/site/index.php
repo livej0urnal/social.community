@@ -66,8 +66,8 @@
                                     <div class="vr"></div>
                                     <!-- User stat item -->
                                     <div>
-                                        <h6 class="mb-0">365</h6>
-                                        <small>Following</small>
+                                        <h6 class="mb-0"><?php echo count($page->friends); ?></h6>
+                                        <small>Friends</small>
                                     </div>
                                 </div>
                                 <!-- User stat END -->
