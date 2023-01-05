@@ -52,7 +52,7 @@ class PageController extends AppController
             $model->user_id = Yii::$app->user->identity->id;
             if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
 
-                $model->save();
+                $model->save(false);
                 if($model->save()) {
                     Yii::$app->session->setFlash('success', 'New Profile saved!');
                     return $this->goHome();

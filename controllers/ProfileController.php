@@ -9,6 +9,8 @@ use app\models\Users;
 use Faker\Factory;
 use Yii;
 use yii\filters\AccessControl;
+use app\models\Friends;
+use app\models\Feeds;
 
 class ProfileController extends AppController
 {
@@ -41,21 +43,44 @@ class ProfileController extends AppController
             return $this->goHome();
         }
         $page = Pages::findOne(['user_id' => $user]);
+        $friends = Friends::find()->where(['page_id' => $page->id])->all();
         $this->setMeta('Connections ');
-        return $this->render('connections', compact('user'));
+        return $this->render('connections', compact('user', 'friends'));
     }
 
     public function actionFake()
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 300; $i++)
+        for($i = 0; $i < 1000; $i++)
         {
-            $user = new Users();
-            $user->email = $faker->email();
-            $password = $faker->password();
-            $user->setPassword($password);
-            $user->save(false);
+//            $friends = new Friends();
+//            $friends->page_id = rand(1, 300);
+//            $friends->friend_id = rand(1,300);
+//            $friends->save(false);
+
+//            $feed = new Feeds();
+//            $feed->page_id = rand(1,300);
+//            $feed->feed_id = rand(1,300);
+//            $feed->save(false);
+
+//            $user = new Users();
+//            $user->email = $faker->email();
+//            $password = $faker->password();
+//            $user->setPassword($password);
+//            $user->save(false);
+
+//            $page = new Pages();
+//            $page->user_id = rand(2, 300);
+//            $page->page_name = $faker->name();
+//            $page->display_name = $faker->text(30);
+//            $page->email = $faker->email();
+//            $page->website_url = $faker->url();
+//            $page->category_id = rand(0, 5);
+//            $page->phone_number = $faker->phoneNumber();
+//            $page->about_page = $faker->text(100);
+//            $page->image = '/images/avatar/' . rand(01, 14). '.jpg';
+//            $page->save(false);
         }
         die('Data generation is complete!');
     }
