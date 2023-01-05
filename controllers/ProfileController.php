@@ -42,10 +42,12 @@ class ProfileController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $page = Pages::findOne(['user_id' => $user]);
-        $friends = Friends::find()->where(['page_id' => $page->id])->all();
+//        $page = Pages::findOne(['user_id' => $user]);
+        $page = Pages::find()->where(['user_id' => $user])->with('friends')->orderBy(['user_id' => SORT_DESC])->one();
+//        $friends = Friends::find()->where(['page_id' => $page->id])->all();
+
         $this->setMeta('Connections ');
-        return $this->render('connections', compact('user', 'friends'));
+        return $this->render('connections', compact('user', 'page', 'friends'));
     }
 
     public function actionFriend($id)
