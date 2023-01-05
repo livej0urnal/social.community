@@ -28,7 +28,7 @@ class Friends extends \yii\db\ActiveRecord
 
     public function getFriend()
     {
-        return $this->hasOne(Pages::className() , ['id' => 'friend_id']);
+        return $this->hasOne(Pages::className() , ['id' => 'page_id']);
     }
 
     /**
