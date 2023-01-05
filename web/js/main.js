@@ -35,8 +35,8 @@ window.onload = function () {
    var location = window.location.pathname;
    console.log(location);
    var link = $('.link-profile-href').attr('href');
-   if(link === location) {
-       this.addClass('active');
+   if (link === location) {
+       link.addClass('active');
+       console.log('active');
    }
-   console.log(link);
 };
