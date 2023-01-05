@@ -58,10 +58,11 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
+        $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => Yii::$app->user->identity->id]);
         if($page) {
             $this->setMeta('Social Community');
-            return $this->render('index', compact('page'));
+            return $this->render('index', compact('page', 'user'));
         }
         else{
             $this->redirect('page/create');
