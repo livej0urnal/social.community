@@ -1,3 +1,4 @@
+
 $('#delete-account').on('click', function () {
     if (window.confirm('Are you sure?')) {
         var id = $(this).attr('data-id');
@@ -20,23 +21,20 @@ $('#restore-account').on('click', function () {
 });
 
 $('#drop-avatar').on('click', function () {
-   var id = $(this).attr('data-page');
-   var image = $(this).attr('data-value');
-   if(window.confirm('Are you sure?'))
-   {
-       $.ajax({
-          url: '/page/drop-image?id=' + id + '&image=' + image,
-          method: 'GET',
-       });
-   }
+    var id = $(this).attr('data-page');
+    var image = $(this).attr('data-value');
+    if (window.confirm('Are you sure?')) {
+        $.ajax({
+            url: '/page/drop-image?id=' + id + '&image=' + image,
+            method: 'GET',
+        });
+    }
 });
 
 window.onload = function () {
-   var location = window.location.pathname;
-   console.log(location);
-   var link = $('.link-profile-href').attr('href');
-   if (link === location) {
-       link.addClass('active');
-       console.log('active');
-   }
+    var location = window.location.pathname;
+    console.log(location);
+    var link = $('.link-profile-href').attr('href');
+    console.log(link);
+
 };
