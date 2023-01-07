@@ -114,7 +114,7 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            $posts = Posts::find()->where(['page_id' => $page->id])->limit(10)->orderBy(['rand()' => SORT_DESC])->all();
+            $posts = Posts::find()->where(['page_id' => $page->id])->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
             $this->setMeta('Profile : '. $page->page_name. ' ');
             return $this->render('profile', compact('page', 'posts'));
         }
