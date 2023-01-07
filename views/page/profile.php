@@ -177,7 +177,30 @@ use yii\widgets\LinkPager;
                                                 </li>
                                             </ul>
                                         </div>
+                                        <?php if ($comment->page_id === $page->id): ?>
+                                        <!-- Card feed action dropdown START -->
+                                        <div class="dropdown">
+                                            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
+                                               id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots"></i>
+                                            </a>
+
+                                                <!-- Card feed action dropdown menu -->
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
+                                                    <li>
+                                                        <a class="dropdown-item dropdown-comment" href="#"
+                                                           data-id="<?= $comment->id ?>">
+                                                            <i class="bi bi-x-circle fa-fw pe-2"></i>
+                                                            Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                        </div>
+                                        <!-- Card feed action dropdown END -->
+                                        <?php endif; ?>
                                     </div>
+
                                 </li>
                                 <?php $i++; ?>
                                 <!-- Comment item END -->
