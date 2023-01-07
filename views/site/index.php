@@ -59,8 +59,8 @@
                                     <div class="vr"></div>
                                     <!-- User stat item -->
                                     <div>
-                                        <h6 class="mb-0">2.5K</h6>
-                                        <small>Followers</small>
+                                        <h6 class="mb-0"><?php echo count($page->comments)?></h6>
+                                        <small>Comments</small>
                                     </div>
                                     <!-- Divider -->
                                     <div class="vr"></div>
