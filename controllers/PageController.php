@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\controllers\AppController;
 use app\models\ChangePassword;
+use app\models\CommentForm;
 use app\models\Friends;
 use app\models\User;
 use Yii;
@@ -14,7 +15,6 @@ use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 use app\models\Posts;
-use app\models\CommentPost;
 
 class PageController extends AppController
 {
@@ -121,8 +121,9 @@ class PageController extends AppController
             $query = Posts::find()->where(['page_id' => $page->id])->with('comments')->orderby(['created_at' => SORT_DESC]);
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+            $new_comment = new CommentForm();
             $this->setMeta('Profile : '. $page->page_name. ' ');
-            return $this->render('profile', compact('page', 'posts', 'pages'));
+            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment'));
         }
     }
 
