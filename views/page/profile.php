@@ -27,13 +27,12 @@ use yii\widgets\Pjax;
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="#"> <img class="avatar-img rounded-circle" src="/images/avatar/07.jpg" alt=""> </a>
+                        <?= Html::img($page->image , ['alt' => $page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                     </div>
                     <!-- Post input -->
-                    <form class="w-100">
-                        <input class="form-control pe-4 border-0" placeholder="Share your thoughts..."
-                               data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
-                    </form>
+                    <?php $form = ActiveForm::begin(['id' => 'add-new-post', 'options' => ['class' => 'w-100']]) ?>
+                        <?= $form->field($new_post, 'content')->textarea(['rows' => '3', 'class' => 'form-control pe-4 border-0' , 'placeholder' => 'Share your thoughts...'])->label(false) ?>
+                    <?php ActiveForm::end() ?>
                 </div>
                 <!-- Share feed toolbar START -->
                 <ul class="nav nav-pills nav-stack small fw-normal">
@@ -57,22 +56,7 @@ use yii\widgets\Pjax;
                             /Activity</a>
                     </li>
                     <li class="nav-item dropdown ms-sm-auto">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </a>
-                        <!-- Dropdown menu -->
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a
-                                    poll</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Ask a
-                                    question </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"> <i
-                                            class="bi bi-pencil-square fa-fw pe-2"></i>Help</a></li>
-                        </ul>
+                        <button type="submit" class="btn btn-success-soft">Submit</button>
                     </li>
                 </ul>
                 <!-- Share feed toolbar END -->

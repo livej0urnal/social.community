@@ -13,7 +13,8 @@ class PostForm extends Model
     {
         return [
             [['image', 'content'], 'required'],
-            [['content'], 'string' , 'min' => '10', 'max' => '400', 'trim']
+            [['content'], 'string' , 'min' => '10', 'max' => '400'],
+            [['content'], 'trim']
         ];
     }
 
