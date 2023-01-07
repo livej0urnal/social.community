@@ -2,8 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\CommentForm;
+use app\models\CommentPost;
 use app\models\Pages;
+use app\models\Posts;
+use app\models\Users;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -11,6 +16,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\controllers\AppController;
+use yii\web\UploadedFile;
 
 class SiteController extends AppController
 {
@@ -61,8 +67,45 @@ class SiteController extends AppController
         $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => Yii::$app->user->identity->id]);
         if($page) {
+            $new_post = new Posts();
+            if(Yii::$app->request->isPost && $new_post->beforeValidate()){
+                $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
+                $new_post->upload();
+                if ($new_post->load(Yii::$app->request->post())){
+                    $new_post->content = $new_post->content;
+                    $new_post->page_id = $page->id;
+                    $new_post->save(false);
+                    $new_post = new Posts();
+                    return $this->refresh();
+                }
+                else{
+                    Yii::$app->session->setFlash('error', 'Error validation!');
+                }
+
+            }
+            $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
+            $query = Posts::find()->with('comments')->orderby(['created_at' => SORT_DESC]);
+            $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
+            $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+            $new_comment = new CommentForm();
+            if($new_comment->load(Yii::$app->request->post())){
+                $new_comment->validate();
+                $comment = new CommentPost();
+                $comment->post_id = $new_comment->post_id;
+                $comment->comment = $new_comment->comment;
+                $user = Users::findOne($user_id);
+                $comment->page_id = $user->page->id;
+                $comment->save();
+                if($comment->save()) {
+                    Yii::$app->session->setFlash('success', 'Comment send!');
+                    return $this->refresh();
+                }
+                else{
+                    Yii::$app->session->setFlash('error', 'Has error!');
+                }
+            }
             $this->setMeta('Social Community');
-            return $this->render('index', compact('page', 'user'));
+            return $this->render('index', compact('page', 'user', 'new_post', 'posts', 'new_comment', 'comment', 'pages'));
         }
         else{
             $this->redirect('page/create');
