@@ -28,7 +28,7 @@ class PostForm extends Model
             FileHelper::createDirectory($path);
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             $this->imageFile = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
-            return true;
+            return $this->imageFile;
         } else {
             return false;
         }
