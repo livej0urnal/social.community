@@ -39,3 +39,20 @@ window.onload = function () {
         }
     })
 };
+
+$('.dropdown-post').on('click', function (e) {
+    e.preventDefault();
+    if(window.confirm('Are you sure?')) {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: '/profile/delete-post?id=' + id,
+            method: 'GET',
+            success: function () {
+                location.reload();
+            },
+            error: function () {
+                alert('Has error');
+            }
+        })
+    }
+});

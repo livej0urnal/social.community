@@ -117,10 +117,11 @@ use yii\helpers\Url;
                         <!-- Card header END -->
                         <!-- Card body START -->
                         <div class="card-body">
-                            <p>I'm thrilled to share that I've completed a graduate certificate course in project
-                                management with the president's honor roll.</p>
+                            <p>
+                                <?= $post->content ?>
+                            </p>
                             <!-- Card img -->
-                            <img class="card-img" src="/images/post/3by2/01.jpg" alt="Post">
+                            <?= Html::img($post->image, ['class' => 'card-img']) ?>
                             <!-- Feed react START -->
                             <ul class="nav nav-stack py-3 small">
                                 <li class="nav-item">
