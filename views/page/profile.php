@@ -137,6 +137,8 @@ use yii\widgets\LinkPager;
                                               placeholder="Add a comment..."></textarea>
                                 </form>
                             </div>
+                            <?php $comments = $post->comments; ?>
+                            <?php debug($comments); ?>
                             <!-- Comment wrap START -->
                             <ul class="comment-wrap list-unstyled">
                                 <!-- Comment item START -->

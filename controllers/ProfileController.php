@@ -12,6 +12,7 @@ use yii\filters\AccessControl;
 use app\models\Friends;
 use app\models\Feeds;
 use yii\data\Pagination;
+use app\models\CommentPost;
 
 class ProfileController extends AppController
 {

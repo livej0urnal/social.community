@@ -14,6 +14,7 @@ use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 use app\models\Posts;
+use app\models\CommentPost;
 
 class PageController extends AppController
 {
@@ -116,8 +117,8 @@ class PageController extends AppController
             throw new \yii\web\HttpException(404, 'The requested Item could not be found.');
         }
         else{
-            $posts = Posts::find()->where(['page_id' => $page->id])->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
-            $query = Posts::find()->where(['page_id' => $page->id])->orderby(['created_at' => SORT_DESC]);
+            $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
+            $query = Posts::find()->where(['page_id' => $page->id])->with('comments')->orderby(['created_at' => SORT_DESC]);
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
             $this->setMeta('Profile : '. $page->page_name. ' ');
