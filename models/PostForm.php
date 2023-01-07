@@ -15,7 +15,7 @@ class PostForm extends Model
     public function rules()
     {
         return [
-            [['imageFile', 'content', 'image'], 'required'],
+            [['content', 'image'], 'required'],
             [['content', 'image'], 'string' , 'min' => '10', 'max' => '400'],
             [['content'], 'trim'],
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
