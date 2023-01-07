@@ -31,7 +31,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post', 'about'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -87,13 +87,22 @@ class ProfileController extends AppController
         $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => $user]);
         $comment = CommentPost::findOne($id);
-        if($comment->page_id != $page->id || empty($comment))
-        {
+        if ($comment->page_id != $page->id || empty($comment)) {
             return $this->goHome();
-        }
-        else{
+        } else {
             $comment->delete(false);
         }
+    }
+
+    public function actionAbout($user)
+    {
+        $user = Yii::$app->request->get('user');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $page = Pages::findOne(['user_id' => $user]);
+        return $this->render('about');
+
     }
 
     public function actionFake()
