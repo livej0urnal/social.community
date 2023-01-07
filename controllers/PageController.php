@@ -145,9 +145,9 @@ class PageController extends AppController
             if(Yii::$app->request->isPost){
                 $create_post = new Posts();
                 $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
-                $new_post->image = $new_post->imageFile;
                 $new_post->upload();
-                if ($new_post->load(Yii::$app->request->post())){
+                $new_post->image = $new_post->imageFile;
+                if ($new_post->upload() && $new_post->load(Yii::$app->request->post())){
                     $create_post->content = $new_post->content;
                     $create_post->image = $new_post->image;
                     $create_post->page_id = $page->id;
@@ -161,7 +161,7 @@ class PageController extends AppController
 
             }
             $this->setMeta('Profile : '. $page->page_name. ' ');
-            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment', 'new_post'));
+            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment', 'new_post', 'create_post'));
         }
     }
 
