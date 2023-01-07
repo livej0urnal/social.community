@@ -36,7 +36,7 @@
         <div class="card-footer mt-3 pt-2 pb-0">
             <!-- Nav profile pages -->
             <ul class="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0" id="user-link-page">
-                <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['page/profile' , 'id' => $page->id]) ?>"> Posts </a> </li>
+                <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['page/profile' , 'id' => $page->id]) ?>"> Posts <span class="badge bg-success bg-opacity-10 text-success small"> <?php echo count($page->posts);?></span></a> </li>
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="my-profile-about.html"> About </a> </li>
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/connections' , 'user' => $page->user_id]) ?>"> Connections <span class="badge bg-success bg-opacity-10 text-success small"> <?php echo count($page->friends);?></span> </a> </li>
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="my-profile-media.html"> Media</a> </li>
