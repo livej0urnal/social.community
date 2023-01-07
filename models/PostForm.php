@@ -23,7 +23,7 @@ class PostForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $path  = 'uploads/'. date('Y-m-d') ;
+            $path  = 'uploads/posts/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
