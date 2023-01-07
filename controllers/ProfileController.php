@@ -68,16 +68,13 @@ class ProfileController extends AppController
         $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => $user]);
         $comment = CommentPost::findOne($id);
-        if($comment->page_id != $page->id)
+        if($comment->page_id != $page->id || empty($comment))
         {
-            return $this->refresh();
+            return $this->goHome();
         }
         else{
-            $comment->delete();
-            return $this->refresh();
+            $comment->delete(false);
         }
-
-
     }
 
     public function actionFake()
