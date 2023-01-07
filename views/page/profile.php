@@ -30,7 +30,7 @@ use yii\widgets\Pjax;
                         <?= Html::img($page->image , ['alt' => $page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                     </div>
                     <!-- Post input -->
-                    <?php $form = ActiveForm::begin(['id' => 'add-new-post', 'options' => ['class' => 'w-100']]) ?>
+                    <?php $form = ActiveForm::begin(['id' => 'add-new-post', 'options' => ['class' => 'w-100', 'enctype' => 'multipart/form-data']]) ?>
                         <?= $form->field($new_post, 'content')->textarea(['rows' => '3', 'class' => 'form-control pe-4 border-0' , 'placeholder' => 'Share your thoughts...'])->label(false) ?>
 
                         <?= $form->field($new_post, 'image')->fileInput(['class' => 'form-control pe-4 border-0 mt-2', 'placeholder' => 'Avatar'])->label(false) ?>
@@ -39,7 +39,7 @@ use yii\widgets\Pjax;
                 <!-- Share feed toolbar START -->
                 <ul class="nav nav-pills nav-stack small fw-normal">
                     <li class="nav-item dropdown ms-sm-auto">
-                        <button type="submit" class="btn btn-success-soft">Submit</button>
+                        <button type="submit" class="btn btn-success-soft" onclick="$('#add-new-post').submit()">Submit</button>
                     </li>
                 </ul>
                 <!-- Share feed toolbar END -->
