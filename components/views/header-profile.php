@@ -30,6 +30,8 @@
             <!-- List profile -->
             <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
                 <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $page->category->title ?></li>
+                <li class="list-inline-item"><i class="bi bi-github me-1"></i> <?= $page->github_link ?></li>
+                <li class="list-inline-item"><i class="bi bi-linkedin me-1"></i> <?= $page->linkedin_link ?></li>
             </ul>
         </div>
         <!-- Card body END -->
