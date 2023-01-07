@@ -31,7 +31,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake', 'friend', 'delete-comment'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -62,6 +62,21 @@ class ProfileController extends AppController
         return $this->render('friend', compact('page'));
     }
 
+    public function actionDeletePost($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        $post = Posts::findOne($id);
+        if($post->page_id != $page->id) {
+            return $this->goHome();
+        }
+        else{
+            $post->delete();
+        }
+
+    }
+
     public function actionDeleteComment($id)
     {
         $id = Yii::$app->request->get('id');
@@ -83,11 +98,11 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
-//            $comment = new CommentPost();
-//            $comment->post_id = rand(1,1000);
-//            $comment->page_id = rand(1, 1000);
-//            $comment->comment =  $faker->text(400);
-//            $comment->save(false);
+            $comment = new CommentPost();
+            $comment->post_id = rand(1,1000);
+            $comment->page_id = rand(1, 1000);
+            $comment->comment =  $faker->text(400);
+            $comment->save(false);
 
 //            $post = new Posts();
 //            $post->page_id = rand(1,300);
