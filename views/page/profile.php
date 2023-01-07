@@ -147,7 +147,7 @@ use yii\widgets\Pjax;
 
                                 <input id="commentform-post_id" type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
 
-                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '2', 'class' => 'form-control pe-4'])->label(false) ?>
+                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
 
                                 <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i></button>
 
