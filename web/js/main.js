@@ -68,3 +68,20 @@ $('.load-more-comments').on('click', function (){
    });
 
 });
+
+$('.dropdown-comment').on('click', function (e) {
+    e.preventDefault();
+    if(window.confirm('Are you sure?')) {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: '/profile/delete-comment?id=' + id,
+            method: 'GET',
+            success: function () {
+                location.reload();
+            },
+            error: function () {
+                alert('Has error');
+            }
+        })
+    }
+});

@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\Pages;
 use app\models\Posts;
+use app\models\User;
 use app\models\Users;
 use Faker\Factory;
 use Yii;
@@ -30,7 +31,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake', 'friend'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend', 'delete-comment'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -59,6 +60,24 @@ class ProfileController extends AppController
         $page = Pages::find()->where(['id' => $id])->with('friends', 'feeds')->one();
         $this->setMeta($page->page_name);
         return $this->render('friend', compact('page'));
+    }
+
+    public function actionDeleteComment($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        $comment = CommentPost::findOne($id);
+        if($comment->page_id != $page->id)
+        {
+            return $this->refresh();
+        }
+        else{
+            $comment->delete();
+            return $this->refresh();
+        }
+
+
     }
 
     public function actionFake()
