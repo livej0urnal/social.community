@@ -149,6 +149,7 @@ class PageController extends AppController
                     $new_post->content = $new_post->content;
                     $new_post->page_id = $page->id;
                     $new_post->save(false);
+                    $new_post = new Posts();
                     return $this->refresh();
                 }
                 else{
