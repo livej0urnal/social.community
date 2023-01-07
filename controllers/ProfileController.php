@@ -67,6 +67,12 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
+//            $comment = new CommentPost();
+//            $comment->post_id = rand(1,1000);
+//            $comment->page_id = rand(1, 1000);
+//            $comment->comment =  $faker->text(50);
+//            $comment->save(false);
+
 //            $post = new Posts();
 //            $post->page_id = rand(1,300);
 //            $post->content = $faker->text(300);
