@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 ?>
 
@@ -305,6 +306,11 @@ use yii\helpers\Url;
                         <!-- Card footer END -->
                     </div>
                 <?php endforeach; ?>
+                <?php echo LinkPager::widget([
+                    'pagination' => $pages,
+                    'options' => ['class' => 'pagination tab-paginations'],
+                    'linkOptions' => ['class' => 'page-link'],
+                ]); ?>
                 <!-- Card feed item END -->
             <?php endif; ?>
         </div>
