@@ -13,3 +13,6 @@
 .pagination .disabled{
     display: none;
 }
+.hidden-comment{
+    display: none;
+}

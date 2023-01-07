@@ -149,9 +149,9 @@ use yii\widgets\LinkPager;
                             <?php if (!empty($comments)) : ?>
                             <!-- Comment wrap START -->
                             <ul class="comment-wrap list-unstyled">
-                                <?php $i = 1; foreach ($comments as $comment) : ?>
+                                <?php $i = 1;  foreach ($comments as $comment) : ?>
                                 <!-- Comment item START -->
-                                <li class="comment-item">
+                                <li class="comment-item mt-2 <?php if($i > 3): ?> hidden-comment <?php endif; ?> ?>" data-post="<?= $post->id ?>">
                                     <div class="d-flex">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xs">
@@ -180,13 +180,21 @@ use yii\widgets\LinkPager;
                                     </div>
                                 </li>
                                 <?php $i++; ?>
-                                <?php if($i < 3) : ?>
-                                2
-                                <?php endif; ?>
-
-
                                 <!-- Comment item END -->
                                 <?php endforeach; ?>
+                                <?php if(count($comments) > 2) : ?>
+                                    <div class="border-0 pt-0 mt-2">
+                                        <!-- Load more comments -->
+                                        <a href="#!" role="button" data-value="<?= $post->id ?>" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center load-more-comments" data-bs-toggle="button" aria-pressed="true">
+                                            <div class="spinner-dots me-2">
+                                                <span class="spinner-dot"></span>
+                                                <span class="spinner-dot"></span>
+                                                <span class="spinner-dot"></span>
+                                            </div>
+                                            Load more comments
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
 
                             </ul>
                             <!-- Comment wrap END -->
