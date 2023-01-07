@@ -15,9 +15,10 @@ use yii\widgets\LinkPager;
             //кеш на час
             if ($this->beginCache('HeaderProfile', ['duration' => 3600])) {
                 echo \app\components\HeaderProfileWidget::widget();
-                $this->endCache(); }
+                $this->endCache();
+            }
             ?>
-<!--            --><?//= \app\components\HeaderProfileWidget::widget() ?>
+            <!--            --><? //= \app\components\HeaderProfileWidget::widget() ?>
 
             <!-- Share feed START -->
             <div class="card card-body">
@@ -110,7 +111,8 @@ use yii\widgets\LinkPager;
                                         <!-- Card feed action dropdown menu -->
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
                                             <li>
-                                                <a class="dropdown-item dropdown-post" href="#" data-id="<?= $post->id ?>">
+                                                <a class="dropdown-item dropdown-post" href="#"
+                                                   data-id="<?= $post->id ?>">
                                                     <i class="bi bi-x-circle fa-fw pe-2"></i>
                                                     Delete post
                                                 </a>
@@ -144,47 +146,50 @@ use yii\widgets\LinkPager;
                                 </form>
                             </div>
                             <?php $comments = $post->comments; ?>
-                            <?php if(!empty($comments) ) : ?>
-                            <!-- Comment wrap START -->
-                            <ul class="comment-wrap list-unstyled">
-                                <?php $i = 1; foreach ($comments as $comment) : ?>
-                                <?php if($i < 3): ?>
-                                <!-- Comment item START -->
-                                <li class="comment-item">
-                                    <div class="d-flex">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xs">
-                                            <a href="#!"><img class="avatar-img rounded-circle"
-                                                              src="/images/avatar/05.jpg" alt=""></a>
-                                        </div>
-                                        <!-- Comment by -->
-                                        <div class="ms-2">
-                                            <div class="bg-light p-3 rounded">
-                                                <div class="d-flex justify-content-between">
-                                                    <h6 class="mb-1"><a href="#!"> Frances Guerrero </a></h6>
+                            <?php if (!empty($comments)) : ?>
+                                <!-- Comment wrap START -->
+                                <ul class="comment-wrap list-unstyled">
+                                    <?php $i = 1;
+                                    foreach ($comments as $comment) : ?>
+                                        <?php if ($i < 3): ?>
+                                            <!-- Comment item START -->
+                                            <li class="comment-item">
+                                                <div class="d-flex">
+                                                    <!-- Avatar -->
+                                                    <div class="avatar avatar-xs">
+                                                        <a href="#!"><img class="avatar-img rounded-circle"
+                                                                          src="/images/avatar/05.jpg" alt=""></a>
+                                                    </div>
+                                                    <!-- Comment by -->
+                                                    <div class="ms-2">
+                                                        <div class="bg-light p-3 rounded">
+                                                            <div class="d-flex justify-content-between">
+                                                                <h6 class="mb-1"><a href="#!"> Frances Guerrero </a>
+                                                                </h6>
+                                                            </div>
+                                                            <p class="small mb-0">
+                                                                <?= $comment->comment ?>
+                                                            </p>
+                                                        </div>
+                                                        <!-- Comment react -->
+                                                        <ul class="nav nav-divider pt-2 small">
+                                                            <li class="nav-item">
+                                                                <?= $comment->created_at ?>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <p class="small mb-0">
-                                                    <?= $comment->comment ?>
-                                                </p>
-                                            </div>
-                                            <!-- Comment react -->
-                                            <ul class="nav nav-divider pt-2 small">
-                                                <li class="nav-item">
-                                                    <?= $comment->created_at ?>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <?php else: ?>
-                                    3
-                                <?php endif; ?>
-                                <?php $i++; ?>
-                                <!-- Comment item END -->
-                                <?php endforeach; ?>
+                                            </li>
 
-                            </ul>
-                            <!-- Comment wrap END -->
+                                            <?php $i++; ?>
+                                        <?php else: ?>
+                                            3
+                                        <?php endif; ?>
+                                        <!-- Comment item END -->
+                                    <?php endforeach; ?>
+
+                                </ul>
+                                <!-- Comment wrap END -->
                             <?php endif; ?>
                         </div>
                         <!-- Card body END -->
@@ -208,9 +213,10 @@ use yii\widgets\LinkPager;
                 //кеш на час
                 if ($this->beginCache('AboutPage', ['duration' => 3600])) {
                     echo \app\components\AboutProfileWidget::widget();
-                    $this->endCache(); }
+                    $this->endCache();
+                }
                 ?>
-<!--                --><?//= \app\components\AboutProfileWidget::widget() ?>
+                <!--                --><? //= \app\components\AboutProfileWidget::widget() ?>
 
             </div>
 
