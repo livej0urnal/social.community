@@ -147,7 +147,8 @@ use yii\widgets\LinkPager;
                             <?php if(!empty($comments) ) : ?>
                             <!-- Comment wrap START -->
                             <ul class="comment-wrap list-unstyled">
-                                <?php foreach ($comments as $comment) : ?>
+                                <?php $i = 1; foreach ($comments as $comment) : ?>
+                                <?php if($i < 3): ?>
                                 <!-- Comment item START -->
                                 <li class="comment-item">
                                     <div class="d-flex">
@@ -175,8 +176,13 @@ use yii\widgets\LinkPager;
                                         </div>
                                     </div>
                                 </li>
+                                <?php else: ?>
+                                    3
+                                <?php endif; ?>
+                                <?php $i++; ?>
                                 <!-- Comment item END -->
                                 <?php endforeach; ?>
+
                             </ul>
                             <!-- Comment wrap END -->
                             <?php endif; ?>
