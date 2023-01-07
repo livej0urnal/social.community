@@ -142,7 +142,7 @@ class PageController extends AppController
                 }
             }
             $new_post = new Posts();
-            if(Yii::$app->request->isPost){
+            if(Yii::$app->request->isPost && $new_post->beforeValidate()){
                 $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
                 $new_post->upload();
                 if ($new_post->load(Yii::$app->request->post())){
