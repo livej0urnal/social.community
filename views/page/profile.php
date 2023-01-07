@@ -103,7 +103,7 @@ use yii\helpers\Url;
                                         <!-- Card feed action dropdown menu -->
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
                                             <li>
-                                                <a class="dropdown-item" href="#">
+                                                <a class="dropdown-item dropdown-post" href="#" data-id="<?= $post->id ?>">
                                                     <i class="bi bi-x-circle fa-fw pe-2"></i>
                                                     Delete post
                                                 </a>
