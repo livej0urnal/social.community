@@ -66,11 +66,11 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
-            $post = new Posts();
-            $post->page_id = rand(1,300);
-            $post->content = $faker->text(300);
-            $post->image = '/images/post/3by2/'. rand(1,7) . '.jpg';
-            $post->save(false);
+//            $post = new Posts();
+//            $post->page_id = rand(1,300);
+//            $post->content = $faker->text(300);
+//            $post->image = '/images/post/3by2/'. rand(1,7) . '.jpg';
+//            $post->save(false);
 
 //            $friends = new Friends();
 //            $friends->page_id = 1;
