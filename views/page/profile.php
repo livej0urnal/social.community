@@ -122,7 +122,7 @@ use yii\helpers\Url;
                             </p>
                             <!-- Card img -->
                             <?= Html::img($post->image, ['class' => 'card-img']) ?>
-
+                            <div class="mt-3"></div>
                             <!-- Add comment -->
                             <div class="d-flex mb-3">
                                 <!-- Avatar -->
