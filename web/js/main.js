@@ -56,3 +56,15 @@ $('.dropdown-post').on('click', function (e) {
         })
     }
 });
+
+$('.load-more-comments').on('click', function (){
+   var post = $(this).attr('data-value');
+   var comments = $('.hidden-comment');
+   $(this).addClass('d-none');
+   comments.each(function () {
+       if($(this).attr('data-post') === post) {
+           $(this).show();
+       }
+   });
+
+});
