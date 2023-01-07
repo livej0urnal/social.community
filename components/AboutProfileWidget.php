@@ -18,7 +18,7 @@ class AboutProfileWidget extends Widget
         {
             $user_account = User::findOne($user);
             $page = Pages::findOne(['user_id' => $user]);
-            $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['rand()' => SORT_DESC])->limit(4)->all();
+            $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['rand()' => SORT_DESC])->limit(12)->all();
 
         }
         return $this->render('about-profile', compact('user' , 'page' , 'user_account' , 'friends') );
