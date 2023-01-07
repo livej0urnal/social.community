@@ -66,10 +66,13 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 1000; $i++)
         {
-//            $friends = new Friends();
-//            $friends->page_id = 2;
-//            $friends->friend_id = rand(1, 300);
-//            $friends->save(false);
+//            $post = new Posts();
+//            $post->page_id = rand(1,300);
+
+            $friends = new Friends();
+            $friends->page_id = 1;
+            $friends->friend_id = rand(1, 300);
+            $friends->save(false);
 
 //            $feed = new Feeds();
 //            $feed->page_id = rand(1,300);
