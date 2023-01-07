@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
+use yii\helpers\FileHelper;
+use yii\base\Model;
 
 /**
  * This is the model class for table "posts".
@@ -15,6 +18,8 @@ use Yii;
  */
 class Posts extends \yii\db\ActiveRecord
 {
+
+    public $imageFile;
     /**
      * {@inheritdoc}
      */
@@ -43,7 +48,21 @@ class Posts extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['created_at'], 'safe'],
             [['image'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $path  = 'uploads/posts/'. date('Y-m-d') ;
+            FileHelper::createDirectory($path);
+            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
