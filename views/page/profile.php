@@ -159,7 +159,7 @@ use yii\widgets\Pjax;
                                     </div>
                                 <?php endif; ?>
 
-                                <input type="text" name="post_id" value="<?= $post->id ?>" class="disabled hidden d-none">
+                                <input type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
 
                                 <?= $form->field($new_comment, 'comment')->textarea(['rows' => '2', 'class' => 'form-control pe-4'])->label(false) ?>
 
