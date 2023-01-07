@@ -11,7 +11,13 @@ use yii\widgets\LinkPager;
     <div class="row g-4">
         <!-- Main content START -->
         <div class="col-lg-8 vstack gap-4">
-            <?= \app\components\HeaderProfileWidget::widget() ?>
+            <?php
+            //кеш на час
+            if ($this->beginCache('HeaderProfile', ['duration' => 3600])) {
+                echo \app\components\HeaderProfileWidget::widget();
+                $this->endCache(); }
+            ?>
+<!--            --><?//= \app\components\HeaderProfileWidget::widget() ?>
 
             <!-- Share feed START -->
             <div class="card card-body">
@@ -322,8 +328,13 @@ use yii\widgets\LinkPager;
         <div class="col-lg-4">
 
             <div class="row g-4">
-
-                <?= \app\components\AboutProfileWidget::widget() ?>
+                <?php
+                //кеш на час
+                if ($this->beginCache('AboutPage', ['duration' => 3600])) {
+                    echo \app\components\AboutProfileWidget::widget();
+                    $this->endCache(); }
+                ?>
+<!--                --><?//= \app\components\AboutProfileWidget::widget() ?>
 
             </div>
 
