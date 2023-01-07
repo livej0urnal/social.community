@@ -169,13 +169,14 @@
                                     <p class="mb-0 small"><?= $post->page->category->title ?> </p>
                                 </div>
                             </div>
+                            <?php if ($post->page_id === $page->id): ?>
                             <!-- Card feed action dropdown START -->
                             <div class="dropdown">
                                 <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
                                    id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots"></i>
                                 </a>
-                                <?php if ($post->page_id === $page->id): ?>
+
                                     <!-- Card feed action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
                                         <li>
@@ -186,9 +187,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                <?php endif; ?>
+
                             </div>
                             <!-- Card feed action dropdown END -->
+                            <?php endif; ?>
                         </div>
                     </div>
                     <!-- Card header END -->
@@ -204,8 +206,8 @@
                         <div class="d-flex mb-3">
                             <!-- Avatar -->
                             <div class="avatar avatar-xs me-2">
-                                <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
-                                    <?= Html::img($post->page->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                <a href="<?= Url::to(['profile/friend', 'id' => $page->id]) ?>">
+                                    <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle']) ?>
                                 </a>
                             </div>
 
