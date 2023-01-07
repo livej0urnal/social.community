@@ -30,6 +30,48 @@ use yii\widgets\LinkPager;
                     </div>
                     <p><?= $page->about_page ?></p>
                 </div>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <!-- Birthday START -->
+                        <div class="d-flex align-items-center rounded border px-3 py-2">
+                            <!-- Date -->
+                            <p class="mb-0">
+                                <i class="bi bi-linkedin fa-fw me-2"></i> Linkedin: <strong> <?= $page->linkedin_link ?> </strong>
+                            </p>
+                        </div>
+                        <!-- Birthday END -->
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Birthday START -->
+                        <div class="d-flex align-items-center rounded border px-3 py-2">
+                            <!-- Date -->
+                            <p class="mb-0">
+                                <i class="bi bi-github fa-fw me-2"></i> Github: <strong> <?= $page->github_link ?> </strong>
+                            </p>
+                        </div>
+                        <!-- Birthday END -->
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Designation START -->
+                        <div class="d-flex align-items-center rounded border px-3 py-2">
+                            <!-- Date -->
+                            <p class="mb-0">
+                                <i class="bi bi-briefcase fa-fw me-2"></i> <strong> <?= $page->category->title ?> </strong>
+                            </p>
+                        </div>
+                        <!-- Designation END -->
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Lives START -->
+                        <div class="d-flex align-items-center rounded border px-3 py-2">
+                            <!-- Date -->
+                            <p class="mb-0">
+                                <i class="bi bi-phone fa-fw me-2"></i> <strong> <?= $page->phone_number ?> </strong>
+                            </p>
+                        </div>
+                        <!-- Lives END -->
+                    </div>
+                </div>
             </div>
             <!-- Card body END -->
         </div>
