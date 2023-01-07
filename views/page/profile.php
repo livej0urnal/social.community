@@ -179,10 +179,12 @@ use yii\widgets\LinkPager;
                                         </div>
                                     </div>
                                 </li>
-
+                                <?php $i++; ?>
                                 <?php if($i < 3) : ?>
                                 2
-                                <?php endif; ?><?php $i++; ?>
+                                <?php endif; ?>
+
+
                                 <!-- Comment item END -->
                                 <?php endforeach; ?>
 
