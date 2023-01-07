@@ -8,6 +8,7 @@ use app\models\CommentForm;
 use app\models\CommentPost;
 use app\models\Friends;
 use app\models\User;
+use app\models\Users;
 use Yii;
 use app\models\Pages;
 use yii\data\Pagination;
@@ -128,6 +129,9 @@ class PageController extends AppController
                 $comment = new CommentPost();
                 $comment->post_id = $new_comment->post_id;
                 $comment->comment = $new_comment->comment;
+                $user = Users::findOne($user_id);
+                $comment->page_id = $user->page->id;
+                $comment->save();
                 if($comment->save()) {
                     Yii::$app->session->setFlash('success', 'Comment send!');
                     return $this->refresh();

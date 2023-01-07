@@ -23,6 +23,11 @@ class Users extends ActiveRecord implements IdentityInterface
         return 'users';
     }
 
+    public function getPage()
+    {
+        return $this->hasOne(Pages::className() , ['user_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
