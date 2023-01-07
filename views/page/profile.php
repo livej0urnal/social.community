@@ -31,9 +31,11 @@ use yii\widgets\Pjax;
                     </div>
                     <!-- Post input -->
                     <?php $form = ActiveForm::begin(['id' => 'add-new-post', 'options' => ['class' => 'w-100', 'enctype' => 'multipart/form-data']]) ?>
+
                         <?= $form->field($new_post, 'content')->textarea(['rows' => '3', 'class' => 'form-control pe-4 border-0' , 'placeholder' => 'Share your thoughts...'])->label(false) ?>
 
                         <?= $form->field($new_post, 'imageFile')->fileInput(['class' => 'form-control pe-4 border-0 mt-2', 'placeholder' => 'Avatar'])->label(false) ?>
+
                     <?php ActiveForm::end() ?>
                 </div>
                 <!-- Share feed toolbar START -->
