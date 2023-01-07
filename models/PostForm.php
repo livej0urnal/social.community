@@ -10,6 +10,7 @@ class PostForm extends Model
 {
     public $imageFile;
     public $content;
+    public $image;
 
     public function rules()
     {
@@ -27,8 +28,8 @@ class PostForm extends Model
             $path  = 'uploads/posts/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->imageFile = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
-            return $this->imageFile;
+            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            return true;
         } else {
             return false;
         }
