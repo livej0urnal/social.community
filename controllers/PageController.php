@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\ChangePassword;
 use app\models\CommentForm;
+use app\models\CommentPost;
 use app\models\Friends;
 use app\models\User;
 use Yii;
@@ -122,6 +123,19 @@ class PageController extends AppController
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
             $new_comment = new CommentForm();
+            if($new_comment->beforeValidate()){
+                $comment = new CommentPost();
+                $comment->post_id = $new_comment->post_id;
+                $comment->comment = $new_comment->comment;
+                $comment->save();
+                if($comment->save()) {
+                    Yii::$app->session->setFlash('success', 'Comment send!');
+                    return $this->refresh();
+                }
+                else{
+                    Yii::$app->session->setFlash('error', 'Has error!');
+                }
+            }
             $this->setMeta('Profile : '. $page->page_name. ' ');
             return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment'));
         }
