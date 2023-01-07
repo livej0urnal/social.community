@@ -117,7 +117,7 @@ class PageController extends AppController
         }
         else{
             $posts = Posts::find()->where(['page_id' => $page->id])->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
-            $query = Posts::find()->orderby(['created_at' => SORT_DESC]);
+            $query = Posts::find()->where(['page_id' => $page->id])->orderby(['created_at' => SORT_DESC]);
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
             $this->setMeta('Profile : '. $page->page_name. ' ');

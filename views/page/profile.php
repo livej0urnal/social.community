@@ -78,7 +78,7 @@ use yii\widgets\LinkPager;
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <!-- Avatar -->
-                                    <div class="avatar avatar-story me-2">
+                                    <div class="avatar me-2">
                                         <a href="<?= Url::to(['page/profile', 'id' => $post->page_id]) ?>">
                                             <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                                         </a>
