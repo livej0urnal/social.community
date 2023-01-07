@@ -7,6 +7,7 @@ use app\models\ChangePassword;
 use app\models\CommentForm;
 use app\models\CommentPost;
 use app\models\Friends;
+use app\models\PostForm;
 use app\models\User;
 use app\models\Users;
 use Yii;
@@ -140,8 +141,10 @@ class PageController extends AppController
                     Yii::$app->session->setFlash('error', 'Has error!');
                 }
             }
+            $new_post = new PostForm();
+
             $this->setMeta('Profile : '. $page->page_name. ' ');
-            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment'));
+            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment', 'new_post'));
         }
     }
 
