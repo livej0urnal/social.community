@@ -32,29 +32,12 @@ use yii\widgets\Pjax;
                     <!-- Post input -->
                     <?php $form = ActiveForm::begin(['id' => 'add-new-post', 'options' => ['class' => 'w-100']]) ?>
                         <?= $form->field($new_post, 'content')->textarea(['rows' => '3', 'class' => 'form-control pe-4 border-0' , 'placeholder' => 'Share your thoughts...'])->label(false) ?>
+
+                        <?= $form->field($new_post, 'image')->fileInput(['class' => 'form-control pe-4 border-0 mt-2', 'placeholder' => 'Avatar'])->label(false) ?>
                     <?php ActiveForm::end() ?>
                 </div>
                 <!-- Share feed toolbar START -->
                 <ul class="nav nav-pills nav-stack small fw-normal">
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                           data-bs-target="#feedActionPhoto"> <i
-                                    class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                           data-bs-target="#feedActionVideo"> <i class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link bg-light py-1 px-2 mb-0" data-bs-toggle="modal"
-                           data-bs-target="#modalCreateEvents"> <i
-                                    class="bi bi-calendar2-event-fill text-danger pe-2"></i>Event </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
-                           data-bs-target="#modalCreateFeed"> <i class="bi bi-emoji-smile-fill text-warning pe-2"></i>Feeling
-                            /Activity</a>
-                    </li>
                     <li class="nav-item dropdown ms-sm-auto">
                         <button type="submit" class="btn btn-success-soft">Submit</button>
                     </li>
