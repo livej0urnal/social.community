@@ -28,9 +28,9 @@ class CommentPost extends \yii\db\ActiveRecord
         return $this->hasOne(Posts::className() , ['id' => 'post_id']);
     }
 
-    public function getPage()
+    public function getUser()
     {
-        return $this->hasOne(Posts::className(), ['id' => 'page_id']);
+        return $this->hasOne(Pages::className(), ['id' => 'page_id']);
     }
 
     /**
