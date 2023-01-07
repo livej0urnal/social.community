@@ -82,10 +82,20 @@ Header START -->
 
             <!-- Nav right START -->
             <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
-
-                <?= \app\components\UserHeaderWidget::widget() ?>
-
-                <?= \app\components\UserProfileWidget::widget() ?>
+                <?php
+                //кеш на час
+                if ($this->beginCache('UserHeader', ['duration' => 3600])) {
+                    echo \app\components\UserHeaderWidget::widget();
+                    $this->endCache(); }
+                ?>
+<!--                --><?//= \app\components\UserHeaderWidget::widget() ?>
+                <?php
+                //кеш на час
+                if ($this->beginCache('UserProfile', ['duration' => 3600])) {
+                    echo \app\components\UserProfileWidget::widget();
+                    $this->endCache(); }
+                ?>
+<!--                --><?//= \app\components\UserProfileWidget::widget() ?>
                 <!-- Profile START -->
 
             </ul>
