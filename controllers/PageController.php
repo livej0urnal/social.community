@@ -145,12 +145,13 @@ class PageController extends AppController
             if(Yii::$app->request->isPost){
                 $create_post = new Posts();
                 $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
+                $new_post->image = $new_post->imageFile;
                 $new_post->upload();
                 if ($new_post->load(Yii::$app->request->post())){
                     $create_post->content = $new_post->content;
                     $create_post->image = $new_post->image;
                     $create_post->page_id = $page->id;
-                    $create_post->save();
+                    $create_post->save(false);
                     $new_post = new PostForm();
                     return $this->refresh();
                 }

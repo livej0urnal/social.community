@@ -89,7 +89,7 @@ class Pages extends ActiveRecord
             FileHelper::createDirectory($path);
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
-            return $this->imageFile;
+            return true;
         } else {
             return false;
         }
