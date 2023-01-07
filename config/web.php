@@ -49,11 +49,11 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-
                 '/friend/<id:\d>/' => 'profile/friend',
                 '/connections/<user:\d>/' => 'profile/connections',
                 '/profile/<id:\d>/' => 'page/profile',
                 '/page/edit/<id:\d>/' => 'page/edit',
+                '/about/<user:.+>/' => 'profile/about',
                 'signup' => 'account/signup',
                 'login' => 'account/login',
                 'logout' => 'site/logout',

@@ -16,72 +16,103 @@ use yii\widgets\LinkPager;
         ?>
         <!--            --><?//= \app\components\HeaderProfileWidget::widget() ?>
 
-        <!-- Card Connections START -->
         <div class="card">
             <!-- Card header START -->
             <div class="card-header border-0 pb-0">
-                <h5 class="card-title"> Connections</h5>
+                <h5 class="card-title"> Profile Info</h5>
             </div>
-            <?php if(!empty($friends)) : ?>
-                <!-- Card header END -->
-                <!-- Card body START -->
+            <!-- Card header END -->
+            <!-- Card body START -->
+            <div class="card-body">
+                <div class="rounded border px-3 py-2 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6>About me</h6>
+                    </div>
+                    <p><?= $page->about_page ?></p>
+                </div>
+            </div>
+            <!-- Card body END -->
+        </div>
 
-                <div class="card-body">
-                    <?php foreach ($friends as $friend) : ?>
-                        <!-- Connections Item -->
-                        <div class="d-md-flex align-items-center mb-4">
-                            <!-- Avatar -->
-                            <div class="avatar me-3 mb-3 mb-md-0">
-                                <a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>">
-                                    <?= Html::img($friend->friend->image, ['alt' => $friend->friend->display_name, 'class' => 'avatar-img rounded-circle']) ?>
-                                </a>
+        <div class="card">
+            <!-- Card header START -->
+            <div class="card-header d-sm-flex justify-content-between border-0 pb-0">
+                <h5 class="card-title">Interests</h5>
+                <a class="btn btn-primary-soft btn-sm" href="#!"> See all</a>
+            </div>
+            <!-- Card header END -->
+            <!-- Card body START -->
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Interests item START -->
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="avatar">
+                                <img class="avatar-img" src="assets/images/logo/04.svg" alt="">
                             </div>
-                            <!-- Info -->
-                            <div class="w-100">
-                                <div class="d-sm-flex align-items-start">
-                                    <h6 class="mb-0"><a href="<?= \yii\helpers\Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>"><?= $friend->friend->page_name ?> </a></h6>
-                                    <p class="small ms-sm-2 mb-0">Full Stack Web Developer</p>
-                                </div>
-                                <!-- Connections START -->
-                                <ul class="avatar-group mt-1 list-unstyled align-items-sm-center">
-                                    <li class="avatar avatar-xxs">
-                                        <img class="avatar-img rounded-circle" src="/images/avatar/01.jpg" alt="avatar">
-                                    </li>
-                                    <li class="avatar avatar-xxs">
-                                        <img class="avatar-img rounded-circle" src="/images/avatar/02.jpg" alt="avatar">
-                                    </li>
-                                    <li class="avatar avatar-xxs">
-                                        <img class="avatar-img rounded-circle" src="/images/avatar/03.jpg" alt="avatar">
-                                    </li>
-                                    <li class="avatar avatar-xxs">
-                                        <img class="avatar-img rounded-circle" src="/images/avatar/04.jpg" alt="avatar">
-                                    </li>
-                                    <li class="avatar avatar-xxs">
-                                        <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+2</span></div>
-                                    </li>
-                                    <li class="small ms-3">
-                                        Carolyn Ortiz, Frances Guerrero, and 20 other shared connections
-                                    </li>
-                                </ul>
-                                <!-- Connections END -->
-                            </div>
-                            <!-- Button -->
-                            <div class="ms-md-auto d-flex">
-                                <button class="btn btn-danger-soft btn-sm mb-0 me-2"> Remove </button>
-                                <button class="btn btn-primary-soft btn-sm mb-0"> Message </button>
+                            <div class="ms-2">
+                                <h6 class="mb-0"> <a class="stretched-link" href="#"> Oracle </a></h6>
+                                <p class="small mb-0">7,546,224 followers</p>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                    <?php echo LinkPager::widget([
-                        'pagination' => $pages,
-                        'options' => ['class' => 'pagination tab-paginations'],
-                        'linkOptions' => ['class' => 'page-link'],
-                    ]); ?>
+                        <!-- Interests item END -->
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Interests item START -->
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="avatar">
+                                <img class="avatar-img" src="assets/images/logo/13.svg" alt="">
+                            </div>
+                            <div class="ms-2">
+                                <h6 class="mb-0"> <a class="stretched-link" href="#"> Apple </a></h6>
+                                <p class="small mb-0">102B followers</p>
+                            </div>
+                        </div>
+                        <!-- Interests item END -->
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Interests item START -->
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="avatar">
+                                <img class="avatar-img rounded-circle" src="assets/images/avatar/placeholder.jpg" alt="">
+                            </div>
+                            <div class="ms-2">
+                                <h6 class="mb-0"> <a class="stretched-link" href="#"> Elon musk </a></h6>
+                                <p class="small mb-0"> CEO and Product Architect of Tesla, Inc 41B followers</p>
+                            </div>
+                        </div>
+                        <!-- Interests item END -->
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Interests item START -->
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="avatar">
+                                <img class="avatar-img" src="assets/images/events/04.jpg" alt="">
+                            </div>
+                            <div class="ms-2">
+                                <h6 class="mb-0"> <a class="stretched-link" href="#"> The X Factor </a></h6>
+                                <p class="small mb-0">9,654 followers</p>
+                            </div>
+                        </div>
+                        <!-- Interests item END -->
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Interests item START -->
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="avatar">
+                                <img class="avatar-img rounded-circle" src="assets/images/logo/12.svg" alt="">
+                            </div>
+                            <div class="ms-2">
+                                <h6 class="mb-0"> <a class="stretched-link" href="#"> Getbootstrap </a></h6>
+                                <p class="small mb-0">8,457,224 followers</p>
+                            </div>
+                        </div>
+                        <!-- Interests item END -->
+                    </div>
                 </div>
-                <!-- Card body END -->
-            <?php endif; ?>
+            </div>
+            <!-- Card body END -->
         </div>
-        <!-- Card Connections END -->
 
     </div>
     <!-- Main content END -->
