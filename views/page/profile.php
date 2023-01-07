@@ -138,14 +138,34 @@ use yii\widgets\Pjax;
                             <div class="d-flex mb-3">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs me-2">
-                                    <a href="#!"> <img class="avatar-img rounded-circle" src="/images/avatar/12.jpg"
-                                                       alt=""> </a>
+                                    <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
+                                        <?= Html::img($post->page->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                    </a>
                                 </div>
-                                <!-- Comment box  -->
-                                <form class="position-relative w-100">
-                                    <textarea class="form-control pe-4 bg-light" rows="1"
-                                              placeholder="Add a comment..."></textarea>
-                                </form>
+
+                                <?php $form = ActiveForm::begin(['id' => 'new-comment-'. $post->id , 'options' => ['class' => 'position-relative w-100'] ]) ?>
+                                <?php if (Yii::$app->session->hasFlash('success')): ?>
+                                    <div class="alert alert-success alert-dismissable" role="alert" style="color: green;">
+                                        <?php echo Yii::$app->session->getFlash('success'); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (Yii::$app->session->hasFlash('error')) : ?>
+                                    <div class="alert alert-error alert-dismissable" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <?php echo Yii::$app->session->getFlash('error'); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <input type="text" name="post_id" value="<?= $post->id ?>" class="disabled hidden d-none">
+
+                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '2', 'class' => 'form-control pe-4'])->label(false) ?>
+
+                                <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i></button>
+
+                                <?php ActiveForm::end() ?>
                             </div>
                             <?php $comments = $post->comments; ?>
                             <?php if (!empty($comments)) : ?>
