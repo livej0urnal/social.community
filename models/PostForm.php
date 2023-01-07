@@ -16,7 +16,8 @@ class PostForm extends Model
         return [
             [['image', 'content'], 'required'],
             [['content'], 'string' , 'min' => '10', 'max' => '400'],
-            [['content'], 'trim']
+            [['content'], 'trim'],
+            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -25,8 +26,8 @@ class PostForm extends Model
         if ($this->validate()) {
             $path  = 'uploads/posts/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
-            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->image->saveAs($path . '/' . $this->image->baseName . '.' . $this->image->extension);
+            $this->image = '/' . $path . '/' . $this->image->baseName . '.' . $this->image->extension;
             return true;
         } else {
             return false;
