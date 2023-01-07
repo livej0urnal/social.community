@@ -28,6 +28,11 @@ class Posts extends \yii\db\ActiveRecord
         return $this->hasOne(Pages::className() , ['id' => 'page_id']);
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(CommentPost::className() , ['post_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */

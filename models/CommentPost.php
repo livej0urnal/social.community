@@ -23,6 +23,16 @@ class CommentPost extends \yii\db\ActiveRecord
         return 'comment_post';
     }
 
+    public function getPost()
+    {
+        return $this->hasOne(Posts::className() , ['id' => 'post_id']);
+    }
+
+    public function getPage()
+    {
+        return $this->hasOne(Posts::className(), ['id' => 'page_id']);
+    }
+
     /**
      * {@inheritdoc}
      */

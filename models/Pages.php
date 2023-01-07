@@ -59,6 +59,11 @@ class Pages extends ActiveRecord
         return $this->hasMany(Feeds::className() , ['page_id' => 'id']);
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(CommentPost::className() , ['page_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
