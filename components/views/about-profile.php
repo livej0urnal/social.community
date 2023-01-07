@@ -157,13 +157,12 @@ use yii\helpers\Url;
                                 <!-- Card body -->
                                 <div class="card-body p-2 pb-0">
                                     <div class="avatar avatar-story avatar-xl">
-                                        <a href="<?= Url::to(['profile/friend' , 'id' => $friend->page->id]) ?>">
-                                            <img class="avatar-img rounded-circle" src="/images/avatar/02.jpg"
-                                                          alt="">
+                                        <a href="<?= Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>">
+                                            <?= Html::img($friend->friend->image, ['alt' => $friend->friend->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                                         </a>
                                     </div>
-                                    <h6 class="card-title mb-1 mt-3"><a href="#!"> Amanda Reed </a></h6>
-                                    <p class="mb-0 small lh-sm">16 mutual connections</p>
+                                    <h6 class="card-title mb-1 mt-3"><a href="<?= Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>"> <?= $friend->friend->page_name ?> </a></h6>
+                                    <p class="mb-0 small lh-sm"><?= $friend->friend->category->title ?></p>
                                 </div>
                                 <!-- Card footer -->
                                 <div class="card-footer p-2 border-0">
