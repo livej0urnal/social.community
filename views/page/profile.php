@@ -143,6 +143,8 @@ use yii\widgets\Pjax;
                                     </a>
                                 </div>
 
+                                <?php $form = ActiveForm::begin(['id' => 'new-comment-'. $post->id , 'options' => ['class' => 'position-relative w-100'] ]) ?>
+
                                 <input id="commentform-post_id" type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
 
                                 <?= $form->field($new_comment, 'comment')->textarea(['rows' => '2', 'class' => 'form-control pe-4'])->label(false) ?>
