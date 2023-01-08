@@ -39,7 +39,7 @@ class Groups extends \yii\db\ActiveRecord
         return [
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
-            [['slug', 'title', 'image', 'site'], 'string', 'max' => 255],
+            [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
         ];
     }
 
@@ -57,6 +57,7 @@ class Groups extends \yii\db\ActiveRecord
             'site' => 'Site',
             'is_private' => 'Is Private',
             'admin' => 'Admin',
+            'background' => 'Background'
         ];
     }
 }
