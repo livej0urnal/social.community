@@ -58,8 +58,12 @@ class ProfileController extends AppController
     {
         $id = Yii::$app->request->get('id');
         $page = Pages::find()->where(['id' => $id])->with('friends', 'feeds')->one();
+        $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->all();
+        $query = Posts::find()->where(['page_id' => $page->id])->with('comments')->orderby(['created_at' => SORT_DESC]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 20, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta($page->page_name);
-        return $this->render('friend', compact('page'));
+        return $this->render('friend', compact('page', 'posts', 'pages'));
     }
 
     public function actionDeletePost($id)

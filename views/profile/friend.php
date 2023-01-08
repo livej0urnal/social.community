@@ -75,26 +75,6 @@
                                         <p class="mb-0 small"><?= $post->page->category->title ?> </p>
                                     </div>
                                 </div>
-                                <!-- Card feed action dropdown START -->
-                                <div class="dropdown">
-                                    <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
-                                       id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots"></i>
-                                    </a>
-                                    <?php if ($post->page_id === $page->id): ?>
-                                        <!-- Card feed action dropdown menu -->
-                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
-                                            <li>
-                                                <a class="dropdown-item dropdown-post" href="#"
-                                                   data-id="<?= $post->id ?>">
-                                                    <i class="bi bi-x-circle fa-fw pe-2"></i>
-                                                    Delete post
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    <?php endif; ?>
-                                </div>
-                                <!-- Card feed action dropdown END -->
                             </div>
                         </div>
                         <!-- Card header END -->
@@ -114,16 +94,6 @@
                                         <?= Html::img($post->page->image, ['class' => 'avatar-img rounded-circle']) ?>
                                     </a>
                                 </div>
-
-                                <?php $form = ActiveForm::begin(['id' => 'new-comment-'. $post->id , 'options' => ['class' => 'position-relative w-100'] ]) ?>
-
-                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
-
-                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
-
-                                <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i></button>
-
-                                <?php ActiveForm::end() ?>
                             </div>
                             <?php $comments = $post->comments; ?>
                             <?php if (!empty($comments)) : ?>
