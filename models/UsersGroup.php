@@ -21,6 +21,16 @@ class UsersGroup extends \yii\db\ActiveRecord
         return 'users_group';
     }
 
+    public function getGroup()
+    {
+        return $this->hasOne(Groups::className() , ['id' => 'group_id']);
+    }
+
+    public function getPage()
+    {
+        return $this->hasOne(Pages::className() , ['id' => 'page_id']);
+    }
+
     /**
      * {@inheritdoc}
      */
