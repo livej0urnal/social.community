@@ -209,15 +209,16 @@ class ProfileController extends AppController
 
         for($i = 0; $i < 100; $i++)
         {
-            $group = new Groups();
-            $group->image = '/images/logo/0'. rand(1,9) . '.svg';
-            $group->title = $faker->words(3);
-            $group->slug = $faker->slug(10);
-            $group->short = $faker->text(100);
-            $group->site = $faker->url();
-            $group->is_private = rand(0,1);
-            $group->admin = rand(1,20);
-            $group->save(false);
+//            $group = new Groups();
+//            $group->image = '/images/logo/0'. rand(1,9) . '.svg';
+//            $group->title = $faker->word();
+//            $group->slug = $faker->slug(10);
+//            $group->short = $faker->text(100);
+//            $group->site = $faker->url();
+//            $group->is_private = rand(0,1);
+//            $group->admin = rand(1,20);
+//            $group->background = '/images/bg/0'. rand(1,7). '.jpg';
+//            $group->save(false);
 
 
 //            $comment = new CommentPost();
