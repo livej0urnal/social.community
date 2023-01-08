@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            <button class="btn btn-sm btn-primary me-2" data-bs-toggle="tooltip"
+                            <button class="btn btn-sm btn-primary me-2 add-friend" data-value="<?= $page->id ?>" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Send message"><i
                                         class="bi bi-chat-left-text"></i></button>
                             <?php if (!empty($friend)) : ?>

@@ -32,7 +32,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post', 'about', 'apply-friend', 'delete-friend'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post', 'about', 'apply-friend', 'delete-friend', 'add-friend'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -150,6 +150,8 @@ class ProfileController extends AppController
             $friend->friend_id = $page->id;
             $friend->save();
             $feed->delete();
+            $last_feed = Feeds::find()->where(['page_id' => $feed->feed_id])->andWhere(['feed_id' => $page->id])->one();
+            $last_feed->delete(false);
             return $this->redirect(['profile/friend' , 'id' => $feed->feed_id]);
         }
     }
@@ -172,6 +174,19 @@ class ProfileController extends AppController
 
         }
 //        return $this->refresh();
+    }
+
+    public function actionAddFriend($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user = Yii::$app->user->identity->id;
+        $page_user = Pages::findOne(['user_id' => $user]);
+        $feed = new Feeds();
+        $feed->page_id = $id;
+        $feed->feed_id = $page_user->id;
+        $feed->save();
+        $feed = new Feeds();
+        return $this->goHome();
     }
 
     public function actionFake()

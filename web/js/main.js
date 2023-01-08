@@ -108,3 +108,11 @@ $('.delete-friend').on('click', function () {
         }
     });
 });
+
+$('.add-friend').on('click', function () {
+    var id = $(this).attr('data-value');
+    $.ajax({
+        url: '/profile/add-friend?id=' + id,
+        method: 'GET',
+    });
+});
