@@ -93,3 +93,11 @@ $('.apply-friend').on('click', function () {
       method: 'GET',
    });
 });
+
+$('.delete-friend').on('click', function () {
+    var id = $(this).attr('data-value');
+    $.ajax({
+        url: '/profile/delete-friend?id=' + id,
+        method: 'GET',
+    });
+});

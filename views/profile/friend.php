@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
                                     data-bs-placement="top" title="Send message"><i
                                         class="bi bi-chat-left-text"></i></button>
                             <?php if (!empty($friend)) : ?>
-                                <button class="btn btn-sm btn-danger me-2" data-bs-toggle="tooltip"
+                                <button class="btn btn-sm btn-danger me-2 delete-friend" data-value="<?= $page->id ?>" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
                                 </button>
                             <?php else: ?>
