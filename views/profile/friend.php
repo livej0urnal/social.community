@@ -13,9 +13,9 @@
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-50px rounded-top"></div>
+                <div class="h-50px rounded-top pb-5"></div>
                 <!-- Card body START -->
-                <div class="card-body py-0">
+                <div class="card-body py-0 pb-3">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
