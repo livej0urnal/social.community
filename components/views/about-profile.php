@@ -119,7 +119,7 @@ use yii\helpers\Url;
                                     <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Send message"><i
                                                 class="bi bi-chat-left-text"></i></button>
-                                    <button class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
+                                    <button class="btn btn-sm btn-danger delete-friend" data-value="<?= $friend->friend->id ?>" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
                                     </button>
                                 </div>
