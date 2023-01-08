@@ -109,7 +109,7 @@ use yii\widgets\LinkPager;
                                                                                  alt=""><span>Events </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?= Url::to(['profile/groups']) ?>"> <img class="me-2 h-20px fa-fw"
                                                                                  src="/images/icon/chat-outline-filled.svg"
                                                                                  alt=""><span>Groups </span></a>
                                 </li>
