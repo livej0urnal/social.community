@@ -90,8 +90,8 @@
                             <div class="d-flex mb-3">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs me-2">
-                                    <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
-                                        <?= Html::img($post->page->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                    <a href="<?= Url::to(['profile/friend', 'id' => $page_user->id]) ?>">
+                                        <?= Html::img($page_user->image, ['class' => 'avatar-img rounded-circle']) ?>
                                     </a>
                                 </div>
                             </div>
