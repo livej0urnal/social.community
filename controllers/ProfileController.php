@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use app\controllers\AppController;
 use app\models\CommentForm;
+use app\models\Groups;
 use app\models\Pages;
 use app\models\Posts;
 use app\models\User;
 use app\models\Users;
+use Codeception\PHPUnit\Constraint\Page;
 use Faker\Factory;
 use Yii;
 use yii\filters\AccessControl;
@@ -32,7 +34,7 @@ class ProfileController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post', 'about', 'apply-friend', 'delete-friend', 'add-friend'], // действия в контроллере
+                        'actions' => ['connections', 'fake', 'friend', 'delete-comment', 'delete-post', 'about', 'apply-friend', 'delete-friend', 'add-friend', 'groups'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -85,6 +87,18 @@ class ProfileController extends AppController
         $feed = Feeds::find()->where(['page_id' => $page_user->id])->andWhere(['feed_id' => $page->id])->one();
         $this->setMeta($page->page_name);
         return $this->render('friend', compact('page', 'posts', 'pages', 'page_user', 'new_comment', 'friend', 'feed'));
+    }
+
+    public function actionGroups()
+    {
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::find()->where(['user_id' => $user])->with('groups')->one();
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $this->setMeta('Groups');
+        return $this->render('groups', compact('page', 'user'));
+
     }
 
     public function actionDeletePost($id)

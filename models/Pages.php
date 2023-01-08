@@ -64,6 +64,11 @@ class Pages extends ActiveRecord
         return $this->hasMany(CommentPost::className() , ['page_id' => 'id']);
     }
 
+    public function getGroups()
+    {
+        return $this->hasMany(UsersGroup::className() , ['page_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
