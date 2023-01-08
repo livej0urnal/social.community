@@ -2,6 +2,7 @@
     use yii\helpers\Html;
     use yii\helpers\Url;
     use yii\widgets\LinkPager;
+    use yii\widgets\ActiveForm;
 ?>
 
 
@@ -94,8 +95,18 @@
                                         <?= Html::img($page_user->image, ['class' => 'avatar-img rounded-circle']) ?>
                                     </a>
                                 </div>
+                                <?php $form = ActiveForm::begin(['id' => 'new-comment-'. $post->id , 'options' => ['class' => 'position-relative w-100'] ]) ?>
+
+                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
+
+                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
+
+                                <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i></button>
+
+                                <?php ActiveForm::end() ?>
                             </div>
                             <?php $comments = $post->comments; ?>
+
                             <?php if (!empty($comments)) : ?>
                                 <!-- Comment wrap START -->
                                 <ul class="comment-wrap list-unstyled">

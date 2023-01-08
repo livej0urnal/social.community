@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use app\models\CommentForm;
 use app\models\Pages;
 use app\models\Posts;
 use app\models\User;
@@ -64,8 +65,24 @@ class ProfileController extends AppController
         $query = Posts::find()->where(['page_id' => $page->id])->with('comments')->orderby(['created_at' => SORT_DESC]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 20, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $new_comment = new CommentForm();
+        if($new_comment->load(Yii::$app->request->post())){
+            $new_comment->validate();
+            $comment = new CommentPost();
+            $comment->post_id = $new_comment->post_id;
+            $comment->comment = $new_comment->comment;
+            $comment->page_id = $page_user->id;
+            $comment->save();
+            if($comment->save()) {
+                Yii::$app->session->setFlash('success', 'Comment send!');
+                return $this->refresh();
+            }
+            else{
+                Yii::$app->session->setFlash('error', 'Has error!');
+            }
+        }
         $this->setMeta($page->page_name);
-        return $this->render('friend', compact('page', 'posts', 'pages', 'page_user'));
+        return $this->render('friend', compact('page', 'posts', 'pages', 'page_user', 'new_comment'));
     }
 
     public function actionDeletePost($id)
