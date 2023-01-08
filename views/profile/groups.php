@@ -202,7 +202,7 @@
                                         <!-- Card body END -->
                                         <!-- Card Footer START -->
                                         <div class="card-footer text-center">
-                                            <a class="btn btn-danger-soft btn-sm" href="#!"> Leave group </a>
+                                            <a class="btn btn-danger-soft btn-sm leave-group" data-value="<?= $group->group->id ?>" href="#!"> Leave group </a>
                                         </div>
                                         <!-- Card Footer END -->
                                     </div>

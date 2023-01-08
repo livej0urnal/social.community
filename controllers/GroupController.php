@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\controllers\AppController;
 use app\models\Groups;
+use app\models\Pages;
 use app\models\UsersGroup;
 use Yii;
 
@@ -12,9 +13,35 @@ class GroupController extends AppController
     public function actionSingle($slug)
     {
         $slug = Yii::$app->request->get('slug');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $group = Groups::findOne(['slug' => $slug]);
-        $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
-        return $this->render('single', compact('group', 'users'));
+        if($group->is_private == '1') {
+            $user = Yii::$app->user->identity->id;
+            $page = Pages::findOne(['user_id' => $user]);
+            $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
+            if($is_user) {
+                return $this->goHome();
+            }
+            else{
+                $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
+                return $this->render('single', compact('group', 'users'));
+            }
+        }
+        else{
+            $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
+            return $this->render('single', compact('group', 'users'));
+        }
+
+    }
+
+    public function actionLeave($id)
+    {
+        $id = Yii::$app->request->get('id');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
     }
 
 }
