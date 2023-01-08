@@ -85,3 +85,11 @@ $('.dropdown-comment').on('click', function (e) {
         })
     }
 });
+
+$('.apply-friend').on('click', function () {
+   var id = $(this).attr('data-value');
+   $.ajax({
+      url: '/profile/apply-friend?id=' + id,
+      method: 'GET',
+   });
+});

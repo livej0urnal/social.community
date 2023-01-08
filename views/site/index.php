@@ -419,7 +419,7 @@ use yii\widgets\LinkPager;
                                 <p class="mb-0 small text-truncate"><?= $feed->feed->category->title ?></p>
                             </div>
                             <!-- Button -->
-                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i
+                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto apply-friend" data-value="<?= $feed->feed_id ?>" href="#"><i
                                         class="fa-solid fa-plus"> </i></a>
                         </div>
                         <!-- Connection item END -->
