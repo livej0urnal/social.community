@@ -81,8 +81,10 @@ class ProfileController extends AppController
                 Yii::$app->session->setFlash('error', 'Has error!');
             }
         }
+        $friend = Friends::find()->where(['page_id' => $page_user->id])->andWhere(['friend_id' => $page->id])->one();
+        $feed = Feeds::find()->where(['page_id' => $page_user->id])->andWhere(['feed_id' => $page->id])->one();
         $this->setMeta($page->page_name);
-        return $this->render('friend', compact('page', 'posts', 'pages', 'page_user', 'new_comment'));
+        return $this->render('friend', compact('page', 'posts', 'pages', 'page_user', 'new_comment', 'friend', 'feed'));
     }
 
     public function actionDeletePost($id)

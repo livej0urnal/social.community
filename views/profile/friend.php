@@ -1,8 +1,10 @@
 <?php
-    use yii\helpers\Html;
-    use yii\helpers\Url;
-    use yii\widgets\LinkPager;
-    use yii\widgets\ActiveForm;
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
+
 ?>
 
 
@@ -28,23 +30,37 @@
                             <!-- Info -->
                             <h1 class="mb-0 h5"><?= $page->page_name ?></h1>
                             <p><?= $page->display_name ?></p>
-                            <p><b><?php echo count($page->feeds); ?> feed(s)</b> / <b><?php echo count($page->friends)?> friends</b></p>
+                            <p><b><?php echo count($page->feeds); ?> feed(s)</b> /
+                                <b><?php echo count($page->friends) ?> friends</b></p>
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
                             <button class="btn btn-sm btn-primary me-2" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Send message"><i
                                         class="bi bi-chat-left-text"></i></button>
-                            <button class="btn btn-sm btn-danger me-2" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
-                            </button>
+                            <?php if (!empty($friend)) : ?>
+                                <button class="btn btn-sm btn-danger me-2" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
+                                </button>
+                            <?php else: ?>
+                                <?php if(!empty($feed)) : ?>
+                                    <a class="btn btn-primary rounded-circle icon-md ms-auto apply-friend" data-value="<?= $feed->feed_id ?>" href="#"><i class="bi bi-person-check-fill"> </i></a>
+                                <?php else: ?>
+                                <!-- Button -->
+                                <a class="btn btn-primary-soft rounded-circle icon-md ms-auto add-friend"
+                                   data-value="<?= $page->id ?>" href="#"><i
+                                            class="fa-solid fa-plus"> </i></a>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <!-- List profile -->
                     <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
-                        <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $page->category->title ?></li>
+                        <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $page->category->title ?>
+                        </li>
                         <li class="list-inline-item"><i class="bi bi-github me-1"></i> <?= $page->github_link ?></li>
-                        <li class="list-inline-item"><i class="bi bi-linkedin me-1"></i> <?= $page->linkedin_link ?></li>
+                        <li class="list-inline-item"><i class="bi bi-linkedin me-1"></i> <?= $page->linkedin_link ?>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +85,7 @@
                                     <div>
                                         <div class="nav nav-divider">
                                             <h6 class="nav-item card-title mb-0"><a
-                                                    href="<?= Url::to(['profile/friend', 'id' => $post->page_id]) ?>"> <?= $post->page->page_name ?> </a>
+                                                        href="<?= Url::to(['profile/friend', 'id' => $post->page_id]) ?>"> <?= $post->page->page_name ?> </a>
                                             </h6>
                                             <span class="nav-item small"> <?= $post->created_at ?> </span>
                                         </div>
@@ -95,13 +111,16 @@
                                         <?= Html::img($page_user->image, ['class' => 'avatar-img rounded-circle']) ?>
                                     </a>
                                 </div>
-                                <?php $form = ActiveForm::begin(['id' => 'new-comment-'. $post->id , 'options' => ['class' => 'position-relative w-100'] ]) ?>
+                                <?php $form = ActiveForm::begin(['id' => 'new-comment-' . $post->id, 'options' => ['class' => 'position-relative w-100']]) ?>
 
-                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]" value="<?= $post->id ?>" class="disabled hidden d-none">
+                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]"
+                                       value="<?= $post->id ?>" class="disabled hidden d-none">
 
                                 <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
 
-                                <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i></button>
+                                <button type="submit" class="btn btn-sm btn-primary"
+                                        style="float: right; margin-top: 5px;"><i class="bi bi-chat-left-text"></i>
+                                </button>
 
                                 <?php ActiveForm::end() ?>
                             </div>
@@ -110,9 +129,11 @@
                             <?php if (!empty($comments)) : ?>
                                 <!-- Comment wrap START -->
                                 <ul class="comment-wrap list-unstyled">
-                                    <?php $i = 1;  foreach ($comments as $comment) : ?>
+                                    <?php $i = 1;
+                                    foreach ($comments as $comment) : ?>
                                         <!-- Comment item START -->
-                                        <li class="comment-item mt-2 <?php if($i > 3): ?> hidden-comment <?php endif; ?> ?>" data-post="<?= $post->id ?>">
+                                        <li class="comment-item mt-2 <?php if ($i > 3): ?> hidden-comment <?php endif; ?> ?>"
+                                            data-post="<?= $post->id ?>">
                                             <div class="d-flex">
                                                 <!-- Avatar -->
                                                 <div class="avatar avatar-xs">
@@ -124,7 +145,8 @@
                                                 <div class="ms-2">
                                                     <div class="bg-light p-3 rounded">
                                                         <div class="d-flex justify-content-between">
-                                                            <h6 class="mb-1"><a href="<?= Url::to(['profile/friend', 'id' => $comment->user->id]) ?>"> <?= $comment->user->page_name ?></a>
+                                                            <h6 class="mb-1"><a
+                                                                        href="<?= Url::to(['profile/friend', 'id' => $comment->user->id]) ?>"> <?= $comment->user->page_name ?></a>
                                                             </h6>
                                                         </div>
                                                         <p class="small mb-0">
@@ -141,13 +163,16 @@
                                                 <?php if ($comment->page_id === $page->id): ?>
                                                     <!-- Card feed action dropdown START -->
                                                     <div class="dropdown">
-                                                        <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
-                                                           id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <a href="#"
+                                                           class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
+                                                           id="cardFeedAction1" data-bs-toggle="dropdown"
+                                                           aria-expanded="false">
                                                             <i class="bi bi-three-dots"></i>
                                                         </a>
 
                                                         <!-- Card feed action dropdown menu -->
-                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
+                                                        <ul class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="cardFeedAction1">
                                                             <li>
                                                                 <a class="dropdown-item dropdown-comment" href="#"
                                                                    data-id="<?= $comment->id ?>">
@@ -166,10 +191,12 @@
                                         <?php $i++; ?>
                                         <!-- Comment item END -->
                                     <?php endforeach; ?>
-                                    <?php if(count($comments) > 2) : ?>
+                                    <?php if (count($comments) > 2) : ?>
                                         <div class="border-0 pt-0 mt-2">
                                             <!-- Load more comments -->
-                                            <a href="#!" role="button" data-value="<?= $post->id ?>" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center load-more-comments" data-bs-toggle="button" aria-pressed="true">
+                                            <a href="#!" role="button" data-value="<?= $post->id ?>"
+                                               class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center load-more-comments"
+                                               data-bs-toggle="button" aria-pressed="true">
                                                 <div class="spinner-dots me-2">
                                                     <span class="spinner-dot"></span>
                                                     <span class="spinner-dot"></span>
@@ -226,12 +253,14 @@
                         <div class="d-flex">
                             <!-- Avatar -->
                             <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/08.svg" alt=""> </a>
+                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/08.svg" alt="">
+                                </a>
                             </div>
                             <!-- Info -->
                             <div>
                                 <h6 class="card-title mb-0"><a href="#!"> Apple Computer, Inc. </a></h6>
-                                <p class="small">May 2015 – Present Employment Duration 8 mos <a class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
+                                <p class="small">May 2015 – Present Employment Duration 8 mos <a
+                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
                             </div>
                         </div>
                         <!-- Experience item END -->
@@ -240,12 +269,14 @@
                         <div class="d-flex">
                             <!-- Avatar -->
                             <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/09.svg" alt=""> </a>
+                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/09.svg" alt="">
+                                </a>
                             </div>
                             <!-- Info -->
                             <div>
                                 <h6 class="card-title mb-0"><a href="#!"> Microsoft Corporation </a></h6>
-                                <p class="small">May 2017 – Present Employment Duration 1 yrs 5 mos <a class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
+                                <p class="small">May 2017 – Present Employment Duration 1 yrs 5 mos <a
+                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
                             </div>
                         </div>
                         <!-- Experience item END -->
@@ -254,12 +285,14 @@
                         <div class="d-flex">
                             <!-- Avatar -->
                             <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/10.svg" alt=""> </a>
+                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/10.svg" alt="">
+                                </a>
                             </div>
                             <!-- Info -->
                             <div>
                                 <h6 class="card-title mb-0"><a href="#!"> Tata Consultancy Services. </a></h6>
-                                <p class="small mb-0">May 2022 – Present Employment Duration 6 yrs 10 mos <a class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
+                                <p class="small mb-0">May 2022 – Present Employment Duration 6 yrs 10 mos <a
+                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
                             </div>
                         </div>
                         <!-- Experience item END -->
