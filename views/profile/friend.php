@@ -31,7 +31,12 @@
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            <button class="btn btn-danger-soft me-2" type="button" onclick="location.href = '<?= Url::to(['page/edit' , 'id' => $page->id]) ?>'"> <i class="bi bi-pencil-fill pe-1"></i> Edit profile </button>
+                            <button class="btn btn-sm btn-primary me-2" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Send message"><i
+                                        class="bi bi-chat-left-text"></i></button>
+                            <button class="btn btn-sm btn-danger me-2" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
+                            </button>
                         </div>
                     </div>
                     <!-- List profile -->
@@ -39,17 +44,6 @@
                         <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $page->category->title ?></li>
                         <li class="list-inline-item"><i class="bi bi-github me-1"></i> <?= $page->github_link ?></li>
                         <li class="list-inline-item"><i class="bi bi-linkedin me-1"></i> <?= $page->linkedin_link ?></li>
-                    </ul>
-                </div>
-                <!-- Card body END -->
-                <div class="card-footer mt-3 pt-2 pb-0">
-                    <!-- Nav profile pages -->
-                    <ul class="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0" id="user-link-page">
-                        <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['page/profile' , 'id' => $page->id]) ?>"> Posts <span class="badge bg-success bg-opacity-10 text-success small"> <?php echo count($page->posts);?></span></a> </li>
-                        <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/about' , 'user' => $page->user_id]) ?>"> About </a> </li>
-                        <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/connections' , 'user' => $page->user_id]) ?>"> Connections <span class="badge bg-success bg-opacity-10 text-success small"> <?php echo count($page->friends);?></span> </a> </li>
-                        <li class="nav-item"> <a class="nav-link link-profile-href" href="my-profile-events.html"> Groups</a> </li>
-                        <li class="nav-item"> <a class="nav-link link-profile-href" href="my-profile-activity.html"> Activity</a> </li>
                     </ul>
                 </div>
             </div>
