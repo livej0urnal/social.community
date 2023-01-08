@@ -202,7 +202,11 @@
                                         <!-- Card body END -->
                                         <!-- Card Footer START -->
                                         <div class="card-footer text-center">
-                                            <a class="btn btn-danger-soft btn-sm leave-group" data-value="<?= $group->group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->group->id]) ?>"> Leave group </a>
+                                            <?php if($group->group->admin != $page->id): ?>
+                                                <a class="btn btn-danger-soft btn-sm leave-group" data-value="<?= $group->group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->group->id]) ?>"> Leave group </a>
+                                            <?php else : ?>
+                                                <a class="btn btn-warning-soft btn-sm " href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"> Manage group </a>
+                                            <?php endif; ?>
                                         </div>
                                         <!-- Card Footer END -->
                                     </div>
