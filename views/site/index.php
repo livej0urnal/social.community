@@ -154,19 +154,35 @@
                             <div class="d-flex align-items-center">
                                 <!-- Avatar -->
                                 <div class="avatar me-2">
-                                    <a href="<?= Url::to(['page/profile', 'id' => $post->page_id]) ?>">
+                                    <?php if($post->page_id != $page->id): ?>
+                                    <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
                                         <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                                     </a>
+                                    <?php else: ?>
+                                        <a href="<?= Url::to(['page/profile', 'id' => $post->page->id]) ?>">
+                                            <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- Info -->
                                 <div>
+                                    <?php if($post->page_id != $page->id): ?>
                                     <div class="nav nav-divider">
                                         <h6 class="nav-item card-title mb-0"><a
-                                                    href="<?= Url::to(['page/profile', 'id' => $post->page_id]) ?>"> <?= $post->page->page_name ?> </a>
+                                                    href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>"> <?= $post->page->page_name ?> </a>
                                         </h6>
                                         <span class="nav-item small"> <?= $post->created_at ?> </span>
                                     </div>
                                     <p class="mb-0 small"><?= $post->page->category->title ?> </p>
+                                    <?php else: ?>
+                                        <div class="nav nav-divider">
+                                            <h6 class="nav-item card-title mb-0"><a
+                                                        href="<?= Url::to(['page/profile', 'id' => $post->page->id]) ?>"> <?= $post->page->page_name ?> </a>
+                                            </h6>
+                                            <span class="nav-item small"> <?= $post->created_at ?> </span>
+                                        </div>
+                                        <p class="mb-0 small"><?= $post->page->category->title ?> </p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <?php if ($post->page_id === $page->id): ?>
