@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;
     <div class="col-lg-8 vstack gap-4">
         <?php
         //кеш на час
-        if ($this->beginCache('HeaderProfile', ['duration' => 3600])) {
+        if ($this->beginCache('HeaderProfile', ['duration' => 100])) {
             echo \app\components\HeaderProfileWidget::widget();
             $this->endCache(); }
         ?>
@@ -166,7 +166,7 @@ use yii\widgets\LinkPager;
         <div class="row g-4">
             <?php
             //кеш на час
-            if ($this->beginCache('AboutPage', ['duration' => 3600])) {
+            if ($this->beginCache('AboutPage', ['duration' => 100])) {
                 echo \app\components\AboutProfileWidget::widget();
                 $this->endCache(); }
             ?>
