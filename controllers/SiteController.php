@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CommentForm;
 use app\models\CommentPost;
+use app\models\Feeds;
 use app\models\Pages;
 use app\models\Posts;
 use app\models\Users;
@@ -104,8 +105,9 @@ class SiteController extends AppController
                     Yii::$app->session->setFlash('error', 'Has error!');
                 }
             }
+            $feeds = Feeds::find()->where(['page_id' => $page->id])->limit(5)->all();
             $this->setMeta('Social Community');
-            return $this->render('index', compact('page', 'user', 'new_post', 'posts', 'new_comment', 'comment', 'pages'));
+            return $this->render('index', compact('page', 'user', 'new_post', 'posts', 'new_comment', 'comment', 'pages', 'feeds'));
         }
         else{
             $this->redirect('page/create');
