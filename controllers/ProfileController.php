@@ -9,6 +9,7 @@ use app\models\Pages;
 use app\models\Posts;
 use app\models\User;
 use app\models\Users;
+use app\models\UsersGroup;
 use Codeception\PHPUnit\Constraint\Page;
 use Faker\Factory;
 use Yii;
@@ -207,8 +208,15 @@ class ProfileController extends AppController
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 100; $i++)
+        for($i = 0; $i < 300; $i++)
         {
+//            $users = new UsersGroup();
+//            $users->page_id = rand(1,100);
+//            $users->group_id = rand(1,100);
+//            $users->save(false);
+
+
+
 //            $group = new Groups();
 //            $group->image = '/images/logo/0'. rand(1,9) . '.svg';
 //            $group->title = $faker->word();
