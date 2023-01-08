@@ -21,6 +21,7 @@
                     <!-- Info -->
                     <h1 class="mb-0 h5"><?= $page->page_name ?></h1>
                     <p><?= $page->display_name ?></p>
+                    <p>Feeds : <?php echo count($page->friends); ?></p>
                 </div>
                 <!-- Button -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
