@@ -17,7 +17,7 @@ class GroupController extends AppController
             return $this->goHome();
         }
         $group = Groups::findOne(['slug' => $slug]);
-        if(!$group->is_private == '1') {
+        if($group->is_private == 1) {
             $user = Yii::$app->user->identity->id;
             $page = Pages::findOne(['user_id' => $user]);
             $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
@@ -26,6 +26,7 @@ class GroupController extends AppController
             }
             else{
                 $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
+                $this->setMeta($group->title);
                 return $this->render('single', compact('group', 'users'));
             }
         }
