@@ -144,7 +144,6 @@
                         </div>
                         <div class="col-sm-6 col-lg-3 ms-lg-auto">
                             <!-- Select Groups -->
-                            <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-select js-choice choice-select-text-none choices__input" data-search-enabled="false" hidden="" tabindex="-1" data-choice="active"><option value="AB">Alphabetical</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="AB" data-custom-properties="null" aria-selected="true">Alphabetical</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__list" role="listbox"><div id="choices--hvfy-item-choice-1" class="choices__item choices__item--choice is-selected choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="AB" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Alphabetical</div><div id="choices--hvfy-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="NG" data-select-text="Press to select" data-choice-selectable="">Newest group</div><div id="choices--hvfy-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="RA" data-select-text="Press to select" data-choice-selectable="">Recently active</div><div id="choices--hvfy-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="SG" data-select-text="Press to select" data-choice-selectable="">Suggested</div></div></div></div>
                         </div>
                         <div class="col-sm-6 col-lg-3">
                             <!-- Button modal -->
@@ -155,15 +154,9 @@
                 <!-- Card header START -->
                 <!-- Card body START -->
                 <div class="card-body">
-                    <!-- Tab nav line -->
-                    <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                        <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-1"> Friends' groups </a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2"> Suggested for you </a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3"> Popular near you </a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-4"> More suggestions </a> </li>
-                    </ul>
                     <div class="tab-content mb-0 pb-0">
-
+                        <?php $groups = $page->groups; ?>
+                        <?php if(!empty($groups)) : ?>
                         <!-- Friends groups tab START -->
                         <div class="tab-pane fade show active" id="tab-1">
                             <div class="row g-4">
@@ -454,203 +447,7 @@
                             </div>
                         </div>
                         <!-- Friends' groups tab END -->
-
-                        <!-- Suggested for you START -->
-                        <div class="tab-pane fade" id="tab-2">
-                            <div class="row g-4">
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/01.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"><a href="group-details.html">Real humans</a></h5>
-                                            <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">23k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">12</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+12</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-danger-soft btn-sm" href="#!"> Leave group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/02.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/03.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"><a href="group-details.html">Strong signals</a></h5>
-                                            <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">45k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">16</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+05</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-success-soft btn-sm" href="#!"> Join group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/03.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/05.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"><a href="group-details.html">Team yes, we can</a></h5>
-                                            <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">32k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">05</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/14.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/13.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+08</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-success-soft btn-sm" href="#!"> Join group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Suggested for you END -->
-
-                        <!-- Popular near you START -->
-                        <div class="tab-pane fade" id="tab-3">
-                            <!-- Add group -->
-                            <div class="my-sm-5 py-sm-5 text-center">
-                                <i class="display-1 text-muted bi bi-people"> </i>
-                                <h4 class="mt-2 mb-3 text-body">No group founds</h4>
-                                <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateGroup"> Click here to add </button>
-                            </div>
-                        </div>
-                        <!-- Popular near you END -->
-
-                        <!-- More suggestions START -->
-                        <div class="tab-pane fade" id="tab-4">
-                            <!-- Add group -->
-                            <div class="my-sm-5 py-sm-5 text-center">
-                                <i class="display-1 text-muted bi bi-people"> </i>
-                                <h4 class="mt-2 mb-3 text-body">No group founds</h4>
-                                <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateGroup"> Click here to add </button>
-                            </div>
-                        </div>
-                        <!-- More suggestions END -->
+                        <?php endif; ?>
 
                     </div>
                 </div>
