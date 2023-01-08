@@ -31,6 +31,11 @@ class Groups extends \yii\db\ActiveRecord
         return $this->hasMany(UsersGroup::className() , ['group_id' => 'id']);
     }
 
+    public function getPosts()
+    {
+        return $this->hasMany(PostsGroup::className() , ['group_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
