@@ -171,7 +171,7 @@ class ProfileController extends AppController
             }
 
         }
-        return $this->redirect(['profile/friend' , 'id' => $page->id]);
+//        return $this->refresh();
     }
 
     public function actionFake()

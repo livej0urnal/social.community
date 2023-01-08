@@ -99,5 +99,12 @@ $('.delete-friend').on('click', function () {
     $.ajax({
         url: '/profile/delete-friend?id=' + id,
         method: 'GET',
+        success: function () {
+            location.reload();
+        },
+        error: function ()
+        {
+            alert('Error!')
+        }
     });
 });

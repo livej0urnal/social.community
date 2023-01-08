@@ -67,7 +67,7 @@
                     </div>
                     <!-- Button -->
                     <div class="ms-md-auto d-flex">
-                        <button class="btn btn-danger-soft btn-sm mb-0 me-2"> Remove </button>
+                        <button class="btn btn-danger-soft btn-sm mb-0 me-2 delete-friend" data-value="<?= $friend->friend->id ?>"> Remove </button>
                         <button class="btn btn-primary-soft btn-sm mb-0"> Message </button>
                     </div>
                 </div>
