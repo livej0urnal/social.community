@@ -175,7 +175,13 @@
                                             </div>
                                             <!-- Info -->
                                             <h5 class="mb-0"> <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"><?= $group->group->title ?></a></h5>
-                                            <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
+                                            <?php if($group->group->is_private != 1): ?>
+                                                <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
+                                            <?php else : ?>
+                                                <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
+                                            <?php endif; ?>
+
+
                                             <!-- Group stat START -->
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
                                                 <!-- Group stat item -->
