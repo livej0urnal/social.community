@@ -26,7 +26,7 @@ class Groups extends \yii\db\ActiveRecord
         return 'groups';
     }
 
-    public function getUserGroup()
+    public function getUsers()
     {
         return $this->hasMany(UsersGroup::className() , ['group_id' => 'id']);
     }
