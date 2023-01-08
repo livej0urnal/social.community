@@ -186,7 +186,7 @@
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
                                                 <!-- Group stat item -->
                                                 <div>
-                                                    <h6 class="mb-0">45k</h6>
+                                                    <h6 class="mb-0"><?php echo count($group->group->users)?></h6>
                                                     <small>Members</small>
                                                 </div>
                                                 <!-- Divider -->
@@ -198,19 +198,6 @@
                                                 </div>
                                             </div>
                                             <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+12</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
                                         </div>
                                         <!-- Card body END -->
                                         <!-- Card Footer START -->

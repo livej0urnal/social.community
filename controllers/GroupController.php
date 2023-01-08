@@ -13,7 +13,8 @@ class GroupController extends AppController
     {
         $slug = Yii::$app->request->get('slug');
         $group = Groups::findOne(['slug' => $slug]);
-        return $this->render('single', compact('group'));
+        $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
+        return $this->render('single', compact('group', 'users'));
     }
 
 }
