@@ -160,131 +160,21 @@
                         <!-- Friends groups tab START -->
                         <div class="tab-pane fade show active" id="tab-1">
                             <div class="row g-4">
+                                <?php foreach ($groups as $group) : ?>
                                 <div class="col-sm-6 col-lg-4">
                                     <!-- Card START -->
                                     <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                                        <div class="h-80px rounded-top" style="background-image:url(<?= $group->group->background ?>); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                                         <!-- Card body START -->
                                         <div class="card-body text-center pt-0">
                                             <!-- Avatar -->
                                             <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/08.svg" alt=""></a>
+                                                <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>">
+                                                    <?= Html::img($group->group->image, ['class' => 'avatar-img rounded-circle border border-white border-3 bg-white']) ?>
+                                                </a>
                                             </div>
                                             <!-- Info -->
-                                            <h5 class="mb-0"> <a href="group-details.html">All in the Mind</a> </h5>
-                                            <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">32k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">20</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+22</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-success-soft btn-sm" href="#!"> Join group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/02.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/02.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"><a href="group-details.html">Beauty queens</a></h5>
-                                            <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">23k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">12</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+13</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-success-soft btn-sm" href="#!"> Join group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/03.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/09.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"> <a href="group-details.html">Eternal triangle</a></h5>
+                                            <h5 class="mb-0"> <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"><?= $group->group->title ?></a></h5>
                                             <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
                                             <!-- Group stat START -->
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
@@ -325,125 +215,7 @@
                                     </div>
                                     <!-- Card END -->
                                 </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/04.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/10.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"> <a href="group-details.html">Mountain movers</a></h5>
-                                            <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">32k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">05</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/14.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/13.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+08</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-danger-soft btn-sm" href="#!"> Leave group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Card START -->
-                                    <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                                        <!-- Card body START -->
-                                        <div class="card-body text-center pt-0">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="group-details.html"><img class="avatar-img rounded-circle border border-white border-3 bg-white" src="assets/images/logo/12.svg" alt=""></a>
-                                            </div>
-                                            <!-- Info -->
-                                            <h5 class="mb-0"> <a href="group-details.html">Hard workers</a></h5>
-                                            <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
-                                            <!-- Group stat START -->
-                                            <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">12k</h6>
-                                                    <small>Members</small>
-                                                </div>
-                                                <!-- Divider -->
-                                                <div class="vr"></div>
-                                                <!-- Group stat item -->
-                                                <div>
-                                                    <h6 class="mb-0">05</h6>
-                                                    <small>Post per day</small>
-                                                </div>
-                                            </div>
-                                            <!-- Group stat END -->
-                                            <!-- Avatar group START -->
-                                            <ul class="avatar-group list-unstyled align-items-center justify-content-center mb-0 mt-3">
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                    <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+23</span></div>
-                                                </li>
-                                            </ul>
-                                            <!-- Avatar group END -->
-                                        </div>
-                                        <!-- Card body END -->
-                                        <!-- Card Footer START -->
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-success-soft btn-sm" href="#!"> Join group </a>
-                                        </div>
-                                        <!-- Card Footer END -->
-                                    </div>
-                                    <!-- Card END -->
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <!-- Friends' groups tab END -->

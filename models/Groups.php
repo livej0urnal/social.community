@@ -40,6 +40,8 @@ class Groups extends \yii\db\ActiveRecord
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
+            [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
+            [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
         ];
     }
 
