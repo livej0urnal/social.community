@@ -424,11 +424,6 @@ use yii\widgets\LinkPager;
                         </div>
                         <!-- Connection item END -->
                         <?php endforeach; ?>
-
-                        <!-- View more button -->
-                        <div class="d-grid mt-3">
-                            <a class="btn btn-sm btn-primary-soft" href="#!">View more</a>
-                        </div>
                     </div>
                     <!-- Card body END -->
                 </div>
