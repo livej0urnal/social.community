@@ -48,9 +48,10 @@ class GroupController extends AppController
         $group = Groups::findOne($id);
         $user = Yii::$app->user->identity->id;
         $page = Pages::findOne(['user_id' => $user]);
-        $user_group = UsersGroup::find()->where(['page_id' => $page->id])->andWhere(['group_id' => $group->id])->one();
+        $user_group = UsersGroup::find()->where(['page_id' => $page->id])->andWhere(['group_id' => $id])->one();
         $user_group->delete();
         return $this->redirect(['profile/groups']);
+
     }
 
 }
