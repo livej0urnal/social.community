@@ -164,10 +164,10 @@ class ProfileController extends AppController
             return $this->goHome();
         }
         else{
-            $friend->delete();
+            $friend->delete(false);
             $friend = Friends::find()->where(['page_id' => $id])->andWhere(['friend_id' => $page->id])->one();
             if(!empty($friend)) {
-                $friend->delete();
+                $friend->delete(false);
             }
 
         }
