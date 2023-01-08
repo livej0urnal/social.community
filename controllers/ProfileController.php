@@ -7,6 +7,7 @@ use app\models\CommentForm;
 use app\models\Groups;
 use app\models\Pages;
 use app\models\Posts;
+use app\models\PostsGroup;
 use app\models\User;
 use app\models\Users;
 use app\models\UsersGroup;
@@ -208,8 +209,15 @@ class ProfileController extends AppController
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 300; $i++)
+        for($i = 0; $i < 1000; $i++)
         {
+            $post = new PostsGroup();
+            $post->page_id = rand(1, 300);
+            $post->group_id = rand(1,300);
+            $post->content = $faker->text(300);
+            $post->image = '/images/post/3by2/' . rand(1, 7) . '.jpg';
+            $post->save(false);
+
 //            $users = new UsersGroup();
 //            $users->page_id = rand(1,100);
 //            $users->group_id = rand(1,100);

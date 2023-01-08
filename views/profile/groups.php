@@ -193,8 +193,8 @@
                                                 <div class="vr"></div>
                                                 <!-- Group stat item -->
                                                 <div>
-                                                    <h6 class="mb-0">16</h6>
-                                                    <small>Post per day</small>
+                                                    <h6 class="mb-0"><?php echo count($group->group->posts); ?></h6>
+                                                    <small>Posts</small>
                                                 </div>
                                             </div>
                                             <!-- Group stat END -->
