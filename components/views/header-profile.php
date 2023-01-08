@@ -7,7 +7,7 @@
     <!-- My profile START -->
     <div class="card">
         <!-- Cover image -->
-        <div class="h-100px rounded-top"></div>
+        <div class="h-50px rounded-top"></div>
         <!-- Card body START -->
         <div class="card-body py-0">
             <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -21,7 +21,7 @@
                     <!-- Info -->
                     <h1 class="mb-0 h5"><?= $page->page_name ?></h1>
                     <p><?= $page->display_name ?></p>
-                    <p>Feeds : <?php echo count($page->friends); ?></p>
+                    <p><b><?php echo count($page->feeds); ?> feed(s)</b></p>
                 </div>
                 <!-- Button -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
