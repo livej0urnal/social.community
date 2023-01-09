@@ -123,7 +123,7 @@ $('.delete-group-post').on('click', function (e) {
             url: '/group/delete-post?id=' + id,
             method: 'GET',
             success: function () {
-                // location.reload();
+                location.reload();
             },
             error: function () {
                 alert('Error');
