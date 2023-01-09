@@ -98,8 +98,9 @@ class ProfileController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $groups = $page->groups;
         $this->setMeta('Groups');
-        return $this->render('groups', compact('page', 'user'));
+        return $this->render('groups', compact('page', 'user', 'groups'));
 
     }
 

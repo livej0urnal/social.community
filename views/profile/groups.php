@@ -17,8 +17,13 @@
                 </button>
             </div>
             <!-- Advanced filter responsive toggler END -->
-
-            <?= \app\components\SidebarProfileWidget::widget() ?>
+            <?php
+            //кеш на час
+            if ($this->beginCache('SidebarUser', ['duration' => 100])) {
+                echo \app\components\SidebarProfileWidget::widget();
+                $this->endCache(); }
+            ?>
+<!--            --><?//= \app\components\SidebarProfileWidget::widget() ?>
         </div>
         <!-- Sidenav END -->
 
@@ -46,7 +51,6 @@
                 <!-- Card body START -->
                 <div class="card-body">
                     <div class="tab-content mb-0 pb-0">
-                        <?php $groups = $page->groups; ?>
                         <?php if(!empty($groups)) : ?>
                         <!-- Friends groups tab START -->
                         <div class="tab-pane fade show active" id="tab-1">
