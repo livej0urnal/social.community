@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-3">
                             <!-- Button modal -->
-                            <a class="btn btn-primary-soft ms-auto w-100" href="#" data-bs-toggle="modal" data-bs-target="#modalCreateGroup"> <i class="fa-solid fa-plus pe-1"></i> Create group</a>
+                            <a class="btn btn-primary-soft ms-auto w-100" href="<?= Url::to(['group/create']) ?>" > <i class="fa-solid fa-plus pe-1"></i> Create group</a>
                         </div>
                     </div>
                 </div>
