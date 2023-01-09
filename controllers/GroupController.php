@@ -21,7 +21,7 @@ class GroupController extends AppController
             return $this->goHome();
         }
         $group = Groups::find()->where(['slug' => $slug])->with('posts', 'users')->indexBy(['slug'])->one();
-        $posts = PostsGroup::find()->where(['group_id' => $group->id])->with('page')->orderBy(['created_at' => SORT_DESC])->all();
+        $posts = PostsGroup::find()->where(['group_id' => $group->id])->with('page')->orderBy(['id' => SORT_DESC])->all();
 //        $group = Groups::findOne(['slug' => $slug]);
         $new_comment = new CommentGroup();
         $user = Yii::$app->user->identity->id;
