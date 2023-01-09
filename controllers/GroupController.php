@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\Groups;
 use app\models\Pages;
+use app\models\PostsGroup;
 use app\models\UsersGroup;
 use Yii;
 
@@ -16,7 +17,9 @@ class GroupController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $group = Groups::findOne(['slug' => $slug]);
+        $group = Groups::find()->where(['slug' => $slug])->with('posts', 'users')->indexBy(['slug'])->one();
+        $posts = PostsGroup::find()->where(['group_id' => $group->id])->with('page')->orderBy(['created_at' => SORT_DESC])->all();
+//        $group = Groups::findOne(['slug' => $slug]);
         if($group->is_private == 1) {
             $user = Yii::$app->user->identity->id;
             $page = Pages::findOne(['user_id' => $user]);
@@ -27,14 +30,14 @@ class GroupController extends AppController
             else{
                 $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
                 $this->setMeta($group->title);
-                return $this->render('single', compact('group', 'users', 'page'));
+                return $this->render('single', compact('group', 'users', 'page', 'posts'));
             }
         }
         else{
             $page = Pages::findOne(['user_id' => $user]);
             $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
             $this->setMeta($group->title);
-            return $this->render('single', compact('group', 'users', 'page'));
+            return $this->render('single', compact('group', 'users', 'page', 'posts'));
         }
 
 
