@@ -120,7 +120,7 @@ $('.delete-group-post').on('click', function (e) {
     var id = $(this).attr('data-value');
     if(window.confirm('Are you sure?')) {
         $.ajax({
-            url: '/group/delete-post?id=' + id,
+            url: '/delete-post/' + id + '/',
             method: 'GET',
             success: function () {
                 location.reload();

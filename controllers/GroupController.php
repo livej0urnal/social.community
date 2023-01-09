@@ -69,7 +69,6 @@ class GroupController extends AppController
         }
         $post = PostsGroup::findOne($id);
         $post->delete(false);
-        return $this->redirect(['profile/groups']);
     }
 
 }
