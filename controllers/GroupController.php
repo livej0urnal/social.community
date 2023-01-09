@@ -64,12 +64,12 @@ class GroupController extends AppController
     public function actionDeletePost($id)
     {
         $id = Yii::$app->request->get('id');
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
+        if(!Yii::$app->request->isAjax) {
+            throw new HttpException(400, 'Only ajax request is allowed.');
         }
         $post = PostsGroup::findOne(['id' => $id]);
         $post->delete();
-//        return $this->redirect(['group/single' , 'slug' => $post->group->slug]);
+        return $this->redirect(['profile/groups']);
     }
 
 }

@@ -1,4 +1,3 @@
-
 $('#delete-account').on('click', function () {
     if (window.confirm('Are you sure?')) {
         var id = $(this).attr('data-id');
@@ -33,7 +32,7 @@ $('#drop-avatar').on('click', function () {
 
 window.onload = function () {
     var location = window.location.pathname;
-    $(".link-profile-href").each(function() {
+    $(".link-profile-href").each(function () {
         if ($(this).attr('href') === location) {
             $(this).addClass('active');
         }
@@ -42,7 +41,7 @@ window.onload = function () {
 
 $('.dropdown-post').on('click', function (e) {
     e.preventDefault();
-    if(window.confirm('Are you sure?')) {
+    if (window.confirm('Are you sure?')) {
         var id = $(this).attr('data-id');
         $.ajax({
             url: '/profile/delete-post?id=' + id,
@@ -57,21 +56,21 @@ $('.dropdown-post').on('click', function (e) {
     }
 });
 
-$('.load-more-comments').on('click', function (){
-   var post = $(this).attr('data-value');
-   var comments = $('.hidden-comment');
-   $(this).addClass('d-none');
-   comments.each(function () {
-       if($(this).attr('data-post') === post) {
-           $(this).show();
-       }
-   });
+$('.load-more-comments').on('click', function () {
+    var post = $(this).attr('data-value');
+    var comments = $('.hidden-comment');
+    $(this).addClass('d-none');
+    comments.each(function () {
+        if ($(this).attr('data-post') === post) {
+            $(this).show();
+        }
+    });
 
 });
 
 $('.dropdown-comment').on('click', function (e) {
     e.preventDefault();
-    if(window.confirm('Are you sure?')) {
+    if (window.confirm('Are you sure?')) {
         var id = $(this).attr('data-id');
         $.ajax({
             url: '/profile/delete-comment?id=' + id,
@@ -87,11 +86,11 @@ $('.dropdown-comment').on('click', function (e) {
 });
 
 $('.apply-friend').on('click', function () {
-   var id = $(this).attr('data-value');
-   $.ajax({
-      url: '/profile/apply-friend?id=' + id,
-      method: 'GET',
-   });
+    var id = $(this).attr('data-value');
+    $.ajax({
+        url: '/profile/apply-friend?id=' + id,
+        method: 'GET',
+    });
 });
 
 $('.delete-friend').on('click', function () {
@@ -102,8 +101,7 @@ $('.delete-friend').on('click', function () {
         success: function () {
             location.reload();
         },
-        error: function ()
-        {
+        error: function () {
             alert('Error!')
         }
     });
@@ -115,4 +113,22 @@ $('.add-friend').on('click', function () {
         url: '/profile/add-friend?id=' + id,
         method: 'GET',
     });
+});
+
+$('.delete-group-post').on('click', function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data-value');
+    if(window.confirm('Are you sure?')) {
+        $.ajax({
+            url: '/group/delete-post?id=' + id,
+            method: 'GET',
+            success: function () {
+                // location.reload();
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    }
+
 });
