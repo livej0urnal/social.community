@@ -61,4 +61,14 @@ class GroupController extends AppController
 
     }
 
+    public function actionDeletePost($id)
+    {
+        $id = Yii::$app->request->get('id');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $post = PostsGroup::findOne($id);
+        $post->delete();
+    }
+
 }
