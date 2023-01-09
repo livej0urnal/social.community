@@ -26,7 +26,7 @@ use yii\helpers\Url;
         <div class="card">
             <!-- Card header START -->
             <div class="card-header d-flex justify-content-between border-0">
-                <h5 class="card-title">Experience</h5>
+                <h5 class="card-title">Interests</h5>
                 <a class="btn btn-primary-soft btn-sm" href="#!"> <i class="fa-solid fa-plus"></i> </a>
             </div>
             <!-- Card header END -->
