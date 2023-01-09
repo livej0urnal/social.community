@@ -7,6 +7,7 @@ use app\models\ChangePassword;
 use app\models\CommentForm;
 use app\models\CommentPost;
 use app\models\Friends;
+use app\models\Groups;
 use app\models\PostForm;
 use app\models\User;
 use app\models\Users;
@@ -157,8 +158,9 @@ class PageController extends AppController
                 }
 
             }
+            $groups = Groups::find()->orderBy(['id' => SORT_DESC])->limit(10)->all();
             $this->setMeta('Profile : '. $page->page_name. ' ');
-            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment', 'new_post'));
+            return $this->render('profile', compact('page', 'posts', 'pages', 'new_comment', 'new_post', 'groups'));
         }
     }
 

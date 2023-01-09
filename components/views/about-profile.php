@@ -20,7 +20,7 @@ use yii\helpers\Url;
         </div>
     </div>
     <!-- Card END -->
-
+    <?php if(!empty($groups)) : ?>
     <!-- Card START -->
     <div class="col-md-6 col-lg-12">
         <div class="card">
@@ -47,41 +47,12 @@ use yii\helpers\Url;
                 </div>
                 <!-- Experience item END -->
 
-                <!-- Experience item START -->
-                <div class="d-flex">
-                    <!-- Avatar -->
-                    <div class="avatar me-3">
-                        <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/09.svg" alt=""> </a>
-                    </div>
-                    <!-- Info -->
-                    <div>
-                        <h6 class="card-title mb-0"><a href="#!"> Microsoft Corporation </a></h6>
-                        <p class="small">May 2017 – Present Employment Duration 1 yrs 5 mos <a
-                                    class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
-                    </div>
-                </div>
-                <!-- Experience item END -->
-
-                <!-- Experience item START -->
-                <div class="d-flex">
-                    <!-- Avatar -->
-                    <div class="avatar me-3">
-                        <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/10.svg" alt=""> </a>
-                    </div>
-                    <!-- Info -->
-                    <div>
-                        <h6 class="card-title mb-0"><a href="#!"> Tata Consultancy Services. </a></h6>
-                        <p class="small mb-0">May 2022 – Present Employment Duration 6 yrs 10 mos <a
-                                    class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
-                    </div>
-                </div>
-                <!-- Experience item END -->
-
             </div>
             <!-- Card body END -->
         </div>
     </div>
     <!-- Card END -->
+    <?php endif; ?>
 
 <?php if (!empty($friends)) : ?>
     <!-- Card START -->

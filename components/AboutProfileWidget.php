@@ -3,6 +3,7 @@
 namespace app\components;
 
 use app\models\Friends;
+use app\models\Groups;
 use app\models\User;
 use yii\base\Widget;
 use app\models\Pages;
@@ -21,6 +22,7 @@ class AboutProfileWidget extends Widget
             $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['rand()' => SORT_DESC])->limit(12)->all();
 
         }
-        return $this->render('about-profile', compact('user' , 'page' , 'user_account' , 'friends') );
+        $groups = Groups::find()->orderBy(['id' => SORT_DESC])->limit(10)->all();
+        return $this->render('about-profile', compact('user' , 'page' , 'user_account' , 'friends', 'groups') );
     }
 }
