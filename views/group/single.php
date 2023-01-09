@@ -169,7 +169,7 @@
 
                                                 <?php $form = ActiveForm::begin(['id' => 'new-comment-' . $post->id, 'options' => ['class' => 'position-relative w-100']]) ?>
 
-                                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]"
+                                                <input id="commentgroup-post_id" type="text" name="CommentGroup[post_id]"
                                                        value="<?= $post->id ?>" class="disabled hidden d-none">
 
                                                 <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
@@ -179,6 +179,7 @@
 
                                                 <?php ActiveForm::end() ?>
                                             </div>
+
                                             <?php $comments = $post->comments; ?>
                                             <?php if (!empty($comments)) : ?>
                                                 <!-- Comment wrap START -->
