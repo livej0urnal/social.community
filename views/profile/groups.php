@@ -2,6 +2,7 @@
     use yii\helpers\Html;
     use yii\helpers\Url;
 ?>
+<?php debug($page->groups->group);  ?>
 <div class="container">
     <div class="row g-4">
 
