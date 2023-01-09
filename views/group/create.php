@@ -70,76 +70,28 @@ use yii\helpers\Html;
                         <!-- Divider -->
                         <hr>
 
+                        <div class="col-12">
+                            <?= $form->field($model, 'is_private')->checkbox(['0', '1',])->label(false) ?>
+                        </div>
+
+                        <!-- First name -->
+                        <div class="col-sm-6 col-lg-6">
+                            <label class="form-label">Logo</label>
+                            <?= $form->field($model, 'image')->fileInput(['class' => 'form-control', 'placeholder' => 'Logo'])->label(false) ?>
+                        </div>
+
+                        <!-- First name -->
+                        <div class="col-sm-6 col-lg-6">
+                            <label class="form-label">Background</label>
+                            <?= $form->field($model, 'background')->fileInput(['class' => 'form-control', 'placeholder' => 'Background'])->label(false) ?>
+                        </div>
+
                         <!-- Button  -->
                         <div class="col-12 text-end">
                             <button type="submit" class="btn btn-sm btn-primary mb-0">Save</button>
                         </div>
                         <?php ActiveForm::end() ?>
                         <!-- Form settings START -->
-                        <form class="row g-3">
-                            <!-- First name -->
-                            <div class="col-sm-6 col-lg-4">
-                                <label class="form-label">First name</label>
-                                <input type="text" class="form-control" placeholder="" value="Sam">
-                            </div>
-                            <!-- Last name -->
-                            <div class="col-sm-6 col-lg-4">
-                                <label class="form-label">Last name</label>
-                                <input type="text" class="form-control" placeholder="" value="Lanson">
-                            </div>
-                            <!-- Additional name -->
-                            <div class="col-sm-6 col-lg-4">
-                                <label class="form-label">Additional name</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <!-- User name -->
-                            <div class="col-sm-6">
-                                <label class="form-label">User name</label>
-                                <input type="text" class="form-control" placeholder="" value="@samlanson">
-                            </div>
-                            <!-- Birthday -->
-                            <div class="col-lg-6">
-                                <label class="form-label">Birthday </label>
-                                <input type="text" class="form-control flatpickr" value="12/12/1990">
-                            </div>
-                            <!-- Allow checkbox -->
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="allowChecked"
-                                           checked="">
-                                    <label class="form-check-label" for="allowChecked">
-                                        Allow anyone to add you to their team
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- Phone number -->
-                            <div class="col-sm-6">
-                                <label class="form-label">Phone number</label>
-                                <input type="text" class="form-control" placeholder="" value="(678) 324-1251">
-                                <!-- Add new number -->
-                                <a class="btn btn-sm btn-dashed rounded mt-2" href="#!"> <i
-                                            class="bi bi-plus-circle-dotted me-1"></i>Add new phone number</a>
-                            </div>
-                            <!-- Phone number -->
-                            <div class="col-sm-6">
-                                <label class="form-label">Email</label>
-                                <input type="text" class="form-control" placeholder="" value="sam@webestica.com">
-                                <!-- Add new email -->
-                                <a class="btn btn-sm btn-dashed rounded mt-2" href="#!"> <i
-                                            class="bi bi-plus-circle-dotted me-1"></i>Add new email address</a>
-                            </div>
-                            <!-- Page information -->
-                            <div class="col-12">
-                                <label class="form-label">Overview</label>
-                                <textarea class="form-control" rows="4" placeholder="Description (Required)">Interested has all Devonshire difficulty gay assistance joy. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance.</textarea>
-                                <small>Character limit: 300</small>
-                            </div>
-                            <!-- Button  -->
-                            <div class="col-12 text-end">
-                                <button type="submit" class="btn btn-sm btn-primary mb-0">Save changes</button>
-                            </div>
-                        </form>
-                        <!-- Settings END -->
                     </div>
                     <!-- Card body END -->
                 </div>
