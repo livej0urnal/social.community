@@ -119,4 +119,13 @@ class GroupController extends AppController
         $post->delete(false);
     }
 
+    public function actionDeleteComment($id)
+    {
+        $id = Yii::$app->request->get('id');
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        $comment = CommentGroup::findOne($id);
+        $comment->delete(false);
+    }
+
 }

@@ -85,6 +85,23 @@ $('.dropdown-comment').on('click', function (e) {
     }
 });
 
+$('.dropdown-comment-group').on('click', function (e) {
+    e.preventDefault();
+    if (window.confirm('Are you sure?')) {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: '/group/delete-comment?id=' + id,
+            method: 'GET',
+            success: function () {
+                location.reload();
+            },
+            error: function () {
+                alert('Has error');
+            }
+        })
+    }
+});
+
 $('.apply-friend').on('click', function () {
     var id = $(this).attr('data-value');
     $.ajax({

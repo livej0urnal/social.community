@@ -257,7 +257,7 @@
                                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                                             aria-labelledby="cardFeedAction1">
                                                                             <li>
-                                                                                <a class="dropdown-item dropdown-comment" href="#"
+                                                                                <a class="dropdown-item dropdown-comment-group" href="#"
                                                                                    data-id="<?= $comment->id ?>">
                                                                                     <i class="bi bi-x-circle fa-fw pe-2"></i>
                                                                                     Delete

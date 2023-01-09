@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/group/delete-comment' => 'group/delete-comment',
                 '/delete-post/<id:.+>/' => 'group/delete-post',
                 '/my-groups/' => 'profile/groups',
                 '/group/leave/<id:.+>/' => 'group/leave',
