@@ -20,7 +20,7 @@ use yii\helpers\Url;
         </div>
     </div>
     <!-- Card END -->
-    <?php if(!empty($groups)) : ?>
+<?php if (!empty($groups)) : ?>
     <!-- Card START -->
     <div class="col-md-6 col-lg-12">
         <div class="card">
@@ -32,27 +32,30 @@ use yii\helpers\Url;
             <!-- Card header END -->
             <!-- Card body START -->
             <div class="card-body position-relative pt-0">
-                <!-- Experience item START -->
-                <div class="d-flex">
-                    <!-- Avatar -->
-                    <div class="avatar me-3">
-                        <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/08.svg" alt=""> </a>
+                <?php foreach ($groups as $item) : ?>
+                    <!-- Experience item START -->
+                    <div class="d-flex">
+                        <!-- Avatar -->
+                        <div class="avatar me-3">
+                            <a href="<?= Url::to(['group/single' , 'slug' => $item->slug]) ?>">
+                                <?= Html::img($item->image, ['class' => 'avatar-img rounded-circle']) ?>
+                            </a>
+                        </div>
+                        <!-- Info -->
+                        <div>
+                            <h6 class="card-title mb-0"><a href="<?= Url::to(['group/single' , 'slug' => $item->slug]) ?>"> <?= $item->title ?> </a></h6>
+                            <p class="small"><?= $item->short ?></p>
+                        </div>
                     </div>
-                    <!-- Info -->
-                    <div>
-                        <h6 class="card-title mb-0"><a href="#!"> Apple Computer, Inc. </a></h6>
-                        <p class="small">May 2015 – Present Employment Duration 8 mos <a
-                                    class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
-                    </div>
-                </div>
-                <!-- Experience item END -->
+                    <!-- Experience item END -->
+                <?php endforeach; ?>
 
             </div>
             <!-- Card body END -->
         </div>
     </div>
     <!-- Card END -->
-    <?php endif; ?>
+<?php endif; ?>
 
 <?php if (!empty($friends)) : ?>
     <!-- Card START -->
@@ -78,11 +81,13 @@ use yii\helpers\Url;
                                 <!-- Card body -->
                                 <div class="card-body p-2 pb-0">
                                     <div class="avatar avatar-story avatar-xl">
-                                        <a href="<?= Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>">
+                                        <a href="<?= Url::to(['profile/friend', 'id' => $friend->friend->id]) ?>">
                                             <?= Html::img($friend->friend->image, ['alt' => $friend->friend->display_name, 'class' => 'avatar-img rounded-circle']) ?>
                                         </a>
                                     </div>
-                                    <h6 class="card-title mb-1 mt-3"><a href="<?= Url::to(['profile/friend' , 'id' => $friend->friend->id]) ?>"> <?= $friend->friend->page_name ?> </a></h6>
+                                    <h6 class="card-title mb-1 mt-3"><a
+                                                href="<?= Url::to(['profile/friend', 'id' => $friend->friend->id]) ?>"> <?= $friend->friend->page_name ?> </a>
+                                    </h6>
                                     <p class="mb-0 small lh-sm"><?= $friend->friend->category->title ?></p>
                                 </div>
                                 <!-- Card footer -->
@@ -90,7 +95,8 @@ use yii\helpers\Url;
                                     <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Send message"><i
                                                 class="bi bi-chat-left-text"></i></button>
-                                    <button class="btn btn-sm btn-danger delete-friend" data-value="<?= $friend->friend->id ?>" data-bs-toggle="tooltip"
+                                    <button class="btn btn-sm btn-danger delete-friend"
+                                            data-value="<?= $friend->friend->id ?>" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Remove friend"><i class="bi bi-person-x"></i>
                                     </button>
                                 </div>

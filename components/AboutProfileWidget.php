@@ -22,7 +22,7 @@ class AboutProfileWidget extends Widget
             $friends = Friends::find()->where(['page_id' => $page->id])->orderBy(['rand()' => SORT_DESC])->limit(12)->all();
 
         }
-        $groups = Groups::find()->orderBy(['id' => SORT_DESC])->limit(10)->all();
+        $groups = Groups::find()->orderBy(['id' => SORT_DESC])->andWhere(['is_private' => 0])->limit(10)->all();
         return $this->render('about-profile', compact('user' , 'page' , 'user_account' , 'friends', 'groups') );
     }
 }

@@ -17,7 +17,12 @@ class GroupController extends AppController
 
     public function actionCreate()
     {
-        return $this->render('create');
+        $user = Yii::$app->user->identity->id;
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $this->setMeta('Create Group ');
+        return $this->render('create', compact('user'));
     }
 
     public function actionSingle($slug)
