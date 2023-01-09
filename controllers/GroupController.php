@@ -53,7 +53,7 @@ class GroupController extends AppController
                     $comment->post_id = $new_comment->post_id;
                     $comment->comment = $new_comment->comment;
                     $user = Users::findOne($user);
-                    $comment->page_id = $user->page->id;
+                    $comment->page_id = $page->id;
                     $comment->save();
                     if($comment->save()) {
                         Yii::$app->session->setFlash('success', 'Comment send!');
