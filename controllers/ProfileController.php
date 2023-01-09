@@ -99,7 +99,7 @@ class ProfileController extends AppController
             return $this->goHome();
         }
 //        $groups = $page->groups;
-        $groups = Groups::find()->where(['id' => $page->groups->group])->orderBy(['id' => SORT_DESC])->all();
+        $groups = Groups::find()->where(['id' => $page->groups->group_id])->orderBy(['id' => SORT_DESC])->all();
         $this->setMeta('Groups');
         return $this->render('groups', compact('page', 'user', 'groups'));
 
