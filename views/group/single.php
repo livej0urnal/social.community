@@ -126,7 +126,7 @@
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
-                                                <?php if ($post->page_id === $page->id): ?>
+                                                <?php if ($post->page_id === $page->id || $group->admin === $page->id): ?>
                                                     <!-- Card feed action dropdown START -->
                                                     <div class="dropdown">
                                                         <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
