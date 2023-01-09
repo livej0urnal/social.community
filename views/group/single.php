@@ -1,6 +1,7 @@
 <?php
     use yii\helpers\Url;
     use yii\helpers\Html;
+    use yii\widgets\ActiveForm;
 ?>
 
 <div class="container">
@@ -98,255 +99,220 @@
                 <div class="tab-pane fade active show" id="group-tab-1">
                     <div class="row g-4">
                         <div class="col-lg-8 vstack gap-4">
+                            <?php if(!empty($posts)) : ?>
+                                <?php foreach ($posts as $post) : ?>
+                                    <!-- Card feed item START -->
+                                    <div class="card">
+                                        <!-- Card header START -->
+                                        <div class="card-header border-0 pb-0">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <!-- Avatar -->
+                                                    <div class="avatar me-2">
+                                                        <?php if ($post->page_id != $page->id): ?>
+                                                            <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
+                                                                <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <a href="<?= Url::to(['page/profile', 'id' => $post->page->id]) ?>">
+                                                                <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
+                                                            </a>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <!-- Info -->
+                                                    <div>
+                                                        <?php if ($post->page_id != $page->id): ?>
+                                                            <div class="nav nav-divider">
+                                                                <h6 class="nav-item card-title mb-0"><a
+                                                                            href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>"> <?= $post->page->page_name ?> </a>
+                                                                </h6>
+                                                                <span class="nav-item small"> <?= $post->created_at ?> </span>
+                                                            </div>
+                                                            <p class="mb-0 small"><?= $post->page->category->title ?> </p>
+                                                        <?php else: ?>
+                                                            <div class="nav nav-divider">
+                                                                <h6 class="nav-item card-title mb-0"><a
+                                                                            href="<?= Url::to(['page/profile', 'id' => $post->page->id]) ?>"> <?= $post->page->page_name ?> </a>
+                                                                </h6>
+                                                                <span class="nav-item small"> <?= $post->created_at ?> </span>
+                                                            </div>
+                                                            <p class="mb-0 small"><?= $post->page->category->title ?> </p>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                                <?php if ($post->page_id === $page->id): ?>
+                                                    <!-- Card feed action dropdown START -->
+                                                    <div class="dropdown">
+                                                        <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
+                                                           id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="bi bi-three-dots"></i>
+                                                        </a>
 
-                            <!-- Card feed item START -->
-                            <div class="card">
-                                <!-- Card header START -->
-                                <div class="card-header border-0 pb-0">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <!-- Avatar -->
-                                            <div class="avatar avatar-story me-2">
-                                                <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""> </a>
-                                            </div>
-                                            <!-- Info -->
-                                            <div>
-                                                <div class="nav nav-divider">
-                                                    <h6 class="nav-item card-title mb-0"> <a href="#!"> Lori Ferguson </a></h6>
-                                                    <span class="nav-item small"> 2hr</span>
-                                                </div>
-                                                <p class="mb-0 small">Web Developer at Webestica</p>
-                                            </div>
-                                        </div>
-                                        <!-- Card feed action dropdown START -->
-                                        <div class="dropdown">
-                                            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots"></i>
-                                            </a>
-                                            <!-- Card feed action dropdown menu -->
-                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Save post</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-person-x fa-fw pe-2"></i>Unfollow lori ferguson </a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-flag fa-fw pe-2"></i>Report post</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Card feed action dropdown END -->
-                                    </div>
-                                </div>
-                                <!-- Card header END -->
-                                <!-- Card body START -->
-                                <div class="card-body">
-                                    <p>I'm thrilled to share that I've completed a graduate certificate course in project management with the president's honor roll.</p>
-                                    <!-- Card img -->
-                                    <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
-                                    <!-- Feed react START -->
-                                    <ul class="nav nav-stack py-3 small">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#!"> <i class="bi bi-hand-thumbs-up-fill pe-1"></i>Liked (56)</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments (12)</a>
-                                        </li>
-                                        <!-- Card share action START -->
-                                        <li class="nav-item dropdown ms-sm-auto">
-                                            <a class="nav-link mb-0" href="#" id="cardShareAction8" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share (3)
-                                            </a>
-                                            <!-- Card share action dropdown menu -->
-                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardShareAction8">
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Send via Direct Message</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-link fa-fw pe-2"></i>Copy link to post</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-share fa-fw pe-2"></i>Share post via …</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Share to News Feed</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- Card share action END -->
-                                    </ul>
-                                    <!-- Feed react END -->
+                                                        <!-- Card feed action dropdown menu -->
+                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
+                                                            <li>
+                                                                <a class="dropdown-item dropdown-post" href="#"
+                                                                   data-id="<?= $post->id ?>">
+                                                                    <i class="bi bi-x-circle fa-fw pe-2"></i>
+                                                                    Delete post
+                                                                </a>
+                                                            </li>
+                                                        </ul>
 
-                                    <!-- Add comment -->
-                                    <div class="d-flex mb-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xs me-2">
-                                            <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt=""> </a>
+                                                    </div>
+                                                    <!-- Card feed action dropdown END -->
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
-                                        <!-- Comment box  -->
-                                        <form class="position-relative w-100">
-                                            <textarea class="form-control pe-4 bg-light" rows="1" placeholder="Add a comment..."></textarea>
-                                        </form>
+                                        <!-- Card header END -->
+                                        <!-- Card body START -->
+                                        <div class="card-body">
+                                            <p>
+                                                <?= $post->content ?>
+                                            </p>
+                                            <!-- Card img -->
+                                            <?= Html::img($post->image, ['class' => 'card-img']) ?>
+                                            <div class="mt-3"></div>
+                                            <!-- Add comment -->
+                                            <div class="d-flex mb-3">
+                                                <!-- Avatar -->
+                                                <div class="avatar avatar-xs me-2">
+                                                    <a href="<?= Url::to(['profile/friend', 'id' => $page->id]) ?>">
+                                                        <?= Html::img($page->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                                    </a>
+                                                </div>
+
+                                                <?php $form = ActiveForm::begin(['id' => 'new-comment-' . $post->id, 'options' => ['class' => 'position-relative w-100']]) ?>
+
+                                                <input id="commentform-post_id" type="text" name="CommentForm[post_id]"
+                                                       value="<?= $post->id ?>" class="disabled hidden d-none">
+
+                                                <?= $form->field($new_comment, 'comment')->textarea(['rows' => '1', 'class' => 'form-control pe-4'])->label(false) ?>
+
+                                                <button type="submit" class="btn btn-sm btn-primary" style="float: right; margin-top: 5px;">
+                                                    <i class="bi bi-chat-left-text"></i></button>
+
+                                                <?php ActiveForm::end() ?>
+                                            </div>
+                                            <?php $comments = $post->comments; ?>
+                                            <?php if (!empty($comments)) : ?>
+                                                <!-- Comment wrap START -->
+                                                <ul class="comment-wrap list-unstyled">
+                                                    <?php $i = 1;
+                                                    foreach ($comments as $comment) : ?>
+                                                        <!-- Comment item START -->
+                                                        <li class="comment-item mt-2 <?php if ($i > 3): ?> hidden-comment <?php endif; ?> ?>"
+                                                            data-post="<?= $post->id ?>">
+                                                            <div class="d-flex">
+                                                                <?php if ($comment->page_id != $page->id) : ?>
+                                                                    <!-- Avatar -->
+                                                                    <div class="avatar avatar-xs">
+                                                                        <a href="<?= Url::to(['profile/friend', 'id' => $comment->user->id]) ?>">
+                                                                            <?= Html::img($comment->user['image'], ['class' => 'avatar-img rounded-circle']) ?>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!-- Comment by -->
+                                                                    <div class="ms-2">
+                                                                        <div class="bg-light p-3 rounded">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <h6 class="mb-1"><a
+                                                                                            href="<?= Url::to(['profile/friend', 'id' => $comment->user->id]) ?>"> <?= $comment->user->page_name ?></a>
+                                                                                </h6>
+                                                                            </div>
+                                                                            <p class="small mb-0">
+                                                                                <?= $comment->comment ?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <!-- Comment react -->
+                                                                        <ul class="nav nav-divider pt-2 small">
+                                                                            <li class="nav-item">
+                                                                                <?= $comment->created_at ?>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                <?php else : ?>
+                                                                    <!-- Avatar -->
+                                                                    <div class="avatar avatar-xs">
+                                                                        <a href="<?= Url::to(['page/profile', 'id' => $comment->user->id]) ?>">
+                                                                            <?= Html::img($comment->user['image'], ['class' => 'avatar-img rounded-circle']) ?>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!-- Comment by -->
+                                                                    <div class="ms-2">
+                                                                        <div class="bg-light p-3 rounded">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <h6 class="mb-1"><a
+                                                                                            href="<?= Url::to(['page/profile', 'id' => $comment->user->id]) ?>"> <?= $comment->user->page_name ?></a>
+                                                                                </h6>
+                                                                            </div>
+                                                                            <p class="small mb-0">
+                                                                                <?= $comment->comment ?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <!-- Comment react -->
+                                                                        <ul class="nav nav-divider pt-2 small">
+                                                                            <li class="nav-item">
+                                                                                <?= $comment->created_at ?>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                <?php endif; ?>
+                                                                <?php if ($comment->page_id === $page->id): ?>
+                                                                    <!-- Card feed action dropdown START -->
+                                                                    <div class="dropdown">
+                                                                        <a href="#"
+                                                                           class="text-secondary btn btn-secondary-soft-hover py-1 px-2"
+                                                                           id="cardFeedAction1" data-bs-toggle="dropdown"
+                                                                           aria-expanded="false">
+                                                                            <i class="bi bi-three-dots"></i>
+                                                                        </a>
+
+                                                                        <!-- Card feed action dropdown menu -->
+                                                                        <ul class="dropdown-menu dropdown-menu-end"
+                                                                            aria-labelledby="cardFeedAction1">
+                                                                            <li>
+                                                                                <a class="dropdown-item dropdown-comment" href="#"
+                                                                                   data-id="<?= $comment->id ?>">
+                                                                                    <i class="bi bi-x-circle fa-fw pe-2"></i>
+                                                                                    Delete
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+
+                                                                    </div>
+                                                                    <!-- Card feed action dropdown END -->
+                                                                <?php endif; ?>
+                                                            </div>
+
+                                                        </li>
+                                                        <?php $i++; ?>
+                                                        <!-- Comment item END -->
+                                                    <?php endforeach; ?>
+                                                    <?php if (count($comments) > 2) : ?>
+                                                        <div class="border-0 pt-0 mt-2">
+                                                            <!-- Load more comments -->
+                                                            <a href="#!" role="button" data-value="<?= $post->id ?>"
+                                                               class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center load-more-comments"
+                                                               data-bs-toggle="button" aria-pressed="true">
+                                                                <div class="spinner-dots me-2">
+                                                                    <span class="spinner-dot"></span>
+                                                                    <span class="spinner-dot"></span>
+                                                                    <span class="spinner-dot"></span>
+                                                                </div>
+                                                                Load more comments
+                                                            </a>
+                                                        </div>
+                                                    <?php endif; ?>
+
+                                                </ul>
+                                                <!-- Comment wrap END -->
+                                            <?php endif; ?>
+                                        </div>
+                                        <!-- Card body END -->
                                     </div>
-                                    <!-- Comment wrap START -->
-                                    <ul class="comment-wrap list-unstyled">
-                                        <!-- Comment item START -->
-                                        <li class="comment-item">
-                                            <div class="d-flex position-relative">
-                                                <div class="comment-line-inner"></div>
-                                                <!-- Avatar -->
-                                                <div class="avatar avatar-xs">
-                                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <!-- Comment by -->
-                                                    <div class="bg-light rounded-start-top-0 p-3 rounded">
-                                                        <div class="d-flex justify-content-center">
-                                                            <div class="me-2">
-                                                                <h6 class="mb-1"> <a href="#!"> Frances Guerrero </a></h6>
-                                                                <p class="small mb-0">Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection.</p>
-                                                            </div>
-                                                            <small>5hr</small>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Comment react -->
-                                                    <ul class="nav nav-divider py-2 small">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> Like (3)</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> Reply</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> View 5 replies</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- Comment item nested START -->
-                                            <ul class="comment-item-nested list-unstyled">
-                                                <!-- Comment item START -->
-                                                <li class="comment-item">
-                                                    <div class="comment-line-inner"></div>
-                                                    <div class="d-flex">
-                                                        <!-- Avatar -->
-                                                        <div class="avatar avatar-xs">
-                                                            <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt=""></a>
-                                                        </div>
-                                                        <!-- Comment by -->
-                                                        <div class="ms-2">
-                                                            <div class="bg-light p-3 rounded">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <div class="me-2">
-                                                                        <h6 class="mb-1"> <a href="#!"> Lori Stevens </a> </h6>
-                                                                        <p class="small mb-0">See resolved goodness felicity shy civility domestic had but Drawings offended yet answered Jennings perceive.</p>
-                                                                    </div>
-                                                                    <small>2hr</small>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Comment react -->
-                                                            <ul class="nav nav-divider py-2 small">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="#!"> Like (5)</a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="#!"> Reply</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- Comment item END -->
-                                                <!-- Comment item START -->
-                                                <li class="comment-item">
-                                                    <div class="comment-line-inner"></div>
-                                                    <div class="d-flex">
-                                                        <!-- Avatar -->
-                                                        <div class="avatar avatar-story avatar-xs">
-                                                            <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt=""></a>
-                                                        </div>
-                                                        <!-- Comment by -->
-                                                        <div class="ms-2">
-                                                            <div class="bg-light p-3 rounded">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <div class="me-2">
-                                                                        <h6 class="mb-1"> <a href="#!"> Billy Vasquez </a> </h6>
-                                                                        <p class="small mb-0">Wishing calling is warrant settled was lucky.</p>
-                                                                    </div>
-                                                                    <small>15min</small>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Comment react -->
-                                                            <ul class="nav nav-divider py-2 small">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="#!"> Like</a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="#!"> Reply</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- Comment item END -->
-                                            </ul>
-                                            <!-- Load more replies -->
-                                            <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true">
-                                                <div class="spinner-dots me-2">
-                                                    <span class="spinner-dot"></span>
-                                                    <span class="spinner-dot"></span>
-                                                    <span class="spinner-dot"></span>
-                                                </div>
-                                                Load more replies
-                                            </a>
-                                            <!-- Comment item nested END -->
-                                        </li>
-                                        <!-- Comment item END -->
-                                        <!-- Comment item START -->
-                                        <li class="comment-item">
-                                            <div class="d-flex">
-                                                <!-- Avatar -->
-                                                <div class="avatar avatar-xs">
-                                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
-                                                </div>
-                                                <!-- Comment by -->
-                                                <div class="ms-2">
-                                                    <div class="bg-light p-3 rounded">
-                                                        <div class="d-flex justify-content-center">
-                                                            <div class="me-2">
-                                                                <h6 class="mb-1"> <a href="#!"> Frances Guerrero </a> </h6>
-                                                                <p class="small mb-0">Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection.</p>
-                                                            </div>
-                                                            <small>4min</small>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Comment react -->
-                                                    <ul class="nav nav-divider pt-2 small">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> Like (1)</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> Reply</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#!"> View 6 replies</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Comment item END -->
-                                    </ul>
-                                    <!-- Comment wrap END -->
-                                </div>
-                                <!-- Card body END -->
-                                <!-- Card footer START -->
-                                <div class="card-footer border-0 pt-0">
-                                    <!-- Load more comments -->
-                                    <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
-                                        <div class="spinner-dots me-2">
-                                            <span class="spinner-dot"></span>
-                                            <span class="spinner-dot"></span>
-                                            <span class="spinner-dot"></span>
-                                        </div>
-                                        Load more comments
-                                    </a>
-                                </div>
-                                <!-- Card footer END -->
-                            </div>
-                            <!-- Card feed item END -->
+                                    <!-- Card feed item END -->
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
 
                         <div class="col-lg-4">
