@@ -34,6 +34,11 @@ class PostsGroup extends \yii\db\ActiveRecord
         return $this->hasOne(Groups::className() , ['id' => 'group_id']);
     }
 
+
+    public function getComments()
+    {
+        return $this->hasMany(CommentGroup::className() , ['post_id' => 'id']);
+    }
     /**
      * {@inheritdoc}
      */
