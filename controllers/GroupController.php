@@ -25,14 +25,14 @@ class GroupController extends AppController
                 return $this->goHome();
             }
             else{
-                $users = UsersGroup::find()->where(['group_id' => $group->id])->all();
+                $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
                 $this->setMeta($group->title);
                 return $this->render('single', compact('group', 'users', 'page'));
             }
         }
         else{
             $page = Pages::findOne(['user_id' => $user]);
-            $users = UsersGroup::find()->where(['group_id' => $group->id])->all();
+            $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
             $this->setMeta($group->title);
             return $this->render('single', compact('group', 'users', 'page'));
         }
