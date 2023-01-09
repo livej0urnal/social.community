@@ -109,15 +109,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!-- Avatar -->
                                                     <div class="avatar me-2">
-                                                        <?php if ($post->page_id != $page->id): ?>
-                                                            <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>">
-                                                                <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
-                                                            </a>
-                                                        <?php else: ?>
-                                                            <a href="<?= Url::to(['page/profile', 'id' => $post->page->id]) ?>">
-                                                                <?= Html::img($post->page->image, ['alt' => $post->page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
-                                                            </a>
-                                                        <?php endif; ?>
+                                                        <a href="#">
+                                                            <?= Html::img($group->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                                        </a>
                                                     </div>
                                                     <!-- Info -->
                                                     <div>
