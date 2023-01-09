@@ -81,16 +81,6 @@
                                      alt=""><span>Connections </span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html"> <img class="me-2 h-20px fa-fw"
-                                                                       src="/images/icon/earth-outline-filled.svg"
-                                                                       alt=""><span>Latest News </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="events.html"> <img class="me-2 h-20px fa-fw"
-                                                                         src="/images/icon/calendar-outline-filled.svg"
-                                                                         alt=""><span>Events </span></a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['profile/groups']) ?>"> <img class="me-2 h-20px fa-fw"
                                                                                                 src="/images/icon/chat-outline-filled.svg"
                                                                                                 alt=""><span>Groups </span></a>
