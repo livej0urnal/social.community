@@ -243,7 +243,7 @@
                                                                         </ul>
                                                                     </div>
                                                                 <?php endif; ?>
-                                                                <?php if ($comment->page_id === $page->id): ?>
+                                                                <?php if ($comment->page_id === $page->id || $group->admin === $page->id): ?>
                                                                     <!-- Card feed action dropdown START -->
                                                                     <div class="dropdown">
                                                                         <a href="#"
