@@ -2,7 +2,6 @@
     use yii\helpers\Html;
     use yii\helpers\Url;
 ?>
-<?php debug($page->groups->group);  ?>
 <div class="container">
     <div class="row g-4">
 
@@ -59,18 +58,18 @@
                                 <div class="col-sm-6 col-lg-4">
                                     <!-- Card START -->
                                     <div class="card">
-                                        <div class="h-80px rounded-top" style="background-image:url(<?= $group->group->background ?>); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                                        <div class="h-80px rounded-top" style="background-image:url(<?= $group->background ?>); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                                         <!-- Card body START -->
                                         <div class="card-body text-center pt-0">
                                             <!-- Avatar -->
                                             <div class="avatar avatar-lg mt-n5 mb-3">
-                                                <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>">
-                                                    <?= Html::img($group->group->image, ['class' => 'avatar-img rounded-circle border border-white border-3 bg-white']) ?>
+                                                <a href="<?= Url::to(['group/single', 'slug' => $group->slug]) ?>">
+                                                    <?= Html::img($group->image, ['class' => 'avatar-img rounded-circle border border-white border-3 bg-white']) ?>
                                                 </a>
                                             </div>
                                             <!-- Info -->
-                                            <h5 class="mb-0"> <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"><?= $group->group->title ?></a></h5>
-                                            <?php if($group->group->is_private != 1): ?>
+                                            <h5 class="mb-0"> <a href="<?= Url::to(['group/single', 'slug' => $group->slug]) ?>"><?= $group->title ?></a></h5>
+                                            <?php if($group->is_private != 1): ?>
                                                 <small> <i class="bi bi-globe pe-1"></i> Public Group</small>
                                             <?php else : ?>
                                                 <small> <i class="bi bi-lock pe-1"></i> Private Group</small>
@@ -81,14 +80,14 @@
                                             <div class="hstack gap-2 gap-xl-3 justify-content-center mt-3">
                                                 <!-- Group stat item -->
                                                 <div>
-                                                    <h6 class="mb-0"><?php echo count($group->group->users)?></h6>
+                                                    <h6 class="mb-0"><?php echo count($group->users)?></h6>
                                                     <small>Members</small>
                                                 </div>
                                                 <!-- Divider -->
                                                 <div class="vr"></div>
                                                 <!-- Group stat item -->
                                                 <div>
-                                                    <h6 class="mb-0"><?php echo count($group->group->posts); ?></h6>
+                                                    <h6 class="mb-0"><?php echo count($group->posts); ?></h6>
                                                     <small>Posts</small>
                                                 </div>
                                             </div>
@@ -97,10 +96,10 @@
                                         <!-- Card body END -->
                                         <!-- Card Footer START -->
                                         <div class="card-footer text-center">
-                                            <?php if($group->group->admin != $page->id): ?>
-                                                <a class="btn btn-danger-soft btn-sm leave-group" data-value="<?= $group->group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->group->id]) ?>"> Leave group </a>
+                                            <?php if($group->admin != $page->id): ?>
+                                                <a class="btn btn-danger-soft btn-sm leave-group" data-value="<?= $group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->id]) ?>"> Leave group </a>
                                             <?php else : ?>
-                                                <a class="btn btn-warning-soft btn-sm " href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"> Manage group </a>
+                                                <a class="btn btn-warning-soft btn-sm " href="<?= Url::to(['group/single', 'slug' => $group->slug]) ?>"> Manage group </a>
                                             <?php endif; ?>
                                         </div>
                                         <!-- Card Footer END -->
