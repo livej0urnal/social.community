@@ -77,46 +77,17 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                    <?php if(!empty($users) && $group->is_private != 1) : ?>
                     <!-- Join group START -->
                     <ul class="avatar-group list-unstyled justify-content-center justify-content-md-start align-items-center mb-0 mt-3 flex-wrap">
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
-                        </li>
-                        <li class="avatar avatar-xs me-2">
-                            <div class="avatar-img rounded-circle bg-primary"><span class="smaller text-white position-absolute top-50 start-50 translate-middle">+19</span></div>
-                        </li>
-                        <li class="small text-center">
-                            Carolyn Ortiz, Frances Guerrero, and 20 joined group
-                        </li>
+                        <?php foreach ($users as $item) : ?>
+                            <li class="avatar avatar-xs">
+                                <?= Html::img($item->page->image, ['class' => 'avatar-img rounded-circle']) ?>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                     <!-- Join group END -->
+                    <?php endif; ?>
                 </div>
                 <!-- Card body END -->
                 <div class="card-footer pb-0">
@@ -529,11 +500,18 @@
                                 </div>
                                 <!-- Card body START -->
                                 <div class="card-body position-relative pt-0">
-                                    <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy.</p>
+                                    <p><?= $group->short ?></p>
                                     <!-- info -->
                                     <ul class="list-unstyled mt-3 mb-0">
-                                        <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> People: <strong> 20 Members </strong> </li>
-                                        <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Public </strong> </li>
+                                        <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> People: <strong> <?php echo count($group->users); ?> Members </strong> </li>
+                                        <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status:
+                                            <?php if($group->is_private != 1): ?>
+                                                <strong> Public </strong>
+                                            <?php else : ?>
+                                                <strong> Private </strong>
+                                            <?php endif; ?>
+
+                                        </li>
                                         <li class="mb-2"> <i class="bi bi-globe2 fa-fw pe-1"></i> <strong>www.webestica.com </strong> </li>
                                     </ul>
                                 </div>
@@ -544,76 +522,6 @@
                     </div>
                 </div>
                 <!-- Gruop Feed tab END -->
-
-                <!-- Gruop About tab END -->
-                <div class="tab-pane fade" id="group-tab-2">
-                    <div class="card card-body">
-                        <div class="my-sm-5 py-sm-5 text-center">
-                            <!-- Icon -->
-                            <i class="display-1 text-muted bi bi-person"> </i>
-                            <!-- Title -->
-                            <h4 class="mt-2 mb-3 text-body">No about details</h4>
-                            <button class="btn btn-primary-soft btn-sm"> Click here to add </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gruop About tab END -->
-
-                <!-- Gruop Connections tab END -->
-                <div class="tab-pane fade" id="group-tab-3">
-                    <div class="card card-body">
-                        <div class="my-sm-5 py-sm-5 text-center">
-                            <!-- Icon -->
-                            <i class="display-1 text-muted bi bi-people"> </i>
-                            <!-- Title -->
-                            <h4 class="mt-2 mb-3 text-body">No connections founds</h4>
-                            <button class="btn btn-primary-soft btn-sm"> Click here to add </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gruop Connections tab END -->
-
-                <!-- Gruop Media tab END -->
-                <div class="tab-pane fade" id="group-tab-4">
-                    <div class="card card-body">
-                        <div class="my-sm-5 py-sm-5 text-center">
-                            <!-- Icon -->
-                            <i class="display-1 text-muted bi bi-film"> </i>
-                            <!-- Title -->
-                            <h4 class="mt-2 mb-3 text-body">No media founds</h4>
-                            <button class="btn btn-primary-soft btn-sm"> Click here to add </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gruop Media tab END -->
-
-                <!-- Gruop Videos tab END -->
-                <div class="tab-pane fade" id="group-tab-5">
-                    <div class="card card-body">
-                        <div class="my-sm-5 py-sm-5 text-center">
-                            <!-- Icon -->
-                            <i class="display-1 text-muted bi bi-camera-reels"> </i>
-                            <!-- Title -->
-                            <h4 class="mt-2 mb-3 text-body">No videos founds</h4>
-                            <button class="btn btn-primary-soft btn-sm"> Click here to add </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gruop Videos tab END -->
-
-                <!-- Gruop Events tab END -->
-                <div class="tab-pane fade" id="group-tab-6">
-                    <div class="card card-body">
-                        <div class="my-sm-5 py-sm-5 text-center">
-                            <!-- Icon -->
-                            <i class="display-1 text-muted bi bi-calendar-plus"> </i>
-                            <!-- Title -->
-                            <h4 class="mt-2 mb-3 text-body">No events founds</h4>
-                            <button class="btn btn-primary-soft btn-sm"> Click here to add </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gruop Events tab END -->
             </div>
 
         </div>
