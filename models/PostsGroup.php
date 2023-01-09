@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "posts_group".
@@ -16,6 +18,7 @@ use Yii;
  */
 class PostsGroup extends \yii\db\ActiveRecord
 {
+    public $imageFile;
     /**
      * {@inheritdoc}
      */
@@ -39,6 +42,8 @@ class PostsGroup extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CommentGroup::className() , ['post_id' => 'id']);
     }
+
+
     /**
      * {@inheritdoc}
      */
@@ -49,7 +54,21 @@ class PostsGroup extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['created_at'], 'safe'],
             [['image'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $path  = 'uploads/posts/group/'. date('Y-m-d') ;
+            FileHelper::createDirectory($path);
+            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
