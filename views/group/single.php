@@ -31,8 +31,10 @@
 
         <!-- Main content START -->
         <div class="col-md-8 col-lg-9 vstack gap-4">
+
             <!-- Card START -->
             <div class="card">
+
                 <!-- Card body START -->
                 <div class="card-body">
                     <div class="d-md-flex flex-wrap align-items-start text-center text-md-start">
@@ -99,6 +101,41 @@
                 <div class="tab-pane fade active show" id="group-tab-1">
                     <div class="row g-4">
                         <div class="col-lg-8 vstack gap-4">
+                            <?php if($group->is_private != 1 || $group->admin === $page->id) : ?>
+                            <div class="card card-body">
+                                <div class="d-flex mb-3">
+                                    <!-- Avatar -->
+                                    <div class="avatar avatar-xs me-2">
+                                        <img class="avatar-img rounded-circle" src="/uploads/2023-01-07/13.jpg" alt="SkyNet">                </div>
+                                    <!-- Post input -->
+                                    <form id="add-new-post-home" class="w-100" action="/" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="_csrf" value="t8iwXPttG7BT4l6TVq1DqayymzNd3eeerAk5CU7DcXzxm-cXzTt15T22GetkmCXOw-2vch6WvcrWWg5xN5I9Fg==">
+                                        <div class="form-group field-posts-content has-success">
+
+                                            <textarea id="posts-content" class="form-control pe-4 border-0" name="Posts[content]" rows="3" placeholder="Share your thoughts..." aria-invalid="false"></textarea>
+
+                                            <div class="help-block"></div>
+                                        </div>
+                                        <div class="form-group field-posts-imagefile">
+
+                                            <input type="hidden" name="Posts[imageFile]" value=""><input type="file" id="posts-imagefile" class="form-control pe-4 border-0 mt-2" name="Posts[imageFile]" placeholder="Avatar">
+
+                                            <div class="help-block"></div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Share feed toolbar START -->
+                                <ul class="nav nav-pills nav-stack small fw-normal">
+                                    <li class="nav-item dropdown ms-sm-auto">
+                                        <button type="submit" class="btn btn-success-soft" onclick="$('#add-new-post-home').submit()">
+                                            Submit
+                                        </button>
+                                    </li>
+                                </ul>
+                                <!-- Share feed toolbar END -->
+                            </div>
+                            <?php endif; ?>
                             <?php if(!empty($posts)) : ?>
                                 <?php foreach ($posts as $post) : ?>
                                     <!-- Card feed item START -->
