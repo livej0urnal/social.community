@@ -109,6 +109,30 @@ class GroupController extends AppController
 
     }
 
+    public function actionInvite($id)
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $id = Yii::$app->request->get('id');
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        $group = Groups::findOne($id);
+        $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
+        if(!$is_user) {
+            $new_user = new UsersGroup();
+            $new_user->group_id = $group->id;
+            $new_user->page_id = $page->id;
+            $new_user->save();
+            if($new_user->save()) {
+                return $this->redirect(['group/single' , 'slug' => $group->slug]);
+            }
+        }
+        else{
+            return $this->redirect(['group/single' , 'slug' => $group->slug]);
+        }
+    }
+
     public function actionLeave($id)
     {
         $id = Yii::$app->request->get('id');

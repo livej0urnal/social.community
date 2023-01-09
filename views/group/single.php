@@ -61,6 +61,10 @@
                         <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-3 ms-lg-auto">
                             <?php if($group->admin != $page->id && $is_user): ?>
                                 <a class="btn btn-sm btn-primary-soft me-2 leave-group" data-value="<?= $group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->id]) ?>"> Leave </a>
+                            <?php else: ?>
+                                <?php if(!$is_user) : ?>
+                                <a class="btn btn-sm btn-success me-2 invite-group" href="<?= Url::to(['group/invite', 'id' => $group->id]) ?>" data-value="<?= $group->id ?>" type="button"> <i class="fa-solid fa-plus pe-1"></i> Invite</a>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <?php if($group->admin != $page->id) : ?>
                             <?php else: ?>
