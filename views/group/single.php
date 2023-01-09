@@ -104,31 +104,23 @@
                             <?php if($group->is_private != 1 || $group->admin === $page->id) : ?>
                             <div class="card card-body">
                                 <div class="d-flex mb-3">
-                                    <!-- Avatar -->
                                     <div class="avatar avatar-xs me-2">
-                                        <img class="avatar-img rounded-circle" src="/uploads/2023-01-07/13.jpg" alt="SkyNet">                </div>
+                                        <?= Html::img($page->image, ['alt' => $page->display_name, 'class' => 'avatar-img rounded-circle']) ?>
+                                    </div>
                                     <!-- Post input -->
-                                    <form id="add-new-post-home" class="w-100" action="/" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="_csrf" value="t8iwXPttG7BT4l6TVq1DqayymzNd3eeerAk5CU7DcXzxm-cXzTt15T22GetkmCXOw-2vch6WvcrWWg5xN5I9Fg==">
-                                        <div class="form-group field-posts-content has-success">
+                                    <?php $form = ActiveForm::begin(['id' => 'add-new-post-group', 'options' => ['class' => 'w-100', 'enctype' => 'multipart/form-data']]) ?>
 
-                                            <textarea id="posts-content" class="form-control pe-4 border-0" name="Posts[content]" rows="3" placeholder="Share your thoughts..." aria-invalid="false"></textarea>
+                                    <?= $form->field($new_post, 'content')->textarea(['rows' => '3', 'class' => 'form-control pe-4 border-0', 'placeholder' => 'Share your thoughts...'])->label(false) ?>
 
-                                            <div class="help-block"></div>
-                                        </div>
-                                        <div class="form-group field-posts-imagefile">
+                                    <?= $form->field($new_post, 'imageFile')->fileInput(['class' => 'form-control pe-4 border-0 mt-2', 'placeholder' => 'Avatar'])->label(false) ?>
 
-                                            <input type="hidden" name="Posts[imageFile]" value=""><input type="file" id="posts-imagefile" class="form-control pe-4 border-0 mt-2" name="Posts[imageFile]" placeholder="Avatar">
-
-                                            <div class="help-block"></div>
-                                        </div>
-                                    </form>
+                                    <?php ActiveForm::end() ?>
                                 </div>
 
                                 <!-- Share feed toolbar START -->
                                 <ul class="nav nav-pills nav-stack small fw-normal">
                                     <li class="nav-item dropdown ms-sm-auto">
-                                        <button type="submit" class="btn btn-success-soft" onclick="$('#add-new-post-home').submit()">
+                                        <button type="submit" class="btn btn-success-soft" onclick="$('#add-new-post-group').submit()">
                                             Submit
                                         </button>
                                     </li>

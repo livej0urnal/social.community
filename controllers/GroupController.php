@@ -10,6 +10,7 @@ use app\models\PostsGroup;
 use app\models\Users;
 use app\models\UsersGroup;
 use Yii;
+use yii\web\UploadedFile;
 
 class GroupController extends AppController
 {
@@ -24,6 +25,23 @@ class GroupController extends AppController
 //        $group = Groups::findOne(['slug' => $slug]);
         $new_comment = new CommentGroup();
         $user = Yii::$app->user->identity->id;
+        $new_post = new PostsGroup();
+        if(Yii::$app->request->isPost && $new_post->beforeValidate()){
+            $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
+            $new_post->upload();
+            if ($new_post->load(Yii::$app->request->post())){
+                $new_post->content = $new_post->content;
+                $new_post->group_id = $group->id;
+                $new_post->page_id = $page->id;
+                $new_post->save(false);
+                $new_post = new PostsGroup();
+                return $this->refresh();
+            }
+            else{
+                Yii::$app->session->setFlash('error', 'Error validation!');
+            }
+
+        }
         if($group->is_private == 1) {
             if($new_comment->load(Yii::$app->request->post())){
                 $new_comment->validate();
@@ -65,7 +83,7 @@ class GroupController extends AppController
                 }
                 $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
                 $this->setMeta($group->title);
-                return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment'));
+                return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post'));
             }
         }
         else{
@@ -88,7 +106,7 @@ class GroupController extends AppController
             $page = Pages::findOne(['user_id' => $user]);
             $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
             $this->setMeta($group->title);
-            return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment'));
+            return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post'));
         }
 
 
