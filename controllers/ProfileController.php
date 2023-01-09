@@ -145,8 +145,9 @@ class ProfileController extends AppController
             return $this->goHome();
         }
         $page = Pages::findOne(['user_id' => $user]);
+        $groups = $page->groups;
         $this->setMeta($page->page_name . ' - About Page');
-        return $this->render('about', compact('page'));
+        return $this->render('about', compact('page', 'groups'));
 
     }
 
