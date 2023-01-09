@@ -21,8 +21,9 @@ class GroupController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $model = new Groups();
         $this->setMeta('Create Group ');
-        return $this->render('create', compact('user'));
+        return $this->render('create', compact('user', 'model'));
     }
 
     public function actionSingle($slug)
