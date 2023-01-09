@@ -22,8 +22,9 @@ class GroupController extends AppController
         $posts = PostsGroup::find()->where(['group_id' => $group->id])->with('page')->orderBy(['created_at' => SORT_DESC])->all();
 //        $group = Groups::findOne(['slug' => $slug]);
         $new_comment = new CommentGroup();
+        $user = Yii::$app->user->identity->id;
         if($group->is_private == 1) {
-            $user = Yii::$app->user->identity->id;
+
             $page = Pages::findOne(['user_id' => $user]);
             $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
             if(!$is_user) {
