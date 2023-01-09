@@ -69,6 +69,7 @@ class GroupController extends AppController
         }
         $post = PostsGroup::findOne($id);
         $post->delete();
+        return $this->redirect(['group/single' , 'slug' => $post->group->slug]);
     }
 
 }
