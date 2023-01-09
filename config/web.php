@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/my-groups/' => 'profile/groups',
                 '/group/leave/<id:.+>/' => 'group/leave',
                 '/group/<slug:.+>/' => 'group/single',
                 '/page/<id:.+>/' => 'profile/friend',
