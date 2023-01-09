@@ -67,8 +67,8 @@ class GroupController extends AppController
         if(!Yii::$app->request->isAjax) {
             throw new HttpException(400, 'Only ajax request is allowed.');
         }
-        $post = PostsGroup::findOne(['id' => $id]);
-        $post->delete();
+        $post = PostsGroup::findOne($id);
+        $post->delete(false);
         return $this->redirect(['profile/groups']);
     }
 
