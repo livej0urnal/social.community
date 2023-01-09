@@ -11,6 +11,8 @@ class SidebarProfileWidget extends Widget
 {
     public function run()
     {
-        return $this->render('sidebar-profile');
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        return $this->render('sidebar-profile', compact('page'));
     }
 }
