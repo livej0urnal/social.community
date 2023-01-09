@@ -14,6 +14,12 @@ use yii\web\UploadedFile;
 
 class GroupController extends AppController
 {
+
+    public function actionCreate()
+    {
+        return $this->render('create');
+    }
+
     public function actionSingle($slug)
     {
         $slug = Yii::$app->request->get('slug');
