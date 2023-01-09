@@ -67,9 +67,9 @@ class GroupController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $post = PostsGroup::findOne($id);
+        $post = PostsGroup::findOne(['id' => $id]);
         $post->delete();
-        return $this->redirect(['group/single' , 'slug' => $post->group->slug]);
+//        return $this->redirect(['group/single' , 'slug' => $post->group->slug]);
     }
 
 }
