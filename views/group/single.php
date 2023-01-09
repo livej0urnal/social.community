@@ -121,7 +121,9 @@
                                                             </h6>
                                                             <span class="nav-item small"> <?= $post->created_at ?> </span>
                                                         </div>
-                                                        <p class="mb-0 small"><?= $group->post->user->page_name ?> </p>
+                                                        <?php if($group->is_private != 1) : ?>
+                                                        <p class="mb-0 small"><?= $post->page->page_name ?> </p>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                                 <?php if ($post->page_id === $page->id): ?>
