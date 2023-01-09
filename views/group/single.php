@@ -58,10 +58,11 @@
                         <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-3 ms-lg-auto">
                             <button class="btn btn-sm btn-primary-soft me-2" type="button"> <i class="bi bi-person-check-fill pe-1"></i> Joined</button>
                             <button class="btn btn-sm btn-success me-2" type="button"> <i class="fa-solid fa-plus pe-1"></i> Invite</button>
-                            <?php if($group->admin === $page->id) : ?>
+                            <?php if($group->admin != $page->id) : ?>
+                            <?php else: ?>
                             <div class="dropdown">
                                 <!-- Group share action menu -->
-                                <button class="icon-sm btn btn-dark-soft" type="button" id="groupAction" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                                <button class="icon-sm btn btn-dark-soft" type="button" id="groupAction" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots"></i>
                                 </button>
                                 <!-- Group share action dropdown menu -->

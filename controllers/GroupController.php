@@ -27,7 +27,7 @@ class GroupController extends AppController
             else{
                 $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(3)->all();
                 $this->setMeta($group->title);
-                return $this->render('single', compact('group', 'users'));
+                return $this->render('single', compact('group', 'users', 'page'));
             }
         }
         else{
