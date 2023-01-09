@@ -91,11 +91,11 @@ use yii\widgets\LinkPager;
                         <!-- Interests item START -->
                         <div class="d-flex align-items-center position-relative">
                             <div class="avatar">
-                                <?= Html::img($item->image, ['class' => 'avatar-img']) ?>
+                                <?= Html::img($item->group->image, ['class' => 'avatar-img']) ?>
                             </div>
                             <div class="ms-2">
-                                <h6 class="mb-0"> <a class="stretched-link" href="<?= Url::to(['group/single', 'slug' => $item->slug]) ?>"> <?= $item->title ?> </a></h6>
-                                <p class="small mb-0">7,546,224 followers</p>
+                                <h6 class="mb-0"> <a class="stretched-link" href="<?= Url::to(['group/single', 'slug' => $item->group->slug]) ?>"> <?= $item->group->title ?> </a></h6>
+                                <p class="small mb-0"><?php echo count($item->group->users)?> members</p>
                             </div>
                         </div>
                         <!-- Interests item END -->
