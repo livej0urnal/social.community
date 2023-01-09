@@ -59,8 +59,9 @@
                         </div>
                         <!-- Button -->
                         <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-3 ms-lg-auto">
-                            <button class="btn btn-sm btn-primary-soft me-2" type="button"> <i class="bi bi-person-check-fill pe-1"></i> Joined</button>
-                            <button class="btn btn-sm btn-success me-2" type="button"> <i class="fa-solid fa-plus pe-1"></i> Invite</button>
+                            <?php if($group->admin != $page->id && $is_user): ?>
+                                <a class="btn btn-sm btn-primary-soft me-2 leave-group" data-value="<?= $group->id ?>" href="<?= Url::to(['group/leave' , 'id' => $group->id]) ?>"> Leave </a>
+                            <?php endif; ?>
                             <?php if($group->admin != $page->id) : ?>
                             <?php else: ?>
                             <div class="dropdown">
@@ -71,10 +72,6 @@
                                 <!-- Group share action dropdown menu -->
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="groupAction" style="">
                                     <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a message</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your profile to PDF</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a></li>
                                 </ul>
                             </div>
                             <?php endif; ?>
@@ -101,7 +98,7 @@
                 <div class="tab-pane fade active show" id="group-tab-1">
                     <div class="row g-4">
                         <div class="col-lg-8 vstack gap-4">
-                            <?php if($group->is_private != 1 || $group->admin === $page->id) : ?>
+                            <?php if($group->is_private != 1 || $group->admin === $page->id and $is_user) : ?>
                             <div class="card card-body">
                                 <div class="d-flex mb-3">
                                     <div class="avatar avatar-xs me-2">

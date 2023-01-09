@@ -26,24 +26,31 @@ class GroupController extends AppController
         $new_comment = new CommentGroup();
         $user = Yii::$app->user->identity->id;
         $new_post = new PostsGroup();
-        if(Yii::$app->request->isPost && $new_post->beforeValidate()){
+        $page = Pages::findOne(['user_id' => $user]);
+        $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
+        if ($group->is_private and !$is_user) {
+            return $this->goHome();
+        }
+
+        if (Yii::$app->request->isPost && $new_post->beforeValidate()) {
             $new_post->imageFile = UploadedFile::getInstance($new_post, 'imageFile');
             $new_post->upload();
-            if ($new_post->load(Yii::$app->request->post())){
+            if ($new_post->load(Yii::$app->request->post())) {
                 $new_post->content = $new_post->content;
                 $new_post->group_id = $group->id;
                 $new_post->page_id = $page->id;
                 $new_post->save(false);
                 $new_post = new PostsGroup();
                 return $this->refresh();
-            }
-            else{
+            } else {
                 Yii::$app->session->setFlash('error', 'Error validation!');
             }
 
         }
-        if($group->is_private == 1) {
-            if($new_comment->load(Yii::$app->request->post())){
+
+        if ($group->is_private == 1) {
+            $page = Pages::findOne(['user_id' => $user]);
+            if ($new_comment->load(Yii::$app->request->post())) {
                 $new_comment->validate();
                 $comment = new CommentGroup();
                 $comment->post_id = $new_comment->post_id;
@@ -51,21 +58,14 @@ class GroupController extends AppController
                 $user = Users::findOne($user);
                 $comment->page_id = $user->page->id;
                 $comment->save();
-                if($comment->save()) {
+                if ($comment->save()) {
                     Yii::$app->session->setFlash('success', 'Comment send!');
                     return $this->refresh();
-                }
-                else{
+                } else {
                     Yii::$app->session->setFlash('error', 'Has error!');
                 }
-            }
-            $page = Pages::findOne(['user_id' => $user]);
-            $is_user = UsersGroup::find()->where(['group_id' => $group->id])->andWhere(['page_id' => $page->id])->one();
-            if(!$is_user) {
-                return $this->goHome();
-            }
-            else{
-                if($new_comment->load(Yii::$app->request->post())){
+            } else {
+                if ($new_comment->load(Yii::$app->request->post())) {
                     $new_comment->validate();
                     $comment = new CommentGroup();
                     $comment->post_id = $new_comment->post_id;
@@ -73,21 +73,19 @@ class GroupController extends AppController
                     $user = Users::findOne($user);
                     $comment->page_id = $page->id;
                     $comment->save();
-                    if($comment->save()) {
+                    if ($comment->save()) {
                         Yii::$app->session->setFlash('success', 'Comment send!');
                         return $this->refresh();
-                    }
-                    else{
+                    } else {
                         Yii::$app->session->setFlash('error', 'Has error!');
                     }
                 }
                 $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
                 $this->setMeta($group->title);
-                return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post'));
+                return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post', 'is_user'));
             }
-        }
-        else{
-            if($new_comment->load(Yii::$app->request->post())){
+        } else {
+            if ($new_comment->load(Yii::$app->request->post())) {
                 $new_comment->validate();
                 $comment = new CommentGroup();
                 $comment->post_id = $new_comment->post_id;
@@ -95,18 +93,17 @@ class GroupController extends AppController
                 $user = Users::findOne($user_id);
                 $comment->page_id = $user->page->id;
                 $comment->save();
-                if($comment->save()) {
+                if ($comment->save()) {
                     Yii::$app->session->setFlash('success', 'Comment send!');
                     return $this->refresh();
-                }
-                else{
+                } else {
                     Yii::$app->session->setFlash('error', 'Has error!');
                 }
             }
             $page = Pages::findOne(['user_id' => $user]);
             $users = UsersGroup::find()->where(['group_id' => $group->id])->limit(10)->all();
             $this->setMeta($group->title);
-            return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post'));
+            return $this->render('single', compact('group', 'users', 'page', 'posts', 'new_comment', 'new_post', 'is_user'));
         }
 
 
@@ -130,7 +127,7 @@ class GroupController extends AppController
     public function actionDeletePost($id)
     {
         $id = Yii::$app->request->get('id');
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
             throw new HttpException(400, 'Only ajax request is allowed.');
         }
         $post = PostsGroup::findOne($id);
