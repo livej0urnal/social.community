@@ -56,7 +56,7 @@ class Groups extends ActiveRecord
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
+            [['imageFile'], 'file'],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
         ];
