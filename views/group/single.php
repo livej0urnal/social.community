@@ -356,7 +356,10 @@
                                             <?php endif; ?>
 
                                         </li>
-                                        <li class="mb-2"> <i class="bi bi-globe2 fa-fw pe-1"></i> <strong>www.webestica.com </strong> </li>
+                                        <?php if(!empty($group->site)) : ?>
+                                        <li class="mb-2"> <i class="bi bi-globe2 fa-fw pe-1"></i> <strong><a
+                                                        href="<?= $group->site ?>" target="_blank"><?= $group->site ?></a> </strong> </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                                 <!-- Card body END -->
