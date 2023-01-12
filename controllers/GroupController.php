@@ -22,6 +22,15 @@ class GroupController extends AppController
             return $this->goHome();
         }
         $model = new Groups();
+        if(Yii::$app->request->isPost)
+        {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $model->background = UploadedFile::getInstance($model, 'background');
+            $model->upload();
+            if($model->upload() ) {
+
+            }
+        }
         $this->setMeta('Create Group ');
         return $this->render('create', compact('user', 'model'));
     }

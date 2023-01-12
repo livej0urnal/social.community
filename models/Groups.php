@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "groups".
@@ -47,7 +49,23 @@ class Groups extends \yii\db\ActiveRecord
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
+            [['image', 'background'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $path  = 'uploads/'. date('Y-m-d') ;
+            FileHelper::createDirectory($path);
+            $this->image->saveAs($path . '/' . $this->image->baseName . '.' . $this->image->extension);
+            $this->background->saveAs($path . '/' . $this->background->baseName . '.' . $this->background->extension);
+            $this->image = '/' . $path . '/' . $this->image->baseName . '.' . $this->image->extension;
+            $this->background = '/' . $path . '/' . $this->background->baseName . '.' . $this->background->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
