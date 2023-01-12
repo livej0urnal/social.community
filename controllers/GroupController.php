@@ -25,7 +25,7 @@ class GroupController extends AppController
         $model = new Groups();
         if(Yii::$app->request->isAjax && Yii::$app->request->isPost)
         {
-            $model->imageFile = UploadedFile::getInstanceByName('imageFile');
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $model->upload()){
                 $model->admin = $page->id;
                 $model->save();

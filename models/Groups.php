@@ -52,13 +52,13 @@ class Groups extends ActiveRecord
     public function rules()
     {
         return [
-            [['slug', 'short', 'title', 'is_private'], 'required'],
+            [['slug', 'short', 'title'], 'required'],
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
-            [['imageFile'], 'file'],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
         ];
     }
 
@@ -68,8 +68,10 @@ class Groups extends ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->image = 'uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $path  = 'uploads/'. date('Y-m-d') ;
+            FileHelper::createDirectory($path);
+            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
         } else {
             return false;
