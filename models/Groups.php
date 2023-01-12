@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
+use yii\base\Model;
 
 /**
  * This is the model class for table "groups".
@@ -20,6 +21,10 @@ use yii\web\UploadedFile;
  */
 class Groups extends \yii\db\ActiveRecord
 {
+    public $imageFile;
+    /**
+     * @var string|UploadedFile|null
+     */
     /**
      * {@inheritdoc}
      */
@@ -50,8 +55,7 @@ class Groups extends \yii\db\ActiveRecord
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
-            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
-            [['background'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -60,10 +64,8 @@ class Groups extends \yii\db\ActiveRecord
         if ($this->validate()) {
             $path  = 'uploads/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
-            $this->image->saveAs($path . '/' . $this->image->baseName . '.' . $this->image->extension);
-            $this->background->saveAs($path . '/' . $this->background->baseName . '.' . $this->background->extension);
-            $this->image = '/' . $path . '/' . $this->image->baseName . '.' . $this->image->extension;
-            $this->background = '/' . $path . '/' . $this->background->baseName . '.' . $this->background->extension;
+            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
         } else {
             return false;

@@ -77,14 +77,9 @@ use yii\helpers\Html;
                         <!-- First name -->
                         <div class="col-sm-6 col-lg-6">
                             <label class="form-label">Logo</label>
-                            <?= $form->field($model, 'image')->fileInput(['class' => 'form-control', 'placeholder' => 'Logo'])->label(false) ?>
+                            <?= $form->field($model, 'imageFile')->fileInput(['class' => 'form-control', 'placeholder' => 'Logo'])->label(false) ?>
                         </div>
 
-                        <!-- First name -->
-                        <div class="col-sm-6 col-lg-6">
-                            <label class="form-label">Background</label>
-                            <?= $form->field($model, 'background')->fileInput(['class' => 'form-control', 'placeholder' => 'Background'])->label(false) ?>
-                        </div>
                         <?= $form->errorSummary($model) ?>
 
                         <!-- Button  -->
