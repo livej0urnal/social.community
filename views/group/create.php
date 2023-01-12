@@ -85,6 +85,7 @@ use yii\helpers\Html;
                             <label class="form-label">Background</label>
                             <?= $form->field($model, 'background')->fileInput(['class' => 'form-control', 'placeholder' => 'Background'])->label(false) ?>
                         </div>
+                        <?= $form->errorSummary($model) ?>
 
                         <!-- Button  -->
                         <div class="col-12 text-end">

@@ -20,6 +20,8 @@ use yii\web\UploadedFile;
  */
 class Groups extends \yii\db\ActiveRecord
 {
+    public $image;
+    public $background;
     /**
      * {@inheritdoc}
      */
