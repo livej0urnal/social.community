@@ -26,6 +26,7 @@ use yii\base\Model;
 class Pages extends ActiveRecord
 {
     public $imageFile;
+
     /**
      * {@inheritdoc}
      */
