@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use yii\db\ActiveRecord;
@@ -55,12 +56,15 @@ class Groups extends ActiveRecord
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public function upload()
     {
         if ($this->validate()) {
