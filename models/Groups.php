@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
+use yii\db\ActiveRecord;
 use yii\base\Model;
 
 /**
@@ -19,9 +20,10 @@ use yii\base\Model;
  * @property int|null $is_private
  * @property int|null $admin
  */
-class Groups extends \yii\db\ActiveRecord
+class Groups extends ActiveRecord
 {
     public $imageFile;
+
     /**
      * @var string|UploadedFile|null
      */
@@ -49,7 +51,7 @@ class Groups extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slug', 'short', 'title', 'image'], 'required'],
+            [['slug', 'short', 'title'], 'required'],
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
@@ -86,7 +88,6 @@ class Groups extends \yii\db\ActiveRecord
             'site' => 'Site',
             'is_private' => 'Is Private',
             'admin' => 'Admin',
-            'background' => 'Background'
         ];
     }
 }
