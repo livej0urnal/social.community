@@ -203,4 +203,17 @@ class GroupController extends AppController
         $comment->delete(false);
     }
 
+    public function actionPrivate($id, $value)
+    {
+        $id = Yii::$app->request->get('id');
+        $value = Yii::$app->request->get('value');
+        $group = Groups::findOne($id);
+        $user = Yii::$app->user->identity->id;
+        $page = Pages::findOne(['user_id' => $user]);
+        if($group->admin === $page->id){
+            $group->is_private = $value;
+            $group->save();
+        }
+    }
+
 }

@@ -75,7 +75,11 @@
                                 </button>
                                 <!-- Group share action dropdown menu -->
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="groupAction" style="">
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a message</a></li>
+                                    <?php if($group->is_private === 0) : ?>
+                                        <li><a class="dropdown-item" href="#" data-id="<?= $group->id ?>" data-value="1"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Private</a></li>
+                                    <?php else : ?>
+                                        <li><a class="dropdown-item" href="#" data-id="<?= $group->id ?>" data-value="2"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Public</a></li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                             <?php endif; ?>

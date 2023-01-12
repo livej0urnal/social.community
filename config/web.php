@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/group/private/<id:.+>/<value:.+>/' => 'group/private',
                 '/group/create' => 'group/create',
                 '/group/invite' => 'group/invite',
                 '/group/delete-comment' => 'group/delete-comment',
