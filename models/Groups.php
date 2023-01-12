@@ -24,6 +24,7 @@ use yii\base\Model;
 class Groups extends ActiveRecord
 {
     public $imageFile;
+    public $imageFile2;
 
     /**
      * @var string|UploadedFile|null
@@ -59,6 +60,7 @@ class Groups extends ActiveRecord
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
+            [['imageFile2'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
         ];
     }
 
@@ -71,7 +73,9 @@ class Groups extends ActiveRecord
             $path  = 'uploads/'. date('Y-m-d') ;
             FileHelper::createDirectory($path);
             $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile2->saveAs($path . '/' . $this->imageFile2->baseName . '.' . $this->imageFile2->extension);
             $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->background = '/' . $path . '/' . $this->imageFile2->baseName . '.' . $this->imageFile2->extension;
             return true;
         } else {
             return false;

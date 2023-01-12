@@ -81,6 +81,13 @@ use yii\widgets\Pjax;
                             <?= $form->field($model, 'imageFile')->fileInput(['class' => 'form-control', 'placeholder' => 'Logo'])->label(false) ?>
                         </div>
 
+
+                        <!-- First name -->
+                        <div class="col-sm-6 col-lg-6">
+                            <label class="form-label">Logo</label>
+                            <?= $form->field($model, 'imageFile2')->fileInput(['class' => 'form-control', 'placeholder' => 'Logo'])->label(false) ?>
+                        </div>
+
                         <?= $form->errorSummary($model) ?>
 
                         <!-- Button  -->
