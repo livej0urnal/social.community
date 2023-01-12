@@ -52,7 +52,7 @@ class Groups extends ActiveRecord
     public function rules()
     {
         return [
-            [['slug', 'short', 'title'], 'required'],
+            [['slug', 'short', 'title', 'is_private'], 'required'],
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
@@ -68,10 +68,8 @@ class Groups extends ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $path  = 'uploads/'. date('Y-m-d') ;
-            FileHelper::createDirectory($path);
-            $this->imageFile->saveAs($path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->image = '/' . $path . '/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = 'uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
         } else {
             return false;
