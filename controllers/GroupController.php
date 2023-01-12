@@ -21,6 +21,7 @@ class GroupController extends AppController
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $page = Pages::findOne(['user_id' => $user]);
         $model = new Groups();
         if(Yii::$app->request->isPost)
         {
@@ -28,15 +29,19 @@ class GroupController extends AppController
             $model->background = UploadedFile::getInstance($model, 'background');
             $model->upload();
             if ($model->load(Yii::$app->request->post())){
-                $model->update(false);
-                Yii::$app->session->setFlash('success', 'saved profile');
+                $model->admin = $page->id;
+                $model->save();
+                $new_user = new UsersGroup();
+                $new_user->group_id = $model->id;
+                $new_user->page_id = $page->id;
+                $new_user->save();
             }
             else{
                 Yii::$app->session->setFlash('error', 'Error validation!');
             }
         }
         $this->setMeta('Create Group ');
-        return $this->render('create', compact('user', 'model'));
+        return $this->render('create', compact('user', 'model', 'page'));
     }
 
     public function actionSingle($slug)

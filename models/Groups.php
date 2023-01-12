@@ -44,6 +44,7 @@ class Groups extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['slug', 'short', 'title'], 'required'],
             [['short'], 'string'],
             [['is_private', 'admin'], 'integer'],
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],

@@ -37,6 +37,7 @@ class UsersGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['page_id', 'group_id'], 'required'],
             [['page_id', 'group_id'], 'integer'],
         ];
     }
