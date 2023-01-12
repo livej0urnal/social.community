@@ -31,10 +31,13 @@ class GroupController extends AppController
             if ($model->load(Yii::$app->request->post())){
                 $model->admin = $page->id;
                 $model->save();
-                $new_user = new UsersGroup();
-                $new_user->group_id = $model->id;
-                $new_user->page_id = $page->id;
-                $new_user->save();
+                if($model->save()) {
+                    $new_user = new UsersGroup();
+                    $new_user->group_id = $this->id;
+                    $new_user->page_id = $page->id;
+                    $new_user->save();
+                }
+
             }
             else{
                 Yii::$app->session->setFlash('error', 'Error validation!');
