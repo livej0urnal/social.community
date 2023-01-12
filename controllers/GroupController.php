@@ -27,9 +27,8 @@ class GroupController extends AppController
         {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->upload();
-            if ($model->load(Yii::$app->request->post()) && $model->upload()){
+            if ($model->load(Yii::$app->request->post())){
                 $model->admin = $page->id;
-                $model->save(false);
                 if($model->save()) {
                     $new_user = new UsersGroup();
                     $new_user->group_id = $this->id;
