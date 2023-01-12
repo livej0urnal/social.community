@@ -52,7 +52,8 @@ class Groups extends \yii\db\ActiveRecord
             [['slug', 'title', 'image', 'site', 'background'], 'string', 'max' => 255],
             [['slug'], 'unique' , 'targetClass' => 'app\models\Groups'],
             [['title'], 'unique' , 'targetClass' => 'app\models\Groups'],
-            [['image', 'background'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['background'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
