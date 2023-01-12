@@ -10,6 +10,7 @@ use app\models\PostsGroup;
 use app\models\Users;
 use app\models\UsersGroup;
 use Yii;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 class GroupController extends AppController
@@ -31,11 +32,14 @@ class GroupController extends AppController
                 $model->imageFile2 = UploadedFile::getInstance($model, 'imageFile2');
                 $model->upload();
                 $model->save(false);
+                $group = Groups::findOne(['slug' => $model->slug]);
                 $new_user = new UsersGroup();
-                $new_user->group_id = $this->id;
+                $new_user->group_id = $group->id;
                 $new_user->page_id = $page->id;
-                $new_user->save();
-                $model = new Groups();
+                $new_user->save(false);
+
+                return $this->redirect(Url::to(['group/single' , 'slug' => $model->slug]));
+
 
             }
             else{
