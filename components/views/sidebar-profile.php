@@ -1,6 +1,8 @@
 <?php
-    use yii\helpers\Url;
-    use yii\helpers\Html;
+
+use yii\helpers\Url;
+use yii\helpers\Html;
+
 ?>
 
 <!-- Navbar START-->
@@ -35,7 +37,7 @@
                         </div>
                         <!-- Info -->
                         <h5 class="mb-0"><a
-                                href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"> <?= $page->page_name ?> </a>
+                                    href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"> <?= $page->page_name ?> </a>
                         </h5>
                         <small><?= $page->category->title ?></small>
                         <p class="mt-3"><?= $page->about_page ?></p>
@@ -72,8 +74,8 @@
                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['page/profile', 'id' => $page->id]) ?>"> <img
-                                    class="me-2 h-20px fa-fw" src="/images/icon/home-outline-filled.svg"
-                                    alt=""><span>Feed </span></a>
+                                        class="me-2 h-20px fa-fw" src="/images/icon/home-outline-filled.svg"
+                                        alt=""><span>Feed </span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['profile/connections', 'user' => $user]) ?>">
@@ -81,14 +83,18 @@
                                      alt=""><span>Connections </span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= Url::to(['profile/groups']) ?>"> <img class="me-2 h-20px fa-fw"
-                                                                                                src="/images/icon/chat-outline-filled.svg"
-                                                                                                alt=""><span>Groups </span></a>
+                            <a class="nav-link" href="<?= Url::to(['profile/groups']) ?>"> <img
+                                        class="me-2 h-20px fa-fw"
+                                        src="/images/icon/chat-outline-filled.svg"
+                                        alt=""><span>Groups </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/earth-outline-filled.svg" alt=""><span>Latest News </span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['page/edit', 'id' => $page->id]) ?>"> <img
-                                    class="me-2 h-20px fa-fw" src="/images/icon/cog-outline-filled.svg"
-                                    alt=""><span>Settings </span></a>
+                                        class="me-2 h-20px fa-fw" src="/images/icon/cog-outline-filled.svg"
+                                        alt=""><span>Settings </span></a>
                         </li>
                     </ul>
                     <!-- Side Nav END -->
