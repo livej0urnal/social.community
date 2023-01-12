@@ -27,8 +27,12 @@ class GroupController extends AppController
             $model->image = UploadedFile::getInstance($model, 'image');
             $model->background = UploadedFile::getInstance($model, 'background');
             $model->upload();
-            if($model->upload() ) {
-
+            if ($model->load(Yii::$app->request->post())){
+                $model->update(false);
+                Yii::$app->session->setFlash('success', 'saved profile');
+            }
+            else{
+                Yii::$app->session->setFlash('error', 'Error validation!');
             }
         }
         $this->setMeta('Create Group ');
