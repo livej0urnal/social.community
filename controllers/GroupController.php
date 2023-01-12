@@ -23,20 +23,20 @@ class GroupController extends AppController
         }
         $page = Pages::findOne(['user_id' => $user]);
         $model = new Groups();
-        if(Yii::$app->request->isPost)
+        if(Yii::$app->request->isAjax && Yii::$app->request->isPost)
         {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->upload();
-            if ($model->load(Yii::$app->request->post())){
+            if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
                 $model->admin = $page->id;
                 $model->save();
-                if($model->save()) {
-                    $new_user = new UsersGroup();
-                    $new_user->group_id = $this->id;
-                    $new_user->page_id = $page->id;
-                    $new_user->save();
-                    $model = new Groups();
-                }
+//                if($model->save()) {
+//                    $new_user = new UsersGroup();
+//                    $new_user->group_id = $this->id;
+//                    $new_user->page_id = $page->id;
+//                    $new_user->save();
+//                    $model = new Groups();
+//                }
 
             }
             else{

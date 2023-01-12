@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 ?>
 
@@ -41,8 +42,9 @@ use yii\helpers\Html;
                     </div>
                     <!-- Card header START -->
                     <!-- Card body START -->
+                    <?php Pjax::begin(['id' => 'ajax-create-group']) ?>
                     <div class="card-body">
-                        <?php $form = ActiveForm::begin(['id' => 'create-group', 'options' => ['class' => 'row g-3', 'enctype' => 'multipart/form-data']]) ?>
+                        <?php $form = ActiveForm::begin(['id' => 'create-group', 'options' => ['class' => 'row g-3', 'data-pjax' => true, 'enctype' => 'multipart/form-data']]) ?>
                         <!-- Slug name -->
                         <div class="col-sm-6 col-lg-4">
                             <label class="form-label">Slug</label>
@@ -90,6 +92,7 @@ use yii\helpers\Html;
                         <!-- Form settings START -->
                     </div>
                     <!-- Card body END -->
+                    <?php Pjax::end() ?>
                 </div>
                 <!-- Account settings END -->
             </div>
