@@ -76,9 +76,9 @@
                                 <!-- Group share action dropdown menu -->
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="groupAction" style="">
                                     <?php if($group->is_private === 0) : ?>
-                                        <li><a class="dropdown-item" href="#" data-id="<?= $group->id ?>" data-value="1"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Private</a></li>
+                                        <li><a class="dropdown-item change-private-group" href="#" data-id="<?= $group->id ?>" data-value="1"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Private</a></li>
                                     <?php else : ?>
-                                        <li><a class="dropdown-item" href="#" data-id="<?= $group->id ?>" data-value="2"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Public</a></li>
+                                        <li><a class="dropdown-item change-private-group" href="#" data-id="<?= $group->id ?>" data-value="0"> <i class="bi bi-bookmark fa-fw pe-2"></i>Make Public</a></li>
                                     <?php endif; ?>
                                 </ul>
                             </div>

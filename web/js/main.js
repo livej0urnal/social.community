@@ -149,3 +149,15 @@ $('.delete-group-post').on('click', function (e) {
     }
 
 });
+
+$('.change-private-group').on('click', function () {
+   var id = $(this).attr('data-id');
+   var value = $(this).attr('data-value');
+   $.ajax({
+      url: '/group/private/' + id + '/' + value + '/',
+      method: 'GET',
+      success: function () {
+          location.reload();
+      }
+   });
+});

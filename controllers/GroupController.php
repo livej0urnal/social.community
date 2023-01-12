@@ -212,7 +212,7 @@ class GroupController extends AppController
         $page = Pages::findOne(['user_id' => $user]);
         if($group->admin === $page->id){
             $group->is_private = $value;
-            $group->save();
+            $group->save(false);
         }
     }
 
