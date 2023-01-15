@@ -92,6 +92,9 @@ use yii\helpers\Html;
                             <a class="nav-link" href="<?= Url::to(['news/index']) ?>"> <img class="me-2 h-20px fa-fw" src="/images/icon/earth-outline-filled.svg" alt=""><span>Latest News </span></a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications </span></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['page/edit', 'id' => $page->id]) ?>"> <img
                                         class="me-2 h-20px fa-fw" src="/images/icon/cog-outline-filled.svg"
                                         alt=""><span>Settings </span></a>
