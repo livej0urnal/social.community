@@ -91,13 +91,14 @@
                 <!-- Card header END -->
                 <!-- Card body START -->
                 <div class="card-body">
-
+                    <?php foreach ($page->feeds as $feed) : ?>
                     <!-- Connection item START -->
                     <div class="hstack gap-2 mb-3">
                         <!-- Avatar -->
                         <div class="avatar">
-                            <a href="#"> <img class="avatar-img rounded-circle"
-                                              src="/images/avatar/11.jpg" alt=""> </a>
+                            <a href="#">
+                                <?= Html::img($feed->image, ['class' => 'avatar-img rounded-circle']) ?>
+                            </a>
                         </div>
                         <!-- Title -->
                         <div class="overflow-hidden">
@@ -109,7 +110,7 @@
                                 class="bi bi-person-check-fill"> </i></a>
                     </div>
                     <!-- Connection item END -->
-
+                    <?php endforeach; ?>
                 </div>
                 <!-- Card body END -->
             </div>
