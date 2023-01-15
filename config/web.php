@@ -49,6 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '/article/<slug:.+>/' => 'news/single',
                 '/news/' => 'news/index',
                 '/blog/<id:.+>/' => 'news/category',
                 '/group/private/<id:.+>/<value:.+>/' => 'group/private',
