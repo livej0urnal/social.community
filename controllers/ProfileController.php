@@ -66,7 +66,7 @@ class ProfileController extends AppController
         $user = Yii::$app->user->identity->id;
         $page_user = Pages::findOne(['user_id' => $user]);
         $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->all();
-        $query = Posts::find()->where(['page_id' => $page->id])->with('comments')->orderby(['created_at' => SORT_DESC]);
+        $query = Posts::find()->where(['page_id' => $page->id])->with('comments', 'page', 'page.category')->orderby(['created_at' => SORT_DESC]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 20, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $new_comment = new CommentForm();
