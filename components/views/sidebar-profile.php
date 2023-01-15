@@ -89,7 +89,7 @@ use yii\helpers\Html;
                                         alt=""><span>Groups </span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html"> <img class="me-2 h-20px fa-fw" src="/images/icon/earth-outline-filled.svg" alt=""><span>Latest News </span></a>
+                            <a class="nav-link" href="<?= Url::to(['news/index']) ?>"> <img class="me-2 h-20px fa-fw" src="/images/icon/earth-outline-filled.svg" alt=""><span>Latest News </span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= Url::to(['page/edit', 'id' => $page->id]) ?>"> <img
