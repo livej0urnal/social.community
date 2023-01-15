@@ -92,24 +92,24 @@
                 <!-- Card body START -->
                 <div class="card-body">
                     <?php foreach ($page->feeds as $feed) : ?>
-                    <!-- Connection item START -->
-                    <div class="hstack gap-2 mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar">
-                            <a href="#">
-                                <?= Html::img($feed->image, ['class' => 'avatar-img rounded-circle']) ?>
-                            </a>
+                        <!-- Connection item START -->
+                        <div class="hstack gap-2 mb-3">
+                            <!-- Avatar -->
+                            <div class="avatar">
+                                <a href="<?= Url::to(['profile/friend', 'id' => $feed->feed_id]) ?>">
+                                    <?= Html::img($feed->feed->image, ['class' => 'avatar-img rounded-circle']) ?>
+                                </a>
+                            </div>
+                            <!-- Title -->
+                            <div class="overflow-hidden">
+                                <a class="h6 mb-0" href="<?= Url::to(['profile/friend', 'id' => $feed->feed_id]) ?>"><?= $feed->feed->page_name ?> </a>
+                                <p class="mb-0 small text-truncate"><?= $feed->feed->category->title ?></p>
+                            </div>
+                            <!-- Button -->
+                            <a class="btn btn-primary-soft rounded-circle icon-md ms-auto apply-friend" data-value="<?= $feed->feed_id ?>" href="#"><i
+                                        class="fa-solid fa-plus"> </i></a>
                         </div>
-                        <!-- Title -->
-                        <div class="overflow-hidden">
-                            <a class="h6 mb-0" href="#!">Billy Vasquez </a>
-                            <p class="mb-0 small text-truncate">News anchor</p>
-                        </div>
-                        <!-- Button -->
-                        <a class="btn btn-primary rounded-circle icon-md ms-auto" href="#"><i
-                                class="bi bi-person-check-fill"> </i></a>
-                    </div>
-                    <!-- Connection item END -->
+                        <!-- Connection item END -->
                     <?php endforeach; ?>
                 </div>
                 <!-- Card body END -->
