@@ -13,7 +13,8 @@ class UserHeaderWidget extends Widget
         $user = Yii::$app->user->identity->id;
         if($user)
         {
-            $page = Pages::findOne(['user_id' => $user]);
+//            $page = Pages::findOne(['user_id' => $user]);
+            $page = Pages::find()->where(['user_id' => $user])->with('feeds', 'feeds.feed')->one();
         }
         return $this->render('header-user', compact('user' , 'page'));
     }
