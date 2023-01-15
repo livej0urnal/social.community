@@ -43,7 +43,7 @@
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/about' , 'user' => $page->user_id]) ?>"> About </a> </li>
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/connections' , 'user' => $page->user_id]) ?>"> Connections <span class="badge bg-success bg-opacity-10 text-success small"> <?php echo count($page->friends);?></span> </a> </li>
                 <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['profile/groups']) ?>"> Groups</a> </li>
-                <li class="nav-item"> <a class="nav-link link-profile-href" href="my-profile-activity.html"> Activity</a> </li>
+                <li class="nav-item"> <a class="nav-link link-profile-href" href="<?= Url::to(['activity/index']) ?>"> Activity</a> </li>
             </ul>
         </div>
     </div>
