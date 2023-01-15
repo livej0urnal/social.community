@@ -5,8 +5,10 @@ namespace app\controllers;
 use app\controllers\AppController;
 use app\models\Category;
 use app\models\News;
+use app\models\Posts;
 use Faker\Factory;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 
 class NewsController extends AppController
@@ -38,8 +40,11 @@ class NewsController extends AppController
         $id = Yii::$app->request->get('id');
         $categories = Category::find()->orderBy(['title' => SORT_DESC])->all();
         $posts = News::find()->with('category')->orderBy(['public_date' => SORT_DESC])->all();
+        $query = News::find()->with('category')->orderby(['public_date' => SORT_DESC]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta('Latest News ');
-        return $this->render('index', compact('categories', 'posts'));
+        return $this->render('index', compact('categories', 'posts', 'pages'));
     }
 
     public function actionCategory($id)

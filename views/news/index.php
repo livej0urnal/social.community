@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 ?>
 <div class="container">
@@ -44,23 +45,11 @@ use yii\helpers\Url;
                         <!-- Blog item END -->
                         <hr class="my-4">
                     <?php endforeach; ?>
-                    <!-- Pagination -->
-                    <div class="mt-4">
-                        <nav aria-label="navigation">
-                            <ul class="pagination pagination-light d-inline-block d-md-flex justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">Prev</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <?php echo LinkPager::widget([
+                        'pagination' => $pages,
+                        'options' => ['class' => 'pagination tab-pagination d-inline-block d-md-flex justify-content-center'],
+                        'linkOptions' => ['class' => 'page-link'],
+                    ]); ?>
                 <?php endif; ?>
             </div>
         </div>
