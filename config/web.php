@@ -50,6 +50,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '/news/' => 'news/index',
+                '/blog/<id:.+>/' => 'news/category',
                 '/group/private/<id:.+>/<value:.+>/' => 'group/private',
                 '/group/create' => 'group/create',
                 '/group/invite' => 'group/invite',
