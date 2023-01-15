@@ -29,13 +29,14 @@ use yii\helpers\Url;
                                         </a>
                                     </h5>
                                     <div class="d-none d-sm-inline-block">
-                                        <p class="mb-2">Speedily say has suitable disposal add boy. On forth doubt miles
-                                            of
-                                            child. Exercise joy man children rejoiced.</p>
+                                        <p class="mb-2">
+                                            <?php echo \yii\helpers\StringHelper::truncate($post->content, 100); ?>
+                                        </p>
                                         <!-- BLog date -->
-                                        <a class="small text-secondary" href="#!"> <i
-                                                    class="bi bi-calendar-date pe-1"></i> Jan
-                                            22, 2022</a>
+                                        <a class="small text-secondary" href="<?= Url::to(['news/single', 'slug' => $post->slug]) ?>">
+                                            <i class="bi bi-calendar-date pe-1"></i>
+                                            <?php echo Yii::$app->formatter->asDate($post->public_date, 'long'); ?>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
