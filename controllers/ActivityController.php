@@ -48,8 +48,10 @@ class ActivityController extends AppController
     public function actionSearch($q)
     {
         $q = Yii::$app->request->get('q');
+        $user = Yii::$app->user->identity->id;
+        $user_page = Pages::find()->where(['user_id' => $user])->with('friends')->one();
         $pages = Pages::find()->filterWhere(['like', 'page_name', $q])->orFilterWhere(['like', 'display_name', $q])->all();
         $this->setMeta('Results :' . $q);
-        return $this->render('search', compact('q', 'pages'));
+        return $this->render('search', compact('q', 'pages', 'user_page'));
     }
 }
