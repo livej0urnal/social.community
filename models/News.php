@@ -26,6 +26,16 @@ class News extends \yii\db\ActiveRecord
         return 'news';
     }
 
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className() , ['id' => 'category_id']);
+    }
+
+    public function getPage()
+    {
+        return $this->hasOne(Pages::className() , ['id' => 'page_id']);
+    }
+
     /**
      * {@inheritdoc}
      */

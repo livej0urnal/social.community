@@ -70,6 +70,11 @@ class Pages extends ActiveRecord
         return $this->hasMany(UsersGroup::className() , ['page_id' => 'id']);
     }
 
+    public function getArticles()
+    {
+        return $this->hasMany(News::className(), ['page_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
