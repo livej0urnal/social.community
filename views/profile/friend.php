@@ -239,7 +239,7 @@ use yii\widgets\ActiveForm;
                     </div>
                     <!-- Card body END -->
                 </div>
-
+                <?php if(!empty($page->groups)) : ?>
                 <div class="card">
                     <!-- Card header START -->
                     <div class="card-header d-flex justify-content-between border-0">
@@ -249,57 +249,28 @@ use yii\widgets\ActiveForm;
                     <!-- Card header END -->
                     <!-- Card body START -->
                     <div class="card-body position-relative pt-0">
+                        <?php foreach ($page->groups as $group) : ?>
                         <!-- Experience item START -->
                         <div class="d-flex">
                             <!-- Avatar -->
                             <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/08.svg" alt="">
+                                <a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>">
+                                    <?= Html::img($group->group->image, ['class' => 'avatar-img rounded-circle']) ?>
                                 </a>
                             </div>
                             <!-- Info -->
                             <div>
-                                <h6 class="card-title mb-0"><a href="#!"> Apple Computer, Inc. </a></h6>
-                                <p class="small">May 2015 – Present Employment Duration 8 mos <a
-                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
+                                <h6 class="card-title mb-0"><a href="<?= Url::to(['group/single', 'slug' => $group->group->slug]) ?>"> <?= $group->group->title ?> </a></h6>
+                                <p class="small"><?= $group->group->short ?></p>
                             </div>
                         </div>
                         <!-- Experience item END -->
-
-                        <!-- Experience item START -->
-                        <div class="d-flex">
-                            <!-- Avatar -->
-                            <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/09.svg" alt="">
-                                </a>
-                            </div>
-                            <!-- Info -->
-                            <div>
-                                <h6 class="card-title mb-0"><a href="#!"> Microsoft Corporation </a></h6>
-                                <p class="small">May 2017 – Present Employment Duration 1 yrs 5 mos <a
-                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
-                            </div>
-                        </div>
-                        <!-- Experience item END -->
-
-                        <!-- Experience item START -->
-                        <div class="d-flex">
-                            <!-- Avatar -->
-                            <div class="avatar me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="/images/logo/10.svg" alt="">
-                                </a>
-                            </div>
-                            <!-- Info -->
-                            <div>
-                                <h6 class="card-title mb-0"><a href="#!"> Tata Consultancy Services. </a></h6>
-                                <p class="small mb-0">May 2022 – Present Employment Duration 6 yrs 10 mos <a
-                                            class="btn btn-primary-soft btn-xs ms-2" href="#!">Edit </a></p>
-                            </div>
-                        </div>
-                        <!-- Experience item END -->
+                        <?php endforeach; ?>
 
                     </div>
                     <!-- Card body END -->
                 </div>
+                <?php endif; ?>
 
             </div>
 
