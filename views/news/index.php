@@ -37,6 +37,10 @@ use yii\widgets\LinkPager;
                                         <a class="small text-secondary" href="<?= Url::to(['news/single', 'slug' => $post->slug]) ?>">
                                             <i class="bi bi-calendar-date pe-1"></i>
                                             <?php echo Yii::$app->formatter->asDate($post->public_date, 'long'); ?>
+                                        </a><br><br>
+                                        <a href="<?= Url::to(['profile/friend', 'id' => $post->page->id]) ?>" class="small text-secondary">
+                                            <i class="bi bi-bag pe-1"></i>
+                                            <?= $post->page->page_name ?>
                                         </a>
                                     </div>
                                 </div>

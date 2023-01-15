@@ -40,7 +40,7 @@ class NewsController extends AppController
         $id = Yii::$app->request->get('id');
         $categories = Category::find()->orderBy(['title' => SORT_DESC])->all();
         $posts = News::find()->with('category')->orderBy(['public_date' => SORT_DESC])->all();
-        $query = News::find()->with('category')->orderby(['public_date' => SORT_DESC]);
+        $query = News::find()->with('category', 'page')->orderby(['public_date' => SORT_DESC]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta('Latest News ');
