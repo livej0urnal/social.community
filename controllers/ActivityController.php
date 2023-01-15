@@ -24,7 +24,7 @@ class ActivityController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index'], // действия в контроллере
+                        'actions' => ['index', 'search'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
@@ -43,5 +43,13 @@ class ActivityController extends AppController
         }
         $this->setMeta('Notifications '. $page->page_name);
         return $this->render('index', compact('page'));
+    }
+
+    public function actionSearch($q)
+    {
+        $q = Yii::$app->request->get('q');
+        $pages = Pages::find()->filterWhere(['like', 'page_name', $q])->orFilterWhere(['like', 'display_name', $q])->all();
+        $this->setMeta('Results :' . $q);
+        return $this->render('search', compact('q', 'pages'));
     }
 }
