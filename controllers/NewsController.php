@@ -58,7 +58,9 @@ class NewsController extends AppController
     public function actionSingle($slug)
     {
         $slug = Yii::$app->request->get('slug');
-        return $this->render('single');
+        $article = News::find()->where(['slug' => $slug])->one();
+        $this->setMeta($article->title . ' ');
+        return $this->render('single', compact('article'));
     }
 
     public function actionFake()

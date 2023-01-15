@@ -46,6 +46,7 @@ class News extends \yii\db\ActiveRecord
             [['category_id', 'page_id'], 'integer'],
             [['public_date'], 'safe'],
             [['slug', 'title', 'image'], 'string', 'max' => 255],
+            [['slug'], 'unique', 'targetClass' => 'app\models\News'],
         ];
     }
 
