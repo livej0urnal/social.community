@@ -12,4 +12,10 @@ class NewsController extends AppController
         $this->setMeta('Latest News ');
         return $this->render('index');
     }
+
+    public function actionSingle($slug)
+    {
+        $slug = Yii::$app->request->get('slug');
+        return $this->render('single');
+    }
 }
