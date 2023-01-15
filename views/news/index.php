@@ -12,6 +12,7 @@ use yii\widgets\LinkPager;
             <div class="bg-mode p-4">
                 <?php if (!empty($posts)) : ?>
                     <h1 class="h4 mb-4">Latest blogs</h1>
+
                     <?php foreach ($posts as $post) : ?>
                         <!-- Blog item START -->
                         <div class="card bg-transparent border-0">
