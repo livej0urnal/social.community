@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use app\models\News;
 use app\models\Pages;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 
 class ActivityController extends AppController
@@ -51,7 +53,10 @@ class ActivityController extends AppController
         $user = Yii::$app->user->identity->id;
         $user_page = Pages::find()->where(['user_id' => $user])->with('friends')->one();
         $pages = Pages::find()->filterWhere(['like', 'page_name', $q])->orFilterWhere(['like', 'display_name', $q])->all();
+        $query = Pages::find()->filterWhere(['like', 'page_name', $q])->orFilterWhere(['like', 'display_name', $q])->orderby(['page_name' => SORT_ASC]);
+        $counts = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $pages = $query->offset($counts->offset)->limit($counts->limit)->all();
         $this->setMeta('Results :' . $q);
-        return $this->render('search', compact('q', 'pages', 'user_page'));
+        return $this->render('search', compact('q', 'pages', 'user_page', 'counts'));
     }
 }

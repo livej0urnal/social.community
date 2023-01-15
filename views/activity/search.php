@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 ?>
 <div class="container">
@@ -68,21 +69,15 @@ use yii\helpers\Url;
                                                 <p class="mb-0 small lh-sm"></p>
                                             </div>
                                             <!-- Card footer -->
-                                            <div class="card-footer p-2 border-0">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title=""
-                                                        data-bs-original-title="Send message" aria-label="Send message">
-                                                    <i class="bi bi-chat-left-text"></i></button>
-                                                <button class="btn btn-sm btn-danger delete-friend" data-value="111"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                                        data-bs-original-title="Remove friend"><i
-                                                            class="bi bi-person-x"></i>
-                                                </button>
-                                            </div>
                                         </div>
                                         <!-- Friends item END -->
                                     </div>
                                 <?php endforeach; ?>
+                                <?php echo LinkPager::widget([
+                                    'pagination' => $counts,
+                                    'options' => ['class' => 'pagination tab-pagination d-inline-block d-md-flex justify-content-center'],
+                                    'linkOptions' => ['class' => 'page-link'],
+                                ]); ?>
                             </div>
                         <?php endif; ?>
                     </div>
