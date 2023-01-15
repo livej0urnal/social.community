@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use Faker\Factory;
 use Yii;
 
 class NewsController extends AppController
@@ -17,5 +18,10 @@ class NewsController extends AppController
     {
         $slug = Yii::$app->request->get('slug');
         return $this->render('single');
+    }
+
+    public function actionFake()
+    {
+
     }
 }
