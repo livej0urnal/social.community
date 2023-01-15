@@ -37,8 +37,9 @@ class NewsController extends AppController
     {
         $id = Yii::$app->request->get('id');
         $categories = Category::find()->orderBy(['title' => SORT_DESC])->all();
+        $posts = News::find()->with('category')->orderBy(['public_date' => SORT_DESC])->all();
         $this->setMeta('Latest News ');
-        return $this->render('index', compact('categories'));
+        return $this->render('index', compact('categories', 'posts'));
     }
 
     public function actionCategory($id)
