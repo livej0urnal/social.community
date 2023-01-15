@@ -86,7 +86,7 @@ class SiteController extends AppController
 
             }
             $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
-            $query = Posts::find()->with('comments', 'page', 'page.category')->orderby(['created_at' => SORT_DESC]);
+            $query = Posts::find()->with('comments', 'page', 'page.category', 'comments.user')->orderby(['created_at' => SORT_DESC]);
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 10, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
             $new_comment = new CommentForm();
@@ -106,7 +106,7 @@ class SiteController extends AppController
                     Yii::$app->session->setFlash('error', 'Has error!');
                 }
             }
-            $feeds = Feeds::find()->where(['page_id' => $page->id])->limit(5)->all();
+            $feeds = Feeds::find()->where(['page_id' => $page->id])->with('feed', 'feed.category')->limit(5)->all();
             $latest_article = News::find()->orderBy(['public_date' => SORT_DESC])->limit(5)->all();
             $this->setMeta('Social Community');
             return $this->render('index', compact('page', 'user', 'new_post', 'posts', 'new_comment', 'comment', 'pages', 'feeds', 'latest_article'));
