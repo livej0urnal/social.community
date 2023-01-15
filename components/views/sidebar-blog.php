@@ -3,6 +3,7 @@
     use yii\helpers\Html;
 ?>
 <div class="row g-4">
+    <?php if(!empty($posts)) : ?>
     <!-- Card News START -->
     <div class="col-sm-6 col-lg-12">
         <div class="card">
@@ -13,46 +14,24 @@
             <!-- Card header END -->
             <!-- Card body START -->
             <div class="card-body">
+                <?php foreach ($posts as $post) : ?>
                 <!-- News item -->
                 <div class="mb-3">
-                    <h6 class="mb-0"><a href="blog-details.html">Ten questions you should answer
-                            truthfully</a></h6>
-                    <small>2hr</small>
-                </div>
-                <!-- News item -->
-                <div class="mb-3">
-                    <h6 class="mb-0"><a href="blog-details.html">Five unbelievable facts about money</a>
+                    <h6 class="mb-0">
+                        <a href="<?= Url::to(['news/single', 'slug' => $post->slug]) ?>">
+                            <?= $post->title ?>
+                        </a>
                     </h6>
-                    <small>3hr</small>
+                    <small><?= $post->public_date ?></small>
                 </div>
-                <!-- News item -->
-                <div class="mb-3">
-                    <h6 class="mb-0"><a href="blog-details.html">Best Pinterest Boards for learning about
-                            business</a></h6>
-                    <small>4hr</small>
-                </div>
-                <!-- News item -->
-                <div class="mb-3">
-                    <h6 class="mb-0"><a href="blog-details.html">Skills that you can learn from business</a>
-                    </h6>
-                    <small>6hr</small>
-                </div>
-                <!-- Load more comments -->
-                <a href="#!" role="button"
-                   class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center"
-                   data-bs-toggle="button" aria-pressed="true">
-                    <div class="spinner-dots me-2">
-                        <span class="spinner-dot"></span>
-                        <span class="spinner-dot"></span>
-                        <span class="spinner-dot"></span>
-                    </div>
-                    View all latest news
-                </a>
+                <?php endforeach; ?>
             </div>
             <!-- Card body END -->
         </div>
     </div>
     <!-- Card News END -->
+    <?php endif; ?>
+
     <?php if(!empty($categories)) : ?>
     <!-- Card News START -->
     <div class="col-sm-6 col-lg-12">
