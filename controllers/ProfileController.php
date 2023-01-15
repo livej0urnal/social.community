@@ -62,7 +62,7 @@ class ProfileController extends AppController
     public function actionFriend($id)
     {
         $id = Yii::$app->request->get('id');
-        $page = Pages::find()->where(['id' => $id])->with('friends', 'feeds')->one();
+        $page = Pages::find()->where(['id' => $id])->with('friends', 'feeds', 'category')->one();
         $user = Yii::$app->user->identity->id;
         $page_user = Pages::findOne(['user_id' => $user]);
         $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->all();
