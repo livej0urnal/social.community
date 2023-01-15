@@ -86,8 +86,8 @@ class SiteController extends AppController
 
             }
             $posts = Posts::find()->where(['page_id' => $page->id])->with('comments')->limit(10)->orderBy(['created_at' => SORT_DESC])->all();
-            $query = Posts::find()->with('comments')->orderby(['created_at' => SORT_DESC]);
-            $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15, 'forcePageParam' => false, 'pageSizeParam' => false]);
+            $query = Posts::find()->with('comments', 'page')->orderby(['created_at' => SORT_DESC]);
+            $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 10, 'forcePageParam' => false, 'pageSizeParam' => false]);
             $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
             $new_comment = new CommentForm();
             if($new_comment->load(Yii::$app->request->post())){
