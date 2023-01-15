@@ -324,7 +324,7 @@ use yii\widgets\LinkPager;
             </div>
             <!-- Card follow START -->
             <?php endif; ?>
-
+            <?php if(!empty($latest_article)) : ?>
             <!-- Card News START -->
             <div class="col-sm-6 col-lg-12">
                 <div class="card">
@@ -335,38 +335,18 @@ use yii\widgets\LinkPager;
                     <!-- Card header END -->
                     <!-- Card body START -->
                     <div class="card-body">
+                        <?php foreach ($latest_article as $article) : ?>
                         <!-- News item -->
                         <div class="mb-3">
-                            <h6 class="mb-0"><a href="blog-details.html">Ten questions you should answer truthfully</a>
+                            <h6 class="mb-0"><a href="<?= Url::to(['news/single', 'slug' => $article->slug]) ?>"><?= $article->title ?></a>
                             </h6>
-                            <small>2hr</small>
+                            <small><?php echo Yii::$app->formatter->asDate($article->public_date, 'long'); ?></small>
                         </div>
                         <!-- News item -->
-                        <div class="mb-3">
-                            <h6 class="mb-0"><a href="blog-details.html">Five unbelievable facts about money</a></h6>
-                            <small>3hr</small>
-                        </div>
-                        <!-- News item -->
-                        <div class="mb-3">
-                            <h6 class="mb-0"><a href="blog-details.html">Best Pinterest Boards for learning about
-                                    business</a></h6>
-                            <small>4hr</small>
-                        </div>
-                        <!-- News item -->
-                        <div class="mb-3">
-                            <h6 class="mb-0"><a href="blog-details.html">Skills that you can learn from business</a>
-                            </h6>
-                            <small>6hr</small>
-                        </div>
+                        <?php endforeach; ?>
                         <!-- Load more comments -->
-                        <a href="#!" role="button"
-                           class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center"
-                           data-bs-toggle="button" aria-pressed="true">
-                            <div class="spinner-dots me-2">
-                                <span class="spinner-dot"></span>
-                                <span class="spinner-dot"></span>
-                                <span class="spinner-dot"></span>
-                            </div>
+                        <a href="<?= Url::to(['news/index']) ?>" role="button"
+                           class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center">
                             View all latest news
                         </a>
                     </div>
@@ -374,6 +354,7 @@ use yii\widgets\LinkPager;
                 </div>
             </div>
             <!-- Card News END -->
+            <?php endif; ?>
         </div>
     </div>
     <!-- Right sidebar END -->
