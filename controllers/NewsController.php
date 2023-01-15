@@ -51,8 +51,12 @@ class NewsController extends AppController
     {
         $id = Yii::$app->request->get('id');
         $category = Category::findOne($id);
+        $posts = News::find()->where(['category_id' => $category->id])->with('category')->orderBy(['public_date' => SORT_DESC])->all();
+        $query = News::find()->where(['category_id' => $category->id])->with('category', 'page')->orderby(['public_date' => SORT_DESC]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta('Category ' . $category->title);
-        return $this->render('category', compact('category'));
+        return $this->render('index', compact('category', 'posts', 'pages'));
     }
 
     public function actionSingle($slug)
