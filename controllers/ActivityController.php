@@ -37,7 +37,7 @@ class ActivityController extends AppController
     {
         $user = Yii::$app->user->identity->id;
 //        $page = Pages::findOne(['user_id' => $user]);
-        $page = Pages::find()->where(['user_id' => $user])->with('feeds')->one();
+        $page = Pages::find()->where(['user_id' => $user])->with('feeds', 'feeds.feed')->one();
         if($page->user_id != $user) {
             return $this->goHome();
         }
