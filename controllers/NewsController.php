@@ -25,7 +25,7 @@ class NewsController extends AppController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'single', 'fake'], // действия в контроллере
+                        'actions' => ['index', 'single', 'fake', 'category'], // действия в контроллере
                         'roles' => ['@'], // Доступ к действиям только для авторизованных пользователей
                     ],
                 ],
