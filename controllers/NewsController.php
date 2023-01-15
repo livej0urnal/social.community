@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\AppController;
+use app\models\Category;
 use Faker\Factory;
 use Yii;
 
@@ -22,6 +23,18 @@ class NewsController extends AppController
 
     public function actionFake()
     {
+        $faker = Factory::create();
+        for($i = 0; $i < 30; $i++){
+            $category = new Category();
+            $category->title = $faker->word();
+            $category->save();
+            //            $friends = new Friends();
+//            $friends->page_id = 1;
+//            $friends->friend_id = rand(1, 300);
+//            $friends->save(false);
+        }
+
+        die('Data generation is complete!');
 
     }
 }
