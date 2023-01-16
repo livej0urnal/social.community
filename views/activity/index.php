@@ -5,6 +5,29 @@
 
 <div class="container">
     <div class="row g-4">
+
+
+        <!-- Sidenav START -->
+        <div class="col-lg-3">
+
+            <!-- Advanced filter responsive toggler START -->
+            <div class="d-flex align-items-center d-lg-none">
+                <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                    <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
+                    <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                </button>
+            </div>
+            <!-- Advanced filter responsive toggler END -->
+            <!-- Advanced filter responsive toggler END -->
+            <?php
+            //кеш на час
+            if ($this->beginCache('SidebarUser', ['duration' => 100])) {
+                echo \app\components\SidebarProfileWidget::widget();
+                $this->endCache(); }
+            ?>
+            <!--            --><?//= \app\components\SidebarProfileWidget::widget() ?>
+        </div>
+        <!-- Sidenav END -->
         <!-- Main content START -->
         <div class="col-lg-8 mx-auto">
             <!-- Card START -->
